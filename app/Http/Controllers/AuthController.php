@@ -35,17 +35,18 @@ class AuthController extends Controller
     public function register(Request $request) {
         $validateData = $request->validate([
             'name' => 'required|string|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'nohp' => 'required|string|max:255|unique:users'
+            'fullname' => 'required|string|max:255',
+            'password' => 'required|string|min:6|confirmed',
+            'nohp' => 'required|integer'
         ]);
-
-        $photoName = 'standar.png';
 
         $user = new User();
             $user->name = $validateData['name'];
-            $user->password = Hash::make($validasireques['password']);
-            $user->image =  'storage/photoProfiles/' . $photoName;
+            $user->fullname = $validateData['fullname'];
+            $user->password = Hash::make($validateData['password']);
+            $user->image =  'storage/photoProfiles/standar.png';
             $user->nohp = $validateData['nohp'];
+            $user->Authorize = 1;
             $user->save();
 
         if ($user) {

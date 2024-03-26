@@ -16,6 +16,10 @@
             <label for="fullname">Full Name</label>
             <input type="text" name="fullname" placeholder="Full Name" required>
         </div>
+        <div>
+            <label for="nohp">No HP</label>
+            <input type="number" name="nohp" placeholder="Masukkan No HP" required>
+        </div>
         <!-- <div>
             <label for="email">Email</label>
             <input type="email" name="email" placeholder="Email" required>
