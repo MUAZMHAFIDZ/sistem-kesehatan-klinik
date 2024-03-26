@@ -13,4 +13,9 @@
     <div id="content" class="content">
         Halaman Profil
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            activeMenu('menu2')
+        })
+    </script>
 </body>

@@ -11,7 +11,12 @@
 <body>
     @include('admin.component.navbar');
     <div id="content" class="content">
-        Halaman Home
+        <h1>stok obat</h1>
     </div>
-    <h1>stok obat</h1>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            activeMenu('menu4')
+        })
+    </script>
 </body>
+</html>

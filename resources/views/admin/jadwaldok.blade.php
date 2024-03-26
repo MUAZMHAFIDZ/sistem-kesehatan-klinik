@@ -44,5 +44,11 @@
                 </tr>
             </tbody>
         </table>
-    </div>    
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            activeMenu('menu3')
+        })
+    </script>    
 </body>
+</html>

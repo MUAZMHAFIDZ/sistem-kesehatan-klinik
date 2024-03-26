@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function login(Request $request) {
         $credentials = $request->only('name', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard-admin');
         } else {
             return back()->withErrors(['msg' => 'nama atau password salah!']);
         }
@@ -37,7 +37,7 @@ class AuthController extends Controller
             'name' => 'required|string|max:255|unique:users',
             'fullname' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
-            'nohp' => 'required|integer'
+            'nohp' => 'required|numeric|unique:users'
         ]);
 
         $user = new User();

@@ -19,5 +19,5 @@ Route::get('/dashboard-admin/stokobat', [FrontendController::class, 'dashboardst
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.submit');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
-Route::post('/signup', [authController::class, 'register'])->name('register.submit');
-Route::get('/signup', [authController::class, 'showRegister'])->name('login');
+Route::post('/signup', [AuthController::class, 'register'])->name('register.submit');
+Route::get('/signup', [AuthController::class, 'showRegister'])->name('login');
