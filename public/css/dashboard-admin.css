@@ -1,0 +1,129 @@
+nav {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* logo navbar */
+nav .logo {
+    position: fixed;
+    display: flex;
+    height: 65px;
+    width: 100%;
+    margin: 0;
+    justify-content: space-around;
+    background-color: white;
+}
+.logo .img {
+    width: 70%;
+}
+.logo .img img {
+    width: 200px;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+.logo .account {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+}
+.logo .account span {
+    margin: auto 10px;
+    color: #0094ff;
+    font-weight: bold;
+}
+.logo .account img {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #0094ff;
+    border-radius: 50%;
+    margin-top: 7px;
+    margin-right: 10px;
+}
+
+/* side navbar */
+nav .navbar {
+    position: fixed;
+    margin: 0;
+    top: 65px;
+}
+.navbar ul {
+    display: flex;
+    height: 100vh;
+    width: 45px;
+    background-color: #0094ff;
+    flex-direction: column;
+    margin: 0;
+    overflow: hidden;
+    transition: .5s;
+}
+.navbar ul:hover {
+    width: 180px;
+}
+.navbar li {
+    list-style-type: none;
+    height: 50px;
+    width: 100%;
+    margin: 5px 0 0 0;
+    overflow: hidden;
+}
+.navbar li.out {
+    margin-top: 20%;
+}
+.navbar a:hover {
+    background-color: white;
+    color: black;
+}
+.navbar li a.active {
+    background-color: white;
+    color: black;
+}
+.navbar li a {
+    height: 100%;
+    width: 100%;
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding-top: 15px;
+    padding-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.navbar li i {
+    color: black;
+    width: 40px;
+}
+
+/* perbaikan posisi content */
+.content {
+    width: 96dvw;
+    margin-top: 50px;
+    margin-left: 47px;
+    border: 1px solid black;
+}
+@media (max-width: 1300px) {
+    .content { width: 89dvw; }
+}
+@media (max-width: 420px) {
+    .content { width: 85dvw; }
+}
+
+/* homepage dashboard */
+
+/* jadwal dokter */
+.content .jadwaldokter {
+    max-width: 100%;
+}
+ .jadwaldokter table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 10px;
+}
+.jadwaldokter th, .jadwaldokter td {
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.jadwaldokter thead {
+    background-color: #0094bb;
+}
