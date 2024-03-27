@@ -1,18 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\AdminFrontendController;
 use App\Http\Controllers\AuthController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // admin dashboard
-Route::get('/dashboard-admin', [FrontendController::class, 'dashboard'])->middleware('auth')->name('admin.home');
-Route::get('/dashboard-admin/jadwaldokter', [FrontendController::class, 'dashboardjadwaldokter'])->middleware('auth')->name('admin.jadwaldok');
-Route::get('/dashboard-admin/profil', [FrontendController::class, 'dashboardprofil'])->middleware('auth')->name('admin.profil');
-Route::get('/dashboard-admin/stokobat', [FrontendController::class, 'dashboardstokobat'])->middleware('auth')->name('admin.stok');
+Route::get('/dashboard-admin', [AdminFrontendController::class, 'dashboard'])->middleware(['auth', 'can:Admin'])->name('admin.home');
+Route::get('/dashboard-admin/jadwaldokter', [AdminFrontendController::class, 'dashboardjadwaldokter'])->middleware(['auth', 'can:Admin'])->name('admin.jadwaldok');
+Route::get('/dashboard-admin/profil', [AdminFrontendController::class, 'dashboardprofil'])->middleware(['auth', 'can:Admin'])->name('admin.profil');
+Route::get('/dashboard-admin/stokobat', [AdminFrontendController::class, 'dashboardstokobat'])->middleware(['auth', 'can:Admin'])->name('admin.stok');
 
 
 // login
