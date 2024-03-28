@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+@extends('layout.navbarPasien')
+
+@section('content')
+        
     <form method="POST" action="{{ route('register.submit') }}">
         @csrf
-        <div>
+        <div class="name">
             <label for="name">UserName</label>
             <input type="text" name="name" placeholder="UserName" required>
         </div>
@@ -25,11 +21,11 @@
             <input type="email" name="email" placeholder="Email" required>
         </div> -->
         <div>
-            <label for="password"></label>
+            <label for="password">Password</label>
             <input type="password" name="password" placeholder="Password" required>
         </div>
         <div>
-            <label for="password_confirmation"></label>
+            <label for="password_confirmation">Password Confirmation</label>
             <input type="password" name="password_confirmation" placeholder="Password" required autocomplete="new-password">
         </div>
         <!-- <div>
@@ -38,5 +34,4 @@
         </div> -->
         <button type="submit">Daftar</button>
     </form>
-</body>
-</html>
+@endsection
