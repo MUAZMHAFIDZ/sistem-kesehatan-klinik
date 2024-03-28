@@ -21,4 +21,7 @@ class FrontendController extends Controller
     public function dashboardantrian() {
         return view('admin.antrian');
     }
+    public function dashboardformpasien() {
+        return view('admin.formpasien');
+    }
 }

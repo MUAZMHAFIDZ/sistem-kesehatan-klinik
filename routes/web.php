@@ -14,6 +14,7 @@ Route::get('/dashboard-admin/jadwaldokter', [FrontendController::class, 'dashboa
 Route::get('/dashboard-admin/profil', [FrontendController::class, 'dashboardprofil'])->middleware('auth')->name('admin.profil');
 Route::get('/dashboard-admin/stokobat', [FrontendController::class, 'dashboardstokobat'])->middleware('auth')->name('admin.stok');
 Route::get('/dashboard-admin/antrian', [FrontendController::class, 'dashboardantrian'])->middleware('auth')->name('admin.antrian');
+Route::get('/dashboard-admin/form-pasien', [FrontendController::class, 'dashboardformpasien'])->middleware('auth')->name('admin.formpasien');
 
 
 // login

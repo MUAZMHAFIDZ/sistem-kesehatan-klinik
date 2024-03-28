@@ -11,7 +11,7 @@
 <body>
     @include('admin.component.navbar');
     <div id="content" class="content">
-        <h1>antrian pasien</h1>
+        Antrian Pasien
         <!--no,nama,tanggal periksa,waktu,kategori layanan,aksi-->
     </div>
     <div class="antrian">
@@ -27,17 +27,34 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="tdble">
                     <td>1</td>
                     <td>Budi Hartono</td>
                     <td>19/12/2024</td>
                     <td>9.00</td>
                     <td>Cabut Gigi</td>
-                    <td>xxx</td>
+                    <td style="color: red;">Hapus</td>
+                </tr>
+                <tr class="tdble">
+                    <td>2</td>
+                    <td>Ilham Surya</td>
+                    <td>10/12/2024</td>
+                    <td>8.00</td>
+                    <td>Pasang Behel</td>
+                    <td style="color: red;">Hapus</td>
+                </tr>
+                <tr class="tdble">
+                    <td>3</td>
+                    <td>Muaz Hafidz</td>
+                    <td>5/12/2024</td>
+                    <td>12.00</td>
+                    <td>Periksa Gigi</td>
+                    <td style="color: red;">Hapus</td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <button class="tombol-tambah"><a href="{{ route('admin.formpasien') }}">Tambah Data</a></button>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             activeMenu('menu6')
