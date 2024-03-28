@@ -6,11 +6,11 @@ body {
 nav {
     background-color: #0094FF;
     color: #fff;
+    margin-bottom: 80px;
 }
 
 .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     max-width: 960px;
     margin: 0 auto;
@@ -32,10 +32,6 @@ nav {
     margin-left: 20px;
 }
 
-.menu li:first-child {
-    margin-left: 0;
-}
-
 .menu li a {
     color: #fff;
     text-decoration: none;
@@ -46,25 +42,8 @@ nav {
     color: #ffcc00;
 }
 
-.toggle-menu {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.bar {
-    width: 25px;
-    height: 3px;
-    background-color: #fff;
-    margin: 4px 0;
-    transition: background-color 0.3s ease;
-}
-
 @media (max-width: 768px) {
     .menu {
         display: none;
-    }
-    .toggle-menu {
-        display: flex;
     }
 }
