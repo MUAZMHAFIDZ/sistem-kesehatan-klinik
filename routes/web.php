@@ -13,6 +13,7 @@ Route::get('/dashboard-admin', [FrontendController::class, 'dashboard'])->middle
 Route::get('/dashboard-admin/jadwaldokter', [FrontendController::class, 'dashboardjadwaldokter'])->middleware('auth')->name('admin.jadwaldok');
 Route::get('/dashboard-admin/profil', [FrontendController::class, 'dashboardprofil'])->middleware('auth')->name('admin.profil');
 Route::get('/dashboard-admin/stokobat', [FrontendController::class, 'dashboardstokobat'])->middleware('auth')->name('admin.stok');
+Route::get('/dashboard-admin/antrian', [FrontendController::class, 'dashboardantrian'])->middleware('auth')->name('admin.antrian');
 
 
 // login

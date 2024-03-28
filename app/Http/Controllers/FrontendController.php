@@ -18,4 +18,7 @@ class FrontendController extends Controller
     public function dashboardstokobat() {
         return view('admin.stokobat');
     }
+    public function dashboardantrian() {
+        return view('admin.antrian');
+    }
 }

@@ -15,7 +15,7 @@
             <li><a id="menu3" href="{{ route('admin.jadwaldok') }}"><i class="fa-solid fa-calendar"></i><span>Jadwal Dokter</span></a></li>
             <li><a id="menu4" href="{{ route('admin.stok') }}"><i class="fa-solid fa-pills"></i><span>Stok Obat</span></a></li>
             <li><a id="menu5" href="#"><i class="fa-solid fa-file-medical"></i><span>Data Pasien</span></a></li>
-            <li><a id="menu6" href="#"><i class="fa-solid fa-id-card"></i><span>Antrian Pasien</span></a></li>
+            <li><a id="menu6" href="{{ route('admin.antrian') }}"><i class="fa-solid fa-id-card"></i><span>Antrian Pasien</span></a></li>
             <li><a id="menu7" href="#"><i class="fa-solid fa-book-medical"></i><span>Riwayat Pasien</span></a></li>
             <li><a id="menu8" href="#"><i class="fa-solid fa-print"></i><span>Cetak Laporan</span></a></li>
            
