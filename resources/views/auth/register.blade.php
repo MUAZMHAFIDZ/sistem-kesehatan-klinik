@@ -18,7 +18,7 @@
         </div>
         <div>
             <label for="nohp">No HP</label>
-            <input type="number" name="nohp" placeholder="Masukkan No HP" required>
+            <input type="text" name="nohp" placeholder="Masukkan No HP" required>
         </div>
         <!-- <div>
             <label for="email">Email</label>

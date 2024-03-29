@@ -21,9 +21,9 @@ class AuthController extends Controller
             if ($user->Authorize === "Admin") {
                 return redirect()->intended('/dashboard-admin');
             } 
-            // else if ($user->Authorize === "Dokter") {
-            //     return redirect()->intended('/dashboard-dokter');
-            // } 
+            else if ($user->Authorize === "Dokter") {
+                return redirect()->intended('/homeDokter');
+            } 
             else {
                 return redirect()->intended('/');
             }
