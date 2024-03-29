@@ -1,0 +1,52 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content .itemcontent {
+    width: 1000px;
+}
+.content .jadwaldokter {
+    width: 1000px;
+    overflow: auto;
+}
+.jadwaldokter table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.jadwaldokter th {
+    text-align: left;
+    padding: 15px;
+    background-color: #0094ff;
+    border-bottom: 1px solid #555;
+}
+.jadwaldokter td {
+    border-bottom: 1px solid #555;
+    text-align: left;
+    padding-left: 15px;
+    background-color: #ffffff;
+}
+/* button crud */
+.crud {
+    display: flex;
+    margin-top: 30px;
+}
+.crud button {
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+    color: #ffffff;
+    margin-right: 10px;
+}
+.crud button:hover {
+    border: 1px solid #ffffff;
+}
+.crud .blue {
+    background-color: blue;
+}
+.crud .red {
+    background-color: red;
+}
+.crud .green {
+    background-color: green;
+}

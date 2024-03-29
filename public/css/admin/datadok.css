@@ -1,0 +1,105 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content .itemcontent {
+    width: 700px;
+}
+.content .datadokter {
+    width: 700px;
+    overflow: auto;
+}
+.jadwaldokter table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.datadokter th {
+    text-align: left;
+    padding: 15px;
+    background-color: #0094ff;
+    border-bottom: 1px solid #555;
+}
+.datadokter td {
+    border-bottom: 1px solid #555;
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #ffffff;
+}
+.aksi button {
+    width: 70px;
+    height: 27px;
+    cursor: pointer;
+    color: #ffffff;
+    margin-right: 10px;
+}
+/* button crud */
+.crud {
+    display: flex;
+    margin-top: 30px;
+}
+.crud button {
+    width: 70px;
+    height: 30px;
+    cursor: pointer;
+    color: #ffffff;
+    margin-right: 10px;
+}
+.crud button:hover, .aksi button:hover {
+    border: 1px solid #ffffff;
+}
+.blue {
+    background-color: blue;
+}
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}
+
+/* pendaftarandokter */
+.pendaftarandokter {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    right: -200%;
+}
+.pendaftarandokter.geserkan {
+    right: 0;
+}
+.pendaftarandokter div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.pendaftarandokter form {
+    padding-top: 10px;
+    height: 520px;
+    width: 470px;
+    background-color: #ffffff;
+    text-align: center;
+}
+.pendaftarandokter input {
+    height: 50px;
+    width: 400px;
+    border: 1px solid #0094ff;
+    border-radius: 5px;
+    margin: 10px auto;
+}
+.pendaftarandokter button {
+    width: 160px;
+    height: 50px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+.pendaftarandokter button:hover {
+    border: 4px solid white;
+}

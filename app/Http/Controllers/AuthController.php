@@ -10,24 +10,23 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
-    {
+    public function showLoginForm() {
         return view('auth.login');
     }
 
-    public function login(Request $request)
-    {
+
+    public function login(Request $request) {
+
         $credentials = $request->only('username', 'password');
+
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             if ($user->Authorize === "Admin") {
                 return redirect()->intended('/dashboard-admin');
- // login-dashboardDokter
             } 
             else if ($user->Authorize === "Dokter") {
                 return redirect()->intended('/homeDokter');
             } 
-            }
              else if ($user->Authorize === "Dokter") {
                  return redirect()->intended('/dashboard-dokter');
              } 
@@ -39,19 +38,16 @@ class AuthController extends Controller
         }
     }
 
-    public function logout()
-    {
+    public function logout() {
         Auth::logout();
         return redirect('/login');
     }
 
-    public function showRegister()
-    {
+    public function showRegister() {
         return view('auth.register');
     }
 
-    public function register(Request $request)
-    {
+    public function register(Request $request) {
         $validateData = $request->validate([
             'username' => 'required|string|max:255|unique:users',
             'fullname' => 'required|string|max:255',

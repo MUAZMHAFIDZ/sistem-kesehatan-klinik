@@ -7,46 +7,56 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard-admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/jadwaldok.css') }}">
 </head>
 <body>
     @include('admin.component.navbar');
     <div id="content" class="content">
-        Halaman Home
-
-        <div class="jadwaldokter">
-        <table>
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama</th>
-                    <th>Senin</th>
-                    <th>Selasa</th>
-                    <th>Rabu</th>
-                    <th>Kamis</th>
-                    <th>Jumat</th>
-                    <th>Sabtu</th>
-                    <th>Minggu</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                    <td>xxx</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="itemcontent">
+            <div class="jadwaldokter">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Senin</th>
+                            <th>Selasa</th>
+                            <th>Rabu</th>
+                            <th>Kamis</th>
+                            <th>Jumat</th>
+                            <th>Sabtu</th>
+                            <th>Minggu</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                            $count = 1;
+                        @endphp
+                        @foreach($dokters as $dokter)
+                            <tr>
+                                <td>{{ $count++ }}</td>
+                                <td>dr. {{ $dokter->fullname }}</td>
+                                <td>xxx</td>
+                                <td>xxx</td>
+                                <td>xxx</td>
+                                <td>xxx</td>
+                                <td>xxx</td>
+                                <td>xxx</td>
+                                <td>xxx</td>
+                                <td>xxx</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <div class="crud">
+                <button class="blue">Tambah</button>
+                <button class="green">Edit</button>
+                <button class="red">Hapus</button>
+            </div>
+        </div>
     </div>
-    </div>
-    
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             activeMenu('menu3')

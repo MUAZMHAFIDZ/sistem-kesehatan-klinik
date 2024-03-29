@@ -1,3 +1,6 @@
+body {
+    background-color: #eee;
+}
 nav {
     margin: 0;
     padding: 0;
@@ -64,11 +67,8 @@ nav .navbar {
     list-style-type: none;
     height: 50px;
     width: 100%;
-    margin: 5px 0 0 0;
+    margin: 1px 0 0 0;
     overflow: hidden;
-}
-.navbar li.out {
-    margin-top: 20%;
 }
 .navbar a:hover {
     background-color: white;
@@ -97,85 +97,14 @@ nav .navbar {
 
 /* perbaikan posisi content */
 .content {
-    width: 96% !important;
-    margin-top: 50px !important;
-    margin-left: 47px !important;
-/*    border: 1px solid black;  */
+    width: 96dvw;
+    margin-top: 50px;
+    margin-left: 47px;
+    /* width: 96% !important; */
 }
 @media (max-width: 1300px) {
     .content { width: 89dvw; }
 }
 @media (max-width: 420px) {
     .content { width: 85dvw; }
-}
-
-/* homepage dashboard */
-
-/* jadwal dokter */
-.content .jadwaldokter {
-    max-width: 100%;
-}
- .jadwaldokter table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 10px;
-}
-.jadwaldokter th, .jadwaldokter td {
-    border: 1px solid #ddd;
-    text-align: left;
-    padding-left: 5px;
-}
-.jadwaldokter thead {
-    background-color: #0094bb;
-}
-
-
-
-/* Antrian */
-.judul {
-    color: #046FBC;
-}
-.antrian table {
-    border-collapse: collapse;
-    width: 100%;
-}
-.antrian thead {
-    background-color: #126eac;
-    border-radius: 10px;
-}
-.antrian th, .antrian td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 2px solid #ddd;
-}
-.antrian td {
-    border-left: 2px solid #ddd;
-}
-.tdble:hover {
-    background-color: #b6b6b6;
-    cursor: pointer;
-}
-.antrian th {
-    color: white;
-}
-.tombol-tambah {
-    border: 2px solid #4CAF50;
-    color: #4CAF50;
-    padding: 4px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 5px;
-    margin-left: 50px;
-    cursor: pointer;
-    border-radius: 4px;
-}
-.tombol-tambah:hover {
-    background-color: #dadada;
-}
-.tombol-tambah a{
-    text-decoration: none;
-    color: #4CAF50;
-    font-weight: 700;
 }

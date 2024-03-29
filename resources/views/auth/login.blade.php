@@ -53,8 +53,8 @@
             <h1 class="h3 mb-3 fw-normal">Login </h1>
         
             <div class="form-floating">
-                <input type="text" class="form-control"  name="name" placeholder="UserName">
-                <label for="name">Username</label>
+                <input type="text" class="form-control"  name="username" placeholder="UserName">
+                <label for="username">Username</label>
             </div>   
             <div class="form-floating">
               <input type="password" class="form-control"  name="password" placeholder="Password">
@@ -66,13 +66,5 @@
             <a href="" class="bi bi-box-arrow-left position-absolute" style="top: 10px; left: 10px;"></a>
           </form>
         </main>
-      
-<body>
-    <form method="POST" action="{{ route('login.submit') }}">
-        @csrf
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Login</button>
-    </form>
 </body>
 </html>

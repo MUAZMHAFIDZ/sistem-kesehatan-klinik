@@ -10,8 +10,8 @@
 <body>
 
     @include('pasien.layout.navbarPasien')
-<br>
-        <form method="POST" action="{{ route('register.submit') }}">
+<!-- <br> -->
+        <!-- <form method="POST" action="{{ route('register.submit') }}">
             @csrf
             <div class="name">
                 <label for="name">UserName</label>
@@ -25,10 +25,10 @@
                 <label for="nohp">No HP</label>
                 <input type="number" name="nohp" placeholder="Masukkan No HP" required>
             </div>
-            <!-- <div>
+            <div>
                 <label for="email">Email</label>
                 <input type="email" name="email" placeholder="Email" required>
-            </div> -->
+            </div>
             <div>
                 <label for="password">Password</label>
                 <input type="password" name="password" placeholder="Password" required>
@@ -37,12 +37,12 @@
                 <label for="password_confirmation">Password Confirmation</label>
                 <input type="password" name="password_confirmation" placeholder="Password" required autocomplete="new-password">
             </div>
-            <!-- <div>
+            <div>
                 <label for="photo">Foto Profil</label>
                 <input type="file" name="photo">
-            </div> -->
+            </div>
             <button type="submit">Daftar</button>
-        </form>
+        </form> -->
 
         <svg>       
             <image xlink:href="/wave.svg">    
@@ -111,7 +111,7 @@
                     </div>
                 </form>
         </div>
-        <div>
+        <!-- <div>
             <label for="fullname">Full Name</label>
             <input type="text" name="fullname" placeholder="Full Name" required>
         </div>
@@ -119,10 +119,10 @@
             <label for="nohp">No HP</label>
             <input type="text" name="nohp" placeholder="Masukkan No HP" required>
         </div>
-        <!-- <div>
+        <div>
             <label for="email">Email</label>
             <input type="email" name="email" placeholder="Email" required>
-        </div> -->
+        </div>
         <div>
             <label for="password"></label>
             <input type="password" name="password" placeholder="Password" required>
@@ -131,13 +131,13 @@
             <label for="password_confirmation"></label>
             <input type="password" name="password_confirmation" placeholder="Password" required autocomplete="new-password">
         </div>
-        <!-- <div>
+        <div>
             <label for="photo">Foto Profil</label>
             <input type="file" name="photo">
-        </div> -->
+        </div>
         <button type="submit">Daftar</button>
     </form>
-    </div>
+    </div> -->
 
 
 
