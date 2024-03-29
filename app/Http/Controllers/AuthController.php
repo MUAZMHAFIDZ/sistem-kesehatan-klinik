@@ -22,10 +22,15 @@ class AuthController extends Controller
             $user = Auth::user();
             if ($user->Authorize === "Admin") {
                 return redirect()->intended('/dashboard-admin');
+ // login-dashboardDokter
+            } 
+            else if ($user->Authorize === "Dokter") {
+                return redirect()->intended('/homeDokter');
+            } 
             }
-            // else if ($user->Authorize === "Dokter") {
-            //     return redirect()->intended('/dashboard-dokter');
-            // } 
+             else if ($user->Authorize === "Dokter") {
+                 return redirect()->intended('/dashboard-dokter');
+             } 
             else {
                 return redirect()->intended('/dashboard-pasien');
             }
