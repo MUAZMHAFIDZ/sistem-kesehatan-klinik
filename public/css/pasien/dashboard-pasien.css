@@ -1,0 +1,41 @@
+body {
+    font-family: Poppins;
+}
+
+.dashContent {
+    background: #ffffff;
+}
+
+.dashContent {
+    background-image: url('/dokter.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 120px;
+    height: 800px;
+    z-index: -1;
+
+}
+
+image {
+    width: 10px;
+}
+
+.header {
+    width: 546px;
+    height: 222px;
+    color: #ffffff;
+    font-size: 55px;
+    font-family: Poppins;
+    font-weight: 600;
+    margin-left: 0px;
+    text-shadow: 2px 2px #0c0b0b;
+}
+
+.section {
+    display: flex;
+    width: 700px;
+    height: 200px;
+    background-color: aquamarine;
+    al
+}

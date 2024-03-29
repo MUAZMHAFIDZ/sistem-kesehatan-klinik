@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset ('/css/pasien/navbar-register.css') }}">
+<link rel="stylesheet" href="{{ asset ('/css/pasien/navbar-dashboard.css') }}">
 
 <nav>
     <div class="container">
