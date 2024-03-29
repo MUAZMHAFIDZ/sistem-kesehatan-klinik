@@ -17,7 +17,16 @@ class AuthController extends Controller
     public function login(Request $request) {
         $credentials = $request->only('name', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/dashboard-admin');
+            $user = Auth::user();
+            if ($user->Authorize === "Admin") {
+                return redirect()->intended('/dashboard-admin');
+            } 
+            // else if ($user->Authorize === "Dokter") {
+            //     return redirect()->intended('/dashboard-dokter');
+            // } 
+            else {
+                return redirect()->intended('/');
+            }
         } else {
             return back()->withErrors(['msg' => 'nama atau password salah!']);
         }
@@ -46,7 +55,7 @@ class AuthController extends Controller
             $user->password = Hash::make($validateData['password']);
             $user->image =  'storage/photoProfiles/standar.png';
             $user->nohp = $validateData['nohp'];
-            $user->Authorize = 1;
+            $user->Authorize = "User";
             $user->save();
 
         if ($user) {

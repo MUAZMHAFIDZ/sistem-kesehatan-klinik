@@ -97,10 +97,10 @@ nav .navbar {
 
 /* perbaikan posisi content */
 .content {
-    width: 96dvw;
-    margin-top: 50px;
-    margin-left: 47px;
-    border: 1px solid black;
+    width: 96% !important;
+    margin-top: 50px !important;
+    margin-left: 47px !important;
+/*    border: 1px solid black;  */
 }
 @media (max-width: 1300px) {
     .content { width: 89dvw; }
@@ -132,11 +132,8 @@ nav .navbar {
 
 
 /* Antrian */
-.content {
-    max-width: 100%;
-}
-.antrian {
-    margin-left: 45px;
+.judul {
+    color: #046FBC;
 }
 .antrian table {
     border-collapse: collapse;
@@ -151,24 +148,20 @@ nav .navbar {
     text-align: left;
     border-bottom: 2px solid #ddd;
 }
-.antrian th {
-    border-left: 1px solid #ddd;
-}
 .antrian td {
     border-left: 2px solid #ddd;
 }
 .tdble:hover {
-    background-color: #52c7fd;
+    background-color: #b6b6b6;
     cursor: pointer;
 }
 .antrian th {
     color: white;
 }
 .tombol-tambah {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 5px;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    padding: 4px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -179,9 +172,10 @@ nav .navbar {
     border-radius: 4px;
 }
 .tombol-tambah:hover {
-    background-color: #45a049;
+    background-color: #dadada;
 }
 .tombol-tambah a{
     text-decoration: none;
-    color: white;
+    color: #4CAF50;
+    font-weight: 700;
 }

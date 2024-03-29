@@ -11,10 +11,9 @@
 <body>
     @include('admin.component.navbar');
     <div id="content" class="content">
-        Antrian Pasien
+        <h2 class="judul">Antrian Pasien</h2>
         <!--no,nama,tanggal periksa,waktu,kategori layanan,aksi-->
-    </div>
-    <div class="antrian">
+        <div class="antrian">
     <table>
             <thead>
                 <tr>
@@ -53,6 +52,7 @@
                 </tr>
             </tbody>
         </table>
+    </div>
     </div>
     <button class="tombol-tambah"><a href="{{ route('admin.formpasien') }}">Tambah Data</a></button>
     <script>

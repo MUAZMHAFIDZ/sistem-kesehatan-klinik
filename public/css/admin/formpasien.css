@@ -1,0 +1,84 @@
+/*  Form Pasien  */
+#contentform {
+    width: 100%;
+}
+@media (max-width: 1300px) {
+    #contentform { width: 89dvw; }
+}
+@media (max-width: 420px) {
+    #contentform { width: 85dvw; }
+}
+#topbar {
+    padding: 3px;
+    border-bottom: 3px solid #046FBC;
+}
+#topbar p {
+    font-weight: 600;
+}
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.registration-form {
+    margin-top: 50px;
+    background-color: rgb(216, 216, 216);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.input-field {
+    width: calc(100% - 22px); /* Lebar input dengan pengurangan margin */
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.input-group {
+    display: flex;
+}
+
+.input-group input[type="text"],
+.input-group input[type="tel"],
+.input-group input[type="number"],
+.input-group select,
+.input-group textarea,
+.input-group input[type="date"] {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cancel-button, .register-button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    width: 30%; /* Lebar tombol */
+}
+
+.cancel-button {
+    background-color: #fff;
+    color: blue;
+    margin-right: 10px;
+}
+.cancel-button a {
+    text-decoration: none;
+}
+
+.register-button {
+    background-color: blue;
+    color: #fff;
+    border: none;
+}
