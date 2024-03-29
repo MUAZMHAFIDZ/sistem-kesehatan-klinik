@@ -97,10 +97,10 @@ nav .navbar {
 
 /* perbaikan posisi content */
 .content {
-    width: 96dvw;
-    margin-top: 50px;
-    margin-left: 47px;
-    border: 1px solid black;
+    width: 96% !important;
+    margin-top: 50px !important;
+    margin-left: 47px !important;
+/*    border: 1px solid black;  */
 }
 @media (max-width: 1300px) {
     .content { width: 89dvw; }
@@ -123,7 +123,59 @@ nav .navbar {
 .jadwaldokter th, .jadwaldokter td {
     border: 1px solid #ddd;
     text-align: left;
+    padding-left: 5px;
 }
 .jadwaldokter thead {
     background-color: #0094bb;
+}
+
+
+
+/* Antrian */
+.judul {
+    color: #046FBC;
+}
+.antrian table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.antrian thead {
+    background-color: #126eac;
+    border-radius: 10px;
+}
+.antrian th, .antrian td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+}
+.antrian td {
+    border-left: 2px solid #ddd;
+}
+.tdble:hover {
+    background-color: #b6b6b6;
+    cursor: pointer;
+}
+.antrian th {
+    color: white;
+}
+.tombol-tambah {
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    padding: 4px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 5px;
+    margin-left: 50px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.tombol-tambah:hover {
+    background-color: #dadada;
+}
+.tombol-tambah a{
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: 700;
 }

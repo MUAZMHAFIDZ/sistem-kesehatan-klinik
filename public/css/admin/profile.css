@@ -1,0 +1,83 @@
+body {
+    background: rgb(255, 255, 255)
+}
+
+.bigcontent {
+    padding: 0px 12px !important;
+    border-radius: 10px !important;
+    /* border: 1px solid rgb(204, 204, 204); */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #5185a9
+}
+
+.profile-button {
+    background: #046FBC;
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #035997
+}
+
+.profile-button:focus {
+    background: #046FBC;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #046FBC;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #046FBC;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #046FBC;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+.profileft {
+    background: #046FBC;
+    color: white;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
+}
+
+.profileft h5 {
+    margin-top: 10px;
+}
+
+.profimid {
+    /* width: 75%; */
+    border-top: 1px solid rgb(223, 223, 223);
+    /* border-bottom: 1px solid rgb(204, 204, 204); */
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
+}
+
+.profimg {
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.profiright {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top: 1px solid rgb(223, 223, 223);
+    /* border-bottom: 1px solid rgb(204, 204, 204); */
+    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
+}

@@ -23,4 +23,16 @@ class AdminFrontendController extends Controller
         $user = Auth::user();
         return view('admin.stokobat', compact('user'));
     }
+    public function dashboardantrian() {
+        $user = Auth::user();
+        return view('admin.antrian', compact('user'));
+    }
+    public function dashboarddatapasien() {
+        $user = Auth::user();
+        return view('admin.datapasien', compact('user'));
+    }
+    public function dashboardformpasien() {
+        $user = Auth::user();
+        return view('admin.formpasien', compact('user'));
+    }
 }

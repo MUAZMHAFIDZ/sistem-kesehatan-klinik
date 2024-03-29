@@ -12,8 +12,8 @@
     @include('admin.component.navbar');
     <div id="content" class="content">
         Halaman Home
-    </div>
-    <div class="jadwaldokter">
+
+        <div class="jadwaldokter">
         <table>
             <thead>
                 <tr>
@@ -45,6 +45,8 @@
             </tbody>
         </table>
     </div>
+    </div>
+    
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             activeMenu('menu3')
