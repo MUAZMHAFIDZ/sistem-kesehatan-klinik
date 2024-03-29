@@ -98,7 +98,7 @@ nav .navbarDokter {
         <img src="{{ asset('dentalcare.png') }}" alt="">
     </div>
      <div class="profil">
-        <span>{{ $user->name }}</span>
+        <span>{{ $user->username }}</span>
         <img src="/ilhamss.jpg" alt="Foto_profil"> 
      </div>
 </div>
