@@ -4,8 +4,8 @@
             <img src="{{ asset('logo.png') }}" alt="">
         </div>
         <div class="account">
-            <span>{{ $user->name }}</span>
-            <img src="/storage/photoProfiles/{{ $user->image }}" alt="">
+            <span>{{ $user->username }}</span>
+            <img src="{{ $user->image }}" alt="">
         </div>
     </div>
     <div class="navbar">
