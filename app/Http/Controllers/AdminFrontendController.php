@@ -30,4 +30,16 @@ class AdminFrontendController extends Controller
         $dokters = User::where('Authorize', 'Dokter')->get();
         return view('admin.datadokter', compact('user', 'dokters'));
     }
+    public function dashboardantrian() {
+        $user = Auth::user();
+        return view('admin.antrian', compact('user'));
+    }
+    public function dashboarddatapasien() {
+        $user = Auth::user();
+        return view('admin.datapasien', compact('user'));
+    }
+    public function dashboardformpasien() {
+        $user = Auth::user();
+        return view('admin.formpasien', compact('user'));
+    }
 }

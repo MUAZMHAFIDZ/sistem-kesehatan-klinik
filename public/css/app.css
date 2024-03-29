@@ -4,6 +4,6 @@
     margin: 0;
 }
 * {
-    box-sizing: border-box;
+    box-sizing: border-box !important;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

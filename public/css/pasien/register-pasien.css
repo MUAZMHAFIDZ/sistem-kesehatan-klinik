@@ -1,48 +1,94 @@
-form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
 
-input[type="text"],
-input[type="password"],
-input[type="number"] {
+svg {
+    z-index: -1;
+    display: flex;
+    position: fixed;
+    background-size: cover;
     width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-    box-sizing: border-box; 
+    height: 100%;
 }
 
-button[type="submit"] {
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    backdrop-filter: blur(50px);
+    color: white;
+    margin-top: 120px;
+    padding: 40px 120px;
+    border: 2px solid #cccccc84;
+    border-radius: 40px;
+}
+
+.content h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.content div {
+    margin-bottom: 20px;
+}
+
+div label {
+    color: #eaeaea00;
+} 
+
+.content input {
     width: 100%;
-    padding: 10px;
-    background-color: #007bff;
+    height: 50px;
     border: none;
-    border-radius: 3px;
-    color: #fff;
+    outline: none;
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 40px;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+}
+
+.content input::placeholder {
+    color: #eaeaead9;
     font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+.content button {
+    width: 100%;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    border-radius: 40px;
 }
 
-/* Style untuk tampilan responsif */
-@media screen and (max-width: 600px) {
-    form {
-        width: 90%;
-    }
+.content button:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.question {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.question a:hover {
+    color: #ffcc00;
+}
+
+.question a {
+    text-decoration: none;
+    color: white;
 }

@@ -15,8 +15,7 @@
 }
 .content .home .item .headcard, .content .home .itemlong .headcard {
     height: 35px;
-    font-size: 22px;
-    font-weight: bold;
+    font-size: 20px;
     padding: 6px 0 4px 15px;
 }
 .content .home .item .card {
@@ -25,7 +24,7 @@
     width: 95%;
     margin: auto;
     overflow: auto;
-    font-size: 20px;
+    font-size: 17px;
 }
 .content .home .item .card .data {
     border-bottom: 1px solid black

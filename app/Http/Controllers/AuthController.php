@@ -14,18 +14,24 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+
     public function login(Request $request) {
-        $credentials = $request->only('name', 'password');
+
+        $credentials = $request->only('username', 'password');
+
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             if ($user->Authorize === "Admin") {
                 return redirect()->intended('/dashboard-admin');
             } 
-            // else if ($user->Authorize === "Dokter") {
-            //     return redirect()->intended('/dashboard-dokter');
-            // } 
+            else if ($user->Authorize === "Dokter") {
+                return redirect()->intended('/homeDokter');
+            } 
+             else if ($user->Authorize === "Dokter") {
+                 return redirect()->intended('/dashboard-dokter');
+             } 
             else {
-                return redirect()->intended('/');
+                return redirect()->intended('/dashboard-pasien');
             }
         } else {
             return back()->withErrors(['msg' => 'nama atau password salah!']);
@@ -43,20 +49,20 @@ class AuthController extends Controller
 
     public function register(Request $request) {
         $validateData = $request->validate([
-            'name' => 'required|string|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:users',
             'fullname' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
-            'nohp' => 'required|numeric|unique:users'
+            'nohp' => 'required|numeric|unique:users|min:10'
         ]);
 
         $user = new User();
-            $user->name = $validateData['name'];
-            $user->fullname = $validateData['fullname'];
-            $user->password = Hash::make($validateData['password']);
-            $user->image =  'storage/photoProfiles/standar.png';
-            $user->nohp = $validateData['nohp'];
-            $user->Authorize = "User";
-            $user->save();
+        $user->username = $validateData['username'];
+        $user->fullname = $validateData['fullname'];
+        $user->password = Hash::make($validateData['password']);
+        $user->image =  'storage/photoProfiles/standar.png';
+        $user->nohp = $validateData['nohp'];
+        $user->Authorize = "User";
+        $user->save();
 
         if ($user) {
             return redirect('/login');

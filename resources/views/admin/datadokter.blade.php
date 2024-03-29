@@ -31,7 +31,7 @@
                         @foreach($dokters as $dokter)
                             <tr>
                                 <td>{{ $count++ }}</td>
-                                <td>{{ $dokter->name }}</td>
+                                <td>{{ $dokter->username }}</td>
                                 <td>dr. {{ $dokter->fullname }}</td>
                                 <td>{{ $dokter->nohp }}</td>
                                 <td class="aksi">
@@ -53,8 +53,8 @@
         <form method="POST" action="{{ route('registerdokter.submit') }}">
             @csrf
             <div class="name">
-                <label for="name">UserName</label>
-                <input type="text" name="name" placeholder="UserName" required>
+                <label for="username">UserName</label>
+                <input type="text" name="username" placeholder="UserName" required>
             </div>
             <div>
                 <label for="fullname">Full Name</label>
