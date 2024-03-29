@@ -1,0 +1,88 @@
+.content .home {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+.content .home .item {
+    height: 260px;
+    width: 280px;
+    margin: 15px 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+.content .home .item .headcard, .content .home .itemlong .headcard {
+    height: 35px;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 6px 0 4px 15px;
+}
+.content .home .item .card {
+    height: 200px;
+    padding-left: 20px;
+    width: 95%;
+    margin: auto;
+    overflow: auto;
+    font-size: 20px;
+}
+.content .home .item .card .data {
+    border-bottom: 1px solid black
+}
+.content .home .itemlong {
+    height: 260px;
+    width: 595px;
+    margin: 10px 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+.content .home .itemlong .card {
+    display: flex;
+    justify-content: space-around;
+    height: 200px;
+    width: 95%;
+    margin: auto;
+}
+.home .itemlong .card .data {
+    width: 30%;
+    height: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+.home .itemlong .card .data .percent1 {
+    height: 120px;
+    width: 120px;
+    border: 20px solid red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    color: red;
+    font-weight: bold;
+}
+.home .itemlong .card .data .percent2 {
+    height: 120px;
+    width: 120px;
+    border: 20px solid green;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    color: green;
+    font-weight: bold;
+}
+.home .itemlong .card .data .percent3 {
+    height: 120px;
+    width: 120px;
+    border: 20px solid blue;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    color: blue;
+    font-weight: bold;
+}
