@@ -5,52 +5,30 @@ use App\Http\Controllers\AdminFrontendController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DokterFrontendController;
 use App\Http\Controllers\KelolaRumahSakitController;
+use App\Http\Controllers\PasienFrontendController;
 
 /* 
 --------------------------
-^ route view pasien
+^ route dashboard pasien
 ^ route navbar
 --------------------------
 */
 
 Route::get('/', function () {
-    return view('auth.register');
+    return view('pasien.landingpage');
 });
 
-Route::get('/dashboard-pasien', function () {
-    return view('dashboard-pasien');
-});
+Route::get('pasien.dashboardpasien', [
+    PasienFrontendController::class, 'dashboardPasien'
+])->middleware('auth')->name('/dashboardpasien');
 
-Route::get('/views.pasien.appointment', function () {
-    return view('pasien.appointment');
-});
-Route::get('/views.pasien.akun', function () {
-    return view('pasien.akun');
-});
+Route::get('auth.login', [
+    PasienFrontendController::class, 'loginPasien'
+])->middleware('guest')->name('/login');
 
-Route::get('/views.pasien.antrian', function () {
-    return view('pasien.antrian');
-});
-
-/*
---------------------------
-^ end route view pasien
---------------------------
-*/
-
-Route::get('/views.pasien.akun', function () {
-    return view('pasien.akun');
-});
-
-Route::get('/views.pasien.antrian', function () {
-    return view('pasien.antrian');
-});
-
-/*
---------------------------
-^ end route view pasien
---------------------------
-*/
+Route::get('auth.register', [
+    PasienFrontendController::class, 'registerPasien'
+])->middleware('guest')->name('/register');
 
 
 // admin dashboard get
