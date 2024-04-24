@@ -14,6 +14,7 @@
 </head>
 <body>
     @include('admin.component.navbar');
+    
 <div id="content" class="content">
         <!-- Halaman Profil -->
     <div class="container rounded bg-white mt-5 mb-5 bigcontent">

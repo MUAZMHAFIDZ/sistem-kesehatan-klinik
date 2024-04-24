@@ -5,65 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DentalCare Klinik</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <style>
-      .boddy{
-    background-color: rgb(255, 255, 255);
-}
-.form-signin {
-    width: 100%;
-    max-width: 400px;
-    padding: 25px;
-    margin: auto;
-    margin-top: 50px;
-  }
-
-  .form-signin .form-floating:focus-within {
-    z-index: 2;
-    
-  }
-  
-  .form-signin input[type="text"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    background-color: white;
-  }
-  
-  .form-signin input[type="password"] {
-    margin-bottom: 10px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    background-color: white;
-  }
-  .gambarDokter {
-    margin-left:13%;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  
-    </style>
+    <link rel="stylesheet" href="css/login.css">
 </head>
-<body class="boddy">
-    <main class="form-signin">
-        <form method="POST" action="{{ route('login.submit') }}">
-            @csrf
-            <img class="gambarDokter" src="dentalcare.png"  width="70%" height="70%" >
-            <h1 class="h3 mb-3 fw-normal">Login </h1>
-        
-            <div class="form-floating">
-                <input type="text" class="form-control"  name="username" placeholder="UserName">
-                <label for="username">Username</label>
+<body>
+  <form method="POST" action="{{ route('login.submit') }}">
+          @csrf
+    <div class="container d-flex justify-content-center align-items-center ">
+
+      <div class="auth-form-header">
+        <img class="gambarDokter py-2" src="dentalcare.png"  width="250px">
+
+          <div class="border shadow p-1 rounded" style="width: 400px" >
+          <div class="form-signin">
+            <h1 class="DentalCareLogin h4 mb-3 d-flex justify-content-center text-opacity-75">Login to DentalCare</h1>
+            
+            <div class="position-relative">
+              <label for="username">Username</label>
+                <input type="text" class="form-control @error('username') is-invalid @enderror" required value="{{ old('username') }}"  name="username" placeholder="Username " >
+                @error('username')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+              
             </div>   
-            <div class="form-floating">
-              <input type="password" class="form-control"  name="password" placeholder="Password">
+            <div class="position-relative mt-2 py-2">
               <label for="floatingPassword">Password</label>
+              <input type="password" class="form-control @error('password') is-invalid @enderror" required value="{{ old('password') }}" name="password" placeholder="Password">
+              @error('password')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+              @enderror
+              <a class="label-link position-absolute top-0 forgotPassword" id="forgot-password" href="/reset_password">Forgot passsword?</a>
             </div>
-        
-            <button class="w-100 btn btn-lg btn-primary" type="submit" method="POST">Masuk</button>
+
+            <label for="user">User</label>
+            <select class="form-select mb-5" name="role"> 
+              <option value="pasien">Pasien</option>
+              <option value="dokter">Dokter</option>
+              <option value="admin">Admin</option>
+            </select>
+          
+            <button class="w-100 btn btn-lg btn-primary" type="submit" method="POST">Login</button>
+            <div class="question">
+              <small class="question">Belum memiliki akun? <a href="http:/">Daftar disini</a></small>
+          </div>
             <p class="mt-4  text-center text-muted">Version 1.0</p>
-            <a href="" class="bi bi-box-arrow-left position-absolute" style="top: 10px; left: 10px;"></a>
+           
           </form>
         </main>
 </body>
