@@ -42,11 +42,20 @@ class AuthController extends Controller
             else {
                 return redirect()->intended('pasien.dashboardpasien');
             }
-        } else {
-            return back()->withErrors(['msg' => 'nama atau password salah!']);
         }
-    }
+        $user = User::where('username', $request->username)->first();
 
+        if ($user) {
+            // Jika username ditemukan tapi password salah
+            return redirect()->back()->withInput($request->only('username'))->withErrors([
+                'password' => __('Password salah'),
+            ]);
+        } else {
+            // Jika username tidak ditemukan
+            return redirect()->back()->withInput($request->only('username'))->withErrors([
+                'username' => __('Username tidak ditemukan'),
+            ]);
+    }
     public function logout()
     {
         Auth::logout();

@@ -21,6 +21,7 @@
 </head>
 <body>
     @include('admin.component.navbar');
+    
 <div id="content" class="content">
         <!-- Halaman Profil -->
     

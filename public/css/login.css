@@ -1,0 +1,55 @@
+.DentalCareLogin{
+    color: rgb(51, 110, 250);
+}
+.form-control{
+    font-size: 14px;
+}
+.form-signin {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    margin: auto;
+    margin-top: 30px;
+    font-size: 14px;
+  }
+
+  .form-signin .form-floating:focus-within {
+    z-index: 2;
+    
+  }
+  
+  .form-signin input[type="text"] {
+    margin-bottom: -1px;
+  
+    background-color: white;
+  }
+  
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+ 
+    background-color: white;
+  }
+  .gambarDokter {
+    margin-left:19%;
+    margin-top: 10px;
+  }
+  .forgotPassword{
+    margin-left: 70%;
+    font-size: 12px; 
+    margin-top: 11px;
+    font-family:sans-serif;
+  }
+.question{
+    position: relative;
+    margin-left: 79px;
+    margin-top:5px ;
+}
+.form-select{
+    font-size:14px ;
+}
+
+
+
+
+
+  
