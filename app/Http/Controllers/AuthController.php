@@ -10,8 +10,16 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
-    {
+    public function showLoginForm() {
+        if (Auth::check() && Auth::user()->Authorize === "Admin") {
+            return back();
+        } else if (Auth::check() && Auth::user()->Authorize === "Dokter") {
+            return back();
+        } else if (Auth::check() && Auth::user()->Authorize === "User") {
+            return back();
+        }
+
+
         return view('auth.login');
     }
 
@@ -27,9 +35,11 @@ class AuthController extends Controller
                 return redirect()->intended('/dashboard-admin');
             } else if ($user->Authorize === "Dokter") {
                 return redirect()->intended('/homeDokter');
-            } else if ($user->Authorize === "Dokter") {
-                return redirect()->intended('/dashboard-dokter');
-            } else {
+            } 
+             else if ($user->Authorize === "Dokter") {
+                 return redirect()->intended('/dashboard-dokter');
+             } 
+            else {
                 return redirect()->intended('pasien.dashboardpasien');
             }
         }
@@ -52,8 +62,16 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function showRegister()
-    {
+    public function showRegister() {
+
+        if (Auth::check() && Auth::user()->Authorize === "Admin") {
+            return back();
+        } else if (Auth::check() && Auth::user()->Authorize === "Dokter") {
+            return back();
+        } else if (Auth::check() && Auth::user()->Authorize === "User") {
+            return back();
+        }
+
         return view('auth.register');
     }
 
@@ -88,7 +106,7 @@ class AuthController extends Controller
         $user->username = $validateData['username'];
         $user->fullname = $validateData['fullname'];
         $user->password = Hash::make($validateData['password']);
-        $user->image =  'storage/photoProfiles/standar.png';
+        $user->image =  '/storage/photoProfiles/standar.png';
         $user->nohp = $validateData['nohp'];
         $user->Authorize = "User";
         $user->save();
