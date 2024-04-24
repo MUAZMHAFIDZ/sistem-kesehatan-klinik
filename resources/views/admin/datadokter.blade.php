@@ -18,6 +18,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
+                            <th>Foto</th>
                             <th>Username</th>
                             <th>Full Name</th>
                             <th>No HP</th>
@@ -29,14 +30,16 @@
                             $count = 1;
                         @endphp
                         @foreach($dokters as $dokter)
+                        
                             <tr>
                                 <td>{{ $count++ }}</td>
+                                <td><img class="imagedok" src="{{ $dokter->image }}" alt=""></td>
                                 <td>{{ $dokter->username }}</td>
                                 <td>dr. {{ $dokter->fullname }}</td>
                                 <td>{{ $dokter->nohp }}</td>
                                 <td class="aksi">
-                                    <button class="green">Edit</button>
-                                    <button class="red">Hapus</button>
+                                    <button onclick="editDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', event)" class="green">Edit</button>
+                                    <button class="red" onclick="terimaHapusId({{ $dokter->id }}, event)">Hapus</button>
                                 </td>
                             </tr>
                         @endforeach
@@ -49,40 +52,15 @@
         </div>
     </div>
 
-    <div class="pendaftarandokter" id="pendaftarandokter">
-        <form method="POST" action="{{ route('registerdokter.submit') }}">
-            @csrf
-            <div class="name">
-                <label for="username">UserName</label>
-                <input type="text" name="username" placeholder="UserName" required>
-            </div>
-            <div>
-                <label for="fullname">Full Name</label>
-                <input type="text" name="fullname" placeholder="Full Name" required>
-            </div>
-            <div>
-                <label for="nohp">No HP</label>
-                <input type="number" name="nohp" placeholder="Masukkan No HP" required>
-            </div>
-            <div>
-                <label for="password">Password</label>
-                <input type="password" name="password" placeholder="Password" required>
-            </div>
-            <div>
-                <label for="password_confirmation">Password Confirmation</label>
-                <input type="password" name="password_confirmation" placeholder="Password" required autocomplete="new-password">
-            </div>
-            <button type="submit" class="blue">Daftarkan</button>
-            <button type="button" onclick="batalKelolaDokter(event)" id="batal" class="red">Batal</button>
-        </form>
-    </div>
-    <div class="editdokter"></div>
-    <div class="hapusdokter"></div>
+    @include('admin.cruddokter.tambahdokter')
+    @include('admin.cruddokter.hapusdokter')
+    @include('admin.cruddokter.editdokter')
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             activeMenu('menu9')
         })
+        // TAMBAH DOKTER
         function kelolaDokter (e) {
             e.preventDefault()
             const klikAdmin = document.getElementById('pendaftarandokter')
@@ -90,8 +68,56 @@
         }
         function batalKelolaDokter (e) {
             e.preventDefault()
-            var klikAdmin = document.getElementById('pendaftarandokter')
+            const klikAdmin = document.getElementById('pendaftarandokter')
             klikAdmin.classList.remove('geserkan')
+        }
+
+        // HAPUS DOKTER
+        var penghapusanDokter = ':id'
+        function terimaHapusId (hapusId, event) {
+            event.preventDefault()
+
+            const klikAdmin = document.getElementById('hapusdokter')
+            klikAdmin.classList.add('geserkan')
+
+            var aksiHapus = document.getElementById('hapusdokterform').getAttribute('action').replace(penghapusanDokter, hapusId)
+            penghapusanDokter = hapusId
+            document.getElementById('hapusdokterform').setAttribute('action', aksiHapus)
+        }
+        function batalHapus (event) {
+            event.preventDefault()
+
+            const klikAdmin = document.getElementById('hapusdokter')
+            klikAdmin.classList.remove('geserkan')
+
+            var aksiHapus = document.getElementById('hapusdokterform').getAttribute('action').replace(penghapusanDokter, ':id')
+            penghapusanDokter = ':id'
+            document.getElementById('hapusdokterform').setAttribute('action', aksiHapus)
+        }
+
+        // EDIT DOKTER
+        var pengeditanDokter = ':id'
+        function editDataDokter (editId, username, fullname, nohp, event) {
+            event.preventDefault()
+            const klikAdmin = document.getElementById('editdatadokter')
+            klikAdmin.classList.add('geserkan')
+
+            document.getElementById('editNama').value = username
+            document.getElementById('editFullname').value = fullname
+            document.getElementById('editNoHP').value = nohp
+
+            var aksiEdit = document.getElementById('editdataform').getAttribute('action').replace(pengeditanDokter, editId)
+            pengeditanDokter = editId
+            document.getElementById('editdataform').setAttribute('action', aksiEdit)
+        }
+        function batalEditDataDokter (event) {
+            event.preventDefault()
+            const klikAdmin = document.getElementById('editdatadokter')
+            klikAdmin.classList.remove('geserkan')
+
+            var aksiEdit = document.getElementById('editdataform').getAttribute('action').replace(pengeditanDokter, ':id')
+            pengeditanDokter = ':id'
+            document.getElementById('editdataform').setAttribute('action', aksiEdit)
         }
     </script>    
 </body>

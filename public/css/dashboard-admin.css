@@ -8,7 +8,7 @@ nav {
 }
 
 /* logo navbar */
-nav .logo {
+nav .logoz {
     position: fixed;
     display: flex;
     height: 65px;
@@ -17,25 +17,32 @@ nav .logo {
     justify-content: space-around;
     background-color: white;
 }
-.logo .img {
-    width: 70%;
+.logoz .img {
+    width: 60%;
 }
-.logo .img img {
+.logoz .img img {
     width: 200px;
     margin-left: 10px;
     margin-top: 5px;
 }
-.logo .account {
+.logoz .accountz {
     width: 30%;
     display: flex;
     justify-content: flex-end;
 }
-.logo .account span {
+.logoz .accountz span {
     margin: auto 10px;
     color: #0094ff;
     font-weight: bold;
 }
-.logo .account img {
+@media (max-width: 574px) {
+    .logoz .accountz span {
+        display: none;
+        font-size: 0;
+        width: 0;
+    }
+}
+.logoz .accountz img {
     width: 50px;
     height: 50px;
     border: 2px solid #0094ff;
@@ -45,12 +52,12 @@ nav .logo {
 }
 
 /* side navbar */
-nav .navbar {
+nav .navbarz {
     position: fixed;
     margin: 0;
     top: 65px;
 }
-.navbar ul {
+.navbarz ul {
     display: flex;
     height: 100vh;
     width: 45px;
@@ -60,25 +67,25 @@ nav .navbar {
     overflow: hidden;
     transition: .5s;
 }
-.navbar ul:hover {
+.navbarz ul:hover {
     width: 180px;
 }
-.navbar li {
+.navbarz li {
     list-style-type: none;
     height: 50px;
     width: 100%;
     margin: 1px 0 0 0;
     overflow: hidden;
 }
-.navbar a:hover {
+.navbarz a:hover {
     background-color: white;
     color: black;
 }
-.navbar li a.active {
+.navbarz li a.active {
     background-color: white;
     color: black;
 }
-.navbar li a {
+.navbarz li a {
     height: 100%;
     width: 100%;
     display: block;
@@ -90,7 +97,7 @@ nav .navbar {
     overflow: hidden;
     text-overflow: ellipsis;
 }
-.navbar li i {
+.navbarz li i {
     color: black;
     width: 40px;
 }

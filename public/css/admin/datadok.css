@@ -4,10 +4,12 @@
     align-items: center;
 }
 .content .itemcontent {
-    width: 700px;
+    width: auto;
+    padding: auto;
+    max-width: 100%;
 }
 .content .datadokter {
-    width: 700px;
+    width: 100%;
     overflow: auto;
 }
 .jadwaldokter table {
@@ -27,8 +29,12 @@
     padding-right: 15px;
     background-color: #ffffff;
 }
+.datadokter td .imagedok {
+    height: 45px;
+    overflow: hidden;
+}
 .aksi button {
-    width: 70px;
+    width: 60px;
     height: 27px;
     cursor: pointer;
     color: #ffffff;
@@ -78,28 +84,189 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
 }
 .pendaftarandokter form {
     padding-top: 10px;
-    height: 520px;
-    width: 470px;
+    height: 90%;
+    width: 80%;
     background-color: #ffffff;
     text-align: center;
+    border-radius: 5px;
 }
 .pendaftarandokter input {
-    height: 50px;
-    width: 400px;
+    height: 5vh;
+    width: 80%;
     border: 1px solid #0094ff;
     border-radius: 5px;
     margin: 10px auto;
 }
 .pendaftarandokter button {
-    width: 160px;
-    height: 50px;
+    width: 39%;
+    height: 43px;
     border-radius: 10px;
     cursor: pointer;
     color: white;
 }
 .pendaftarandokter button:hover {
+    border: 4px solid white;
+}
+/* hapus dokter sisi admin */
+.hapusdokter {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    right: -200%;
+}
+.hapusdokter.geserkan {
+    right: 0;
+}
+.hapusdokter .popuphapus {
+    height: 150px;
+    width: 300px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+}
+.hapusdokter .popuphapus p {
+    font-weight: bold;
+}
+.hapusdokter .popuphapus button {
+    height: 45px;
+    width: 100px;
+    cursor: pointer;
+    color: #ffffff;
+    border-radius: 10px;
+}
+.hapusdokter .popuphapus button:hover {
+    border: 3px solid white;
+}
+.hapusdokter .popuphapus div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* crud obat */
+.tambahobat {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    right: -200%;
+}
+.tambahobat.geserkan {
+    right: 0;
+}
+.tambahobat div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.tambahobat .rowww {
+    flex-direction: row;
+}
+.tambahobat form {
+    padding-top: 10px;
+    height: 90%;
+    width: 90%;
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+}
+.tambahobat input {
+    height: 5vh;
+    width: 80%;
+    border: 1px solid #0094ff;
+    border-radius: 5px;
+    margin: 10px auto;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.tambahobat textarea {
+    height: 20vh;
+    width: 90%;
+    overflow: auto;
+    resize: none;
+    border: 1px solid #0094ff;
+    margin-left: 5%;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+.tambahobat button {
+    width: 39%;
+    height: 43px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+.tambahobat button:hover {
+    border: 4px solid white;
+}
+
+/* update jadwal dokter */
+.editjadwaldokter {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    right: -200%;
+}
+.editjadwaldokter.geserkan {
+    right: 0;
+}
+.editjadwaldokter form {
+    padding-top: 10px;
+    height: 90%;
+    width: 80%;
+    background-color: #ffffff;
+    text-align: center;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1%;
+}
+.editjadwaldokter form .divdivndiv {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.editjadwaldokter form .divdivndiv div {
+    width: 30%;
+    height: 15%;
+    border: 1px solid #0094ff;
+    margin: 0 5%;
+}
+.editjadwaldokter form .divdivndiv div table {
+    margin-left: 20%;
+    margin-right: 20%;
+}
+.editjadwaldokter button {
+    width: 39%;
+    height: 43px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}
+.editjadwaldokter button:hover {
     border: 4px solid white;
 }

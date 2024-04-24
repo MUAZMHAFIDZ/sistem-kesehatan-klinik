@@ -1,14 +1,14 @@
 <nav>
-    <div class="logo">
+    <div class="logoz">
         <div class="img">
             <img src="{{ asset('logo.png') }}" alt="">
         </div>
-        <div class="account">
+        <div class="accountz">
             <span>{{ $user->username }}</span>
             <img src="{{ $user->image }}" alt="">
         </div>
     </div>
-    <div class="navbar">
+    <div class="navbarz">
         <ul>
             <li><a id="menu1" href="{{ route('admin.home') }}"><i class="fa-solid fa-house"></i><span>Dashboard</span></a></li>
             <li><a id="menu2" href="{{ route('admin.profil') }}"><i class="fa-solid fa-user"></i><span>Profil</span></a></li>

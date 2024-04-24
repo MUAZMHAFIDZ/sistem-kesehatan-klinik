@@ -118,12 +118,11 @@
                 <p>Admin Online</p>
             </div>
             <div class="card">
+                @foreach($activeAdmin as $activeA)
                 <div class="data">
-                    <p>xxxx</p>
+                    <p>{{ $activeA->username }}</p>
                 </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- ========================== survey pasien ========================== -->

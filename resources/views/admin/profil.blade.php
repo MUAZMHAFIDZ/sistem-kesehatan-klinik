@@ -5,25 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard-Admin | Profil</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard-admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin/profile.css') }}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        a {
+            margin-right: 100px;
+            left: -100px;
+        }
+        ul,li {
+            padding-left: 0;
+        }
+    </style>
 </head>
 <body>
     @include('admin.component.navbar');
 <div id="content" class="content">
         <!-- Halaman Profil -->
-    <div class="container rounded bg-white mt-5 mb-5 bigcontent">
+    
+    <div class="container rounded bg-white mt-5 ml-0">
         <div class="row">
             <div class="col-md-3 border-right profileft">
             <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5 profimg" width="150px" height="150px" src="https://cdn.idntimes.com/content-images/duniaku/post/20220512/thomas-shelby-4-c6626ec143b4ea090084ac7d303e93b7_600x400.png"><h5>Mr. Thomas Shelby</h5><span class="text-white-60">tommyshelby@mail.com</span><span> </span></div>
             </div>
             <div class="col-md-5 border-right profimid">
             <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center mb-3">
+                <div class="d-flex justify-content-around align-items-center mb-3">
                     <h4 class="text-right">Profile</h4>
                 </div>
                 <div class="row mt-2">

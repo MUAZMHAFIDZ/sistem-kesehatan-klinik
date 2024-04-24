@@ -63,8 +63,23 @@ Route::get('/dashboard-admin/data-pasien', [AdminFrontendController::class, 'das
 Route::get('/dashboard-admin/datadokter', [AdminFrontendController::class, 'dashboarddatadokter'])->middleware(['auth', 'can:Admin'])->name('admin.datadokter');
 Route::get('/dashboard-admin/formantrian', [AdminFrontendController::class, 'dashboardformpasien'])->middleware(['auth', 'can:Admin'])->name('admin.formpasien');
 
+// admin kelola dokter
 // admin dashboard post
 Route::post('/dashboard-admin/datadokter', [KelolaRumahSakitController::class, 'registerDokter'])->name('registerdokter.submit');
+// admin delete
+Route::delete('/dashboard-admin/datadokter/{id}', [KelolaRumahSakitController::class, 'deleteDokter'])->name('deletedokter.submit');
+// admin put
+Route::put('/dashboard-admin/datadokter/{id}', [KelolaRumahSakitController::class, 'editDokter'])->name('editdokter.submit');
+// admin jadwal dokter
+Route::put('/dashboard-admin/jadwaldokter/{id}', [KelolaRumahSakitController::class, 'editJadwalDokter'])->name('editjadwaldokter.jadwal');
+
+//admin kelola obat
+// admin dashboard post
+Route::post('/dashboard-admin/stokobat', [KelolaRumahSakitController::class, 'tambahObat'])->name('tambahobat.submit');
+// admin delete
+Route::delete('/dashboard-admin/stokobat/{id}', [KelolaRumahSakitController::class, 'deleteObat'])->name('deleteobat.submit');
+// // admin put
+Route::put('/dashboard-admin/stokobat/{id}', [KelolaRumahSakitController::class, 'editObat'])->name('editobat.submit');
 
 
 // login
@@ -73,6 +88,8 @@ Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 Route::post('/signup', [AuthController::class, 'register'])->name('register.submit');
 Route::get('/signup', [AuthController::class, 'showRegister'])->name('login');
+
+Route::get('/checklogin', [AuthController::class, 'statusOnline'])->name('logincheck.check');
 
 
 // dokter dashboard
