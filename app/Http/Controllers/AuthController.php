@@ -83,7 +83,8 @@ class AuthController extends Controller
                 'username' => 'required|string|min:3|max:255|unique:users',
                 'fullname' => 'required|string|min:3|max:255',
                 'password' => 'required|string|min:6|confirmed',
-                'nohp' => 'required|numeric|unique:users|digits_between:10,15'
+                'nohp' => 'required|numeric|unique:users|digits_between:10,15',
+                'email' => 'required|string|email:rfc,dns|min:3|max:255|unique:users'
             ],
             [
                 'username.required' => 'Ups! sepertinya kamu lupa memasukkan username.',
@@ -97,6 +98,9 @@ class AuthController extends Controller
                 'nohp.numeric' => 'Nomor telepon hanya boleh menggunakan angka.',
                 'nohp.unique' => 'Maaf, nomor telepon tersebut sudah digunakan oleh pengguna lain.',
                 'nohp.digits_between' => 'Nomor telepon terlalu pendek, pastikan memasukkan nomor telepon yang benar.',
+                'email.required' => 'Ups! sepertinya kamu lupa memasukkan email',
+                'email.min' => 'Email terlalu pendek',
+                'email.unique' => 'Ups! email ini sudah terdaftar',
                 'password.required' => 'Ups, password harus diisi.',
                 'password.confirmed' => 'Konfirmasi password tidak cocok.',
                 'password.min' => 'Password terlalu pendek. Minimal 6 karakter.'
@@ -109,6 +113,7 @@ class AuthController extends Controller
         $user->password = Hash::make($validateData['password']);
         $user->image =  '/storage/photoProfiles/standar.png';
         $user->nohp = $validateData['nohp'];
+        $user->email = $validateData['email'];
         $user->Authorize = "User";
         $user->save();
 

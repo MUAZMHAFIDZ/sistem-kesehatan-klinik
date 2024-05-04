@@ -42,6 +42,15 @@
                     </div>
                 @enderror
             </div>
+
+            <div class="email-field">
+                <input type="text" name="email" placeholder="Masukkan Email" class="@error('email') is-invalid @enderror"  value="{{ old('email') }}" autocomplete="off">
+                @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
     
             <div class="password-field">
                 <input type="password" name="password" class="@error('password') is-invalid @enderror" placeholder="Password" >

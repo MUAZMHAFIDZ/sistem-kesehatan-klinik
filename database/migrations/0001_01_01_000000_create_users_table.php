@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->string('nohp')->nullable();
+            $table->string('email')->nullable();
             $table->string('Authorize');
             $table->rememberToken();
             $table->timestamps();
