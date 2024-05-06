@@ -12,15 +12,26 @@
 <body>
   <form method="POST" action="{{ route('login.submit') }}">
           @csrf
+
     <div class="container d-flex justify-content-center align-items-center ">
+
+      {{-- <div>
+        @if (session()->has('message'))
+          {{ session()->get('message') }}
+        @endif
+      </div> --}}
 
       <div class="auth-form-header">
         <img class="gambarDokter py-2" src="dentalcare.png"  width="250px">
 
           <div class="border shadow p-1 rounded" style="width: 400px" >
           <div class="form-signin">
+            <div>
+              @if (session()->has('message'))
+              {{ session()->get('message') }}
+              @endif
+            </div>
             <h1 class="DentalCareLogin h4 mb-3 d-flex justify-content-center text-opacity-75">Login to DentalCare</h1>
-            
             <div class="position-relative">
               <label for="username">Username</label>
                 <input type="text" class="form-control @error('username') is-invalid @enderror" required value="{{ old('username') }}"  name="username" placeholder="Username " >
@@ -39,7 +50,7 @@
                   {{ $message }}
               </div>
               @enderror
-              <a class="label-link position-absolute top-0 forgotPassword" id="forgot-password" href="/reset_password">Forgot passsword?</a>
+              <a class="label-link position-absolute top-0 forgotPassword" id="forgot-password" href="{{ route('recoveryPassword') }}">Forgot passsword?</a>
             </div>
 
             <label for="user">User</label>

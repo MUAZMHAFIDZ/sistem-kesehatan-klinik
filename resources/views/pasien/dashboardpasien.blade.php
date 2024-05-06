@@ -39,22 +39,22 @@
                     <p>Kelola informasi Anda, termasuk janji temu dan layanan yang Anda pesan. </p>
                     <div class="card-dashboard">
                         <div class="card1">
-                            <h6>Janji Temu Hari Ini</h6>
+                            <h5>Janji Temu Hari Ini</h5>
                             <p>Tidak ada</p>
                             <ion-icon name="calendar-outline"></ion-icon>
                         </div>
                         <div class="card2">
-                            <h6>Riwayat Pemeriksaan</h6>
+                            <h5>Riwayat Pemeriksaan</h5>
                             <p> tidak ada</p>
                             <ion-icon name="archive-outline"></ion-icon>
                         </div>
                         <div class="card3">
-                            <h6>Antrian</h6>
+                            <h5>Antrian</h5>
                             <p>Nomer Antrian 4</p>
                             <ion-icon name="body-outline"></ion-icon>
                         </div>
                         <div class="card4">
-                            <h6>Feedback</h6>
+                            <h5>Feedback</h5>
                             <p>Berikan Kritik dan Saran</p>
                             <ion-icon name="chatbox-ellipses-outline"></ion-icon>
                         </div>
@@ -110,23 +110,24 @@
                     <p>Manage your information, including the appointments and services you book. </p>
                     <div class="card-dashboard">
                         <div class="card1">
-                            <h6>Username</h6>
-                            <span>{{ $user->username }}</span>
+                            <h5>Username</h5>
+                            <p>{{ $user->username }}</p>
                             <ion-icon name="person-outline"></ion-icon>
                         </div>
                         <div class="card2">
-                            <h6>Fullname</h6>
-                            <span>{{ $user->fullname }}</span>
+                            <h5>Fullname</h5>
+                            <p>{{ $user->fullname }}</p>
                             <ion-icon name="person-circle-outline"></ion-icon>
                         </div>
                         <div class="card3">
-                            <h6>Nomer Telepon</h6>
-                            <span>{{ $user->nohp }}</span>
+                            <h5>Nomer Telepon</h5>
+                            <p>{{ $user->nohp }}</p>
                             <ion-icon name="call-outline"></ion-icon>
                         </div>
                         <div class="card4">
-                            <h6>Password</h6>
+                            <h5>Password</h5>
                             <p>Reset Password?</p>
+                            <ion-icon name="lock-closed-outline"></ion-icon>
                         </div>
                     </div>
                     

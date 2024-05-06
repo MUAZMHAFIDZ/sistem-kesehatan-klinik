@@ -35,11 +35,11 @@
             <!-- Class ini hanya ditampilkan kepada guest user-->
             @else
             <div class="navbar-guest">
-                <a href="#home">Beranda</a>
-                <a href="#fasilitas">Fasilitas</a>
-                <a href="#dokter">Dokter</a>
-                <a href="#jam-kerja">Jam Kerja</a>
-                <a href="#">Kontak</a>
+                <a href="/#home">Beranda</a>
+                <a href="/#fasilitas">Fasilitas</a>
+                <a href="/#dokter">Dokter</a>
+                <a href="/#jam-kerja">Jam Kerja</a>
+                <a href="/#">Kontak</a>
             </div>
 
             <div class="navbar-guest">

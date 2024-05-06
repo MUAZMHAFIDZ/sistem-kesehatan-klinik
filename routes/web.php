@@ -9,8 +9,7 @@ use App\Http\Controllers\PasienFrontendController;
 
 /* 
 --------------------------
-^ route dashboard pasien
-^ route navbar
+^ route pages pasien start
 --------------------------
 */
 
@@ -18,7 +17,7 @@ Route::get('/', function () {
     return view('pasien.landingpage');
 });
 
-Route::get('pasien.dashboardpasien', [
+Route::get('/dashboardpasien', [
     PasienFrontendController::class, 'dashboardPasien'
 ])->middleware('auth')->name('/dashboardpasien');
 
@@ -26,9 +25,15 @@ Route::get('auth.login', [
     PasienFrontendController::class, 'loginPasien'
 ])->middleware('guest')->name('/login');
 
-Route::get('auth.register', [
+Route::get('/register', [
     PasienFrontendController::class, 'registerPasien'
 ])->middleware('guest')->name('/register');
+
+/* 
+--------------------------
+^ route pages pasien end
+--------------------------
+*/
 
 
 // admin dashboard get
@@ -68,6 +73,25 @@ Route::post('/signup', [AuthController::class, 'register'])->name('register.subm
 Route::get('/signup', [AuthController::class, 'showRegister'])->name('login');
 
 Route::get('/checklogin', [AuthController::class, 'statusOnline'])->name('logincheck.check');
+
+
+/* 
+--------------------------
+^ recovery password start
+--------------------------
+*/
+Route::get('/recoveryPassword', [
+    PasienFrontendController::class, 'recoveryPassword'
+])->middleware('guest')->name('recoveryPassword');
+
+Route::post('/recoveryPassword', [
+    AuthController::class, 'processRecoveryPassword'
+])->middleware('guest')->name('proccesRecoveryPassword');
+/* 
+--------------------------
+^ recovery password end
+--------------------------
+*/
 
 
 // dokter dashboard
