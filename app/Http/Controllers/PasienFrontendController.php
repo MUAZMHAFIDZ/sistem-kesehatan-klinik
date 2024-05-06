@@ -20,4 +20,8 @@ class PasienFrontendController extends Controller
     {
         return view('auth.register');
     }
+    public function recoveryPassword()
+    {
+        return view('auth.recoveryPassword');
+    }
 }

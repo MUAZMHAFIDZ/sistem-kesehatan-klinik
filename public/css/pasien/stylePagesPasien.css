@@ -777,6 +777,91 @@
 /* style register page end */
 
 
+/* style recovery password start */
+
+.recoverypasword-form {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 60%;
+    margin: 73px auto;
+    border-radius: 10px;
+}
+
+.recoverypasword-form .recoveryPassword {
+    padding: 20px;
+    width: 50%;
+}
+
+.recoverypasword-form .recoveryPassword span {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.recoverypasword-form .recoveryPassword p {
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.recoverypasword-form .recoveryPassword input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0 0 0;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 6px;
+}
+
+.recoverypasword-form .recoveryPassword input:focus {
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 10px;
+}
+
+.recoverypasword-form .recoveryPassword .tombol-register {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0 7px 0;
+}
+
+.recoverypasword-form .recoveryPassword .tombol-register button {
+    width: 40%;
+    padding: 8px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(24, 111, 255);
+    border-radius: 8px;
+    border: 1px solid rgb(0, 91, 238);
+}
+
+.recoverypasword-form .recoveryPassword .tombol-register button:hover {
+    background-color: rgb(0, 90, 234);
+    transition: 0.3s;
+}
+
+.recoverypasword-form .recoveryPassword .question {
+    display: flex;
+    justify-content: center;
+}
+
+.recoverypasword-form .recoveryPassword .question a {
+    color: rgb(24, 111, 255);
+}
+
+.recoverypasword-form .recoveryPassword .question a:hover {
+    color: rgb(0, 90, 234);
+}
+
+
+/* style recovery password end */
+
+
 /* style dashboard pasien start */
 
 .dashboard-pasien {

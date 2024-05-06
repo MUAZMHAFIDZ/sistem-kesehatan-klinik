@@ -79,7 +79,10 @@
                 <button type="submit">Daftar</button>
             </div>
             <div class="question">
-                <small> Already registered? <a href="/login">Login</a></small>
+                <small> Already registered? <a href="{{ route('/login') }}">Login</a></small>
+            </div>
+            <div class="question">
+                <small> Forgot Password? <a href="{{ route('recoveryPassword') }}">Recovery Now</a></small>
             </div>
         </form>
     </main>
