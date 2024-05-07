@@ -25,6 +25,7 @@
                     <img class="rounded-circle mt-3 profimg" width="150px" height="150px" src="{{ $user->image }}"><span
                         class="h3 mt-4 text-primary">{{ $user->username }}</span><span
                         class="text-primary">{{ $user->email }}</span><span> </span>
+
             </div>
         </div>
 

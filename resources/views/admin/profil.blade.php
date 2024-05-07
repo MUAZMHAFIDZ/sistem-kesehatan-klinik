@@ -140,6 +140,40 @@
         <div class="form-group d-flex align-items-center posisifix">
           <input type="text" class="form-control mb-2" name="riwayat_pendidikan" value="{{ $user->riwayat_pendidikan }}" placeholder="Riwayat Pendidikan">
         </div>
+      </div>
+      <div class="col col-md-5">
+        <div class="profile-card text-start p-5 second">
+          <h6>Pengalaman Kerja</h6>
+            @if($profil->pengalaman)
+                <?php $pengalaman = json_decode($profil->pengalaman, true); ?>
+                @foreach($pengalaman as $item)
+                    <p>- {{ $item }}</p>
+                @endforeach
+            @else
+                <p>Tidak ada pengalaman yang tersedia.</p>
+            @endif
+          <h6>Riwayat Pendidikan</h6>
+          @if($profil->pendidikan)
+              <?php $pendidikan = json_decode($profil->pendidikan, true); ?>
+              @foreach($pendidikan as $items)
+                  <p>- {{ $items }}</p>
+              @endforeach
+          @else
+              <p>Tidak ada pengalaman yang tersedia.</p>
+          @endif
+          <h6>Email</h6>
+          <p>{{ $profil->email }}</p>
+          <h6>No Telepon</h6>
+          <p>+62 {{ $user->nohp }}</p>
+          <h6>Alamat</h6>
+          <p>{{ $profil->alamat }}</p>
+        </div>
+      </div>
+      <div class="col col-md-2">
+        <div class="profile-card text-start p-5 third">
+            <button id="editButton" class="btn btn-primary">Edit Profil</button>
+        </div>
+      </div>
     </div>
           </div>
           </div>

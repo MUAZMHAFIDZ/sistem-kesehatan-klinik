@@ -263,7 +263,6 @@ class KelolaRumahSakitController extends Controller
         } else {
             $profil->pengalaman = json_encode($pengalaman);
         }
-
         $profil->save();
     
         return redirect()->back()->with('success', 'Profil berhasil diperbarui.');

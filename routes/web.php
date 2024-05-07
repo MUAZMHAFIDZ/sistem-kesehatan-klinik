@@ -20,10 +20,13 @@ use App\Http\Controllers\AdminPasienController;
 // });
 
 
+use App\Http\Controllers\ProfileDokterController;
+use App\Http\Controllers\AdminPasienController;
+
+
 /* 
 --------------------------
-^ route dashboard pasien
-^ route navbar
+^ route pages pasien start
 --------------------------
 */
 

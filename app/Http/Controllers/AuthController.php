@@ -12,7 +12,9 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
-    public function showLoginForm() {
+    public function showLoginForm()
+    {
+
         if (Auth::check() && Auth::user()->Authorize === "Admin") {
             return back();
         } else if (Auth::check() && Auth::user()->Authorize === "Dokter") {
@@ -53,12 +55,11 @@ class AuthController extends Controller
             ]);
         }
     }
-
-    public function forgot_password() {
+    public function forgot_password(){
         return view('auth.forgot-password');    
     }
-
-    public function forgot_password_act(Request $request) {
+    public function forgot_password_act(Request $request)
+    {
         $customMessage = [
             'email.required' => 'Email tidak boleh kosong',
             'email.email' => 'Email tidak valid'
@@ -75,7 +76,8 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function showRegister() {
+    public function showRegister()
+    {
 
         if (Auth::check() && Auth::user()->Authorize === "Admin") {
             return back();
@@ -135,7 +137,8 @@ class AuthController extends Controller
         }
     }
 
-    public function processRecoveryPassword(Request $request) {
+    public function processRecoveryPassword(Request $request)
+    {
         $user = null;
 
         $validateData = $request->validate(

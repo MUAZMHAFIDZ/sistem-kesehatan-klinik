@@ -58,11 +58,13 @@
 
               <!-- <a class="label-link position-absolute top-0 forgotPassword" id="forgot-password" href="{{ route('recoveryPassword') }}">Forgot passsword?</a> -->
 
+
             </div>
             
             <button class="mt-4 w-100 btn btn-block btn-primary" type="submit" method="POST">Login</button>
             <div class="question">
               <small class="question">Belum memiliki akun? <a href="/register">Daftar disini</a></small>
+
           </div>
             <p class="mt-4  text-center text-muted">Version 1.0</p>
            
