@@ -22,9 +22,10 @@
 
         <div class="profilDokter rounded shadow mt-4 text-primary">
                 <div class="d-flex flex-column align-items-center text-center py-5  ">
-                    <img class="rounded-circle mt-3 profimg" width="150px" height="150px" src="profildokter3.jpg"><span
+                    <img class="rounded-circle mt-3 profimg" width="150px" height="150px" src="{{ $user->image }}"><span
                         class="h3 mt-4 text-primary">{{ $user->username }}</span><span
-                        class="text-primary">ilhamsurya@gmail.com</span><span> </span>
+                        class="text-primary">{{ $user->email }}</span><span> </span>
+
             </div>
         </div>
 

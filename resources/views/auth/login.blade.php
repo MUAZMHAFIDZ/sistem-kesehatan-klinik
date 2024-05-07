@@ -27,13 +27,6 @@
 
           <div class="border shadow p-2 rounded mt-4" style="width: 400px" >
           <div class="form-signin">
-
-            <h1 class="DentalCareLogin h4 mb-4 d-flex justify-content-center text-opacity-75">Login to DentalCare</h1>
-            
-            <div class="position-relative mt-4">
-              
-                <input type="text" class="form-control small-placeholder @error('username') is-invalid @enderror" required value="{{ old('username') }}"  name="username" placeholder="Username " >
-
             <div>
               @if (session()->has('message'))
               {{ session()->get('message') }}
@@ -52,7 +45,7 @@
               
             </div>   
             <div class="position-relative mt-2 py-4 input-wrapper">
-              
+            <label for="password">Password</label>
               <input type="password" class="form-control small-placeholder @error('password') is-invalid @enderror" required value="{{ old('password') }}" name="password" id="password" placeholder="Password">
               <div class="gambarMata"><img class="Mata" src="eyeCloseLogin.png" id="eyeicon"></div>
               @error('password')
@@ -63,13 +56,15 @@
 
               <a class="label-link position-absolute forgotPassword" href="{{ route('forgot-password')}}">Forgot passsword?</a>
 
-              <a class="label-link position-absolute top-0 forgotPassword" id="forgot-password" href="{{ route('recoveryPassword') }}">Forgot passsword?</a>
+              <!-- <a class="label-link position-absolute top-0 forgotPassword" id="forgot-password" href="{{ route('recoveryPassword') }}">Forgot passsword?</a> -->
+
 
             </div>
             
             <button class="mt-4 w-100 btn btn-block btn-primary" type="submit" method="POST">Login</button>
             <div class="question">
-              <small class="question">Belum memiliki akun? <a href="http:/auth.register">Daftar disini</a></small>
+              <small class="question">Belum memiliki akun? <a href="/register">Daftar disini</a></small>
+
           </div>
             <p class="mt-4  text-center text-muted">Version 1.0</p>
            

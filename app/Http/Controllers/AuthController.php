@@ -22,14 +22,11 @@ class AuthController extends Controller
         } else if (Auth::check() && Auth::user()->Authorize === "User") {
             return back();
         }
-
-
         return view('auth.login');
     }
 
 
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
 
         $credentials = $request->only('username', 'password');
 
@@ -39,10 +36,6 @@ class AuthController extends Controller
                 return redirect()->intended('/dashboard-admin');
             } else if ($user->Authorize === "Dokter") {
                 return redirect()->intended('/homeDokter');
-
-             } 
-            else {
-                return redirect()->intended('pasien.dashboardpasien');
             } else {
                 return redirect()->intended('/dashboardpasien');
 
@@ -61,7 +54,6 @@ class AuthController extends Controller
                 'username' => __('Username tidak ditemukan'),
             ]);
         }
-    }
     }
     public function forgot_password(){
         return view('auth.forgot-password');    
@@ -98,8 +90,7 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register(Request $request)
-    {
+    public function register(Request $request) {
         $validateData = $request->validate(
             [
                 'username' => 'required|string|min:3|max:255|unique:users',

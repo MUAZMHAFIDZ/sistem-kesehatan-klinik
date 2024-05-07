@@ -6,6 +6,19 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DokterFrontendController;
 use App\Http\Controllers\KelolaRumahSakitController;
 use App\Http\Controllers\PasienFrontendController;
+use App\Http\Controllers\ProfileDokterController;
+use App\Http\Controllers\AdminPasienController;
+
+// Route::get('/fooconcon', function () {
+//     Artisan::call('storage:link');
+// });
+// Route::get('/fooconconmigratefresh', function () {
+//     Artisan::call('migrate:fresh');
+// });
+// Route::get('/fooconconmigrate', function () {
+//     Artisan::call('migrate');
+// });
+
 
 use App\Http\Controllers\ProfileDokterController;
 use App\Http\Controllers\AdminPasienController;

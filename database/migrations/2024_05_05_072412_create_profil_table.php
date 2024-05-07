@@ -15,10 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('deskripsi', 255);
-            $table->string('email')->unique();
             $table->string('pengalaman', 50);
-            $table->string('pendidikan', 50);
-            $table->string('alamat', 255);
             $table->timestamps();
         });
     }

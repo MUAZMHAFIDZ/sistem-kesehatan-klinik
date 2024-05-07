@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/dashboard-admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin/profile.css') }}">
+    <style>
+        a {
+            left: -100px;
+        }
+        ul,li {
+            padding-left: 0;
+        }
+    </style>
 </head>
 <body>
     @include('admin.component.navbar');
@@ -19,8 +27,8 @@
     <div id="profil" class="row justify-content-center no-gutters">
       <div class="col col-md-5">
         <div class="profile-card text-center p-5 first">
-          <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-picture mb-3">
-                    <h2 class="mb-3">{{ $user->fullname }}</h2>
+          <img src="{{ $user->image }}" alt="Profile Picture" class="profile-picture mb-3">
+          <h2 class="mb-3">{{ $user->fullname }}</h2>
           <p class="lead"><p>{{ $profil->deskripsi }}</p></p>
           <ul class="list-inline">
             <a href="#"><li class="fab fa-facebook"></li></a>
@@ -63,7 +71,7 @@
       </div>
     </div>
 
-    <form id="edit" class="row justify-content-center no-gutters sembunyikan" method="POST" action="{{ route('admin.profil.update', ['id' => $user->id]) }}">
+    <form id="edit" class="row justify-content-center no-gutters sembunyikan" method="POST" action="{{ route('admin.profil.update', ['id' => $user->id]) }}" enctype="multipart/form-data">
     @csrf
     <input type="hidden" name="_method" value="PUT">
 
@@ -72,7 +80,7 @@
         <div class="profile-card text-start p-5 first">
           <div class="form-group">
             <label for="gambar">Gambar Profil</label>
-            <input type="file" class="form-control-file" id="gambar">
+            <input type="file" class="form-control-file" id="gambar" name="image">
           </div>
           <div class="form-group">
             <label for="nama">Nama</label>
@@ -84,7 +92,7 @@
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" value="{{ $profil->email }}" placeholder="Email">
+            <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" placeholder="Email">
           </div>
           <div class="form-group">
             <label for="telepon">No Telepon</label>
@@ -127,35 +135,52 @@
           </div>
           <div class="col-md-6">
           <div class="form-group">
-    <label for="pendidikan">Riwayat Pendidikan</label>
+    <label for="pendidikan">Pendidikan Terakhir</label>
     <div id="pendidikanContainer">
-        @php
-            // Cek apkh $profil->pendidikan adalah string atau array
-            if (is_string($profil->pendidikan)) {
-                $pendidikanArray = json_decode($profil->pendidikan);
-            } elseif (is_array($profil->pendidikan)) {
-                $pendidikanArray = $profil->pendidikan;
-            } else {
-                $pendidikanArray = [];
-            }
-
-            $jumlahPendidikan = count($pendidikanArray);
-        @endphp
-
-        @foreach ($pendidikanArray as $pendidikan)
         <div class="form-group d-flex align-items-center posisifix">
-            <input type="text" class="form-control mb-2" name="pendidikan[]" value="{{ $pendidikan }}" placeholder="Riwayat Pendidikan">
-            <button type="button" class="btn btn-danger btn-sm remove-pendidikan">-</button>
-          </div>
-        @endforeach
+          <input type="text" class="form-control mb-2" name="riwayat_pendidikan" value="{{ $user->riwayat_pendidikan }}" placeholder="Riwayat Pendidikan">
+        </div>
+      </div>
+      <div class="col col-md-5">
+        <div class="profile-card text-start p-5 second">
+          <h6>Pengalaman Kerja</h6>
+            @if($profil->pengalaman)
+                <?php $pengalaman = json_decode($profil->pengalaman, true); ?>
+                @foreach($pengalaman as $item)
+                    <p>- {{ $item }}</p>
+                @endforeach
+            @else
+                <p>Tidak ada pengalaman yang tersedia.</p>
+            @endif
+          <h6>Riwayat Pendidikan</h6>
+          @if($profil->pendidikan)
+              <?php $pendidikan = json_decode($profil->pendidikan, true); ?>
+              @foreach($pendidikan as $items)
+                  <p>- {{ $items }}</p>
+              @endforeach
+          @else
+              <p>Tidak ada pengalaman yang tersedia.</p>
+          @endif
+          <h6>Email</h6>
+          <p>{{ $profil->email }}</p>
+          <h6>No Telepon</h6>
+          <p>+62 {{ $user->nohp }}</p>
+          <h6>Alamat</h6>
+          <p>{{ $profil->alamat }}</p>
+        </div>
+      </div>
+      <div class="col col-md-2">
+        <div class="profile-card text-start p-5 third">
+            <button id="editButton" class="btn btn-primary">Edit Profil</button>
+        </div>
+      </div>
     </div>
-    <button type="button" id="tambahPendidikan" class="btn btn-secondary mt-3">+ Pendidikan</button>
           </div>
           </div>
           </div>
           <div class="form-group">
             <label for="alamat">Alamat</label>
-            <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Alamat">{{ $profil->alamat }}</textarea>
+            <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Alamat">{{ $user->alamat }}</textarea>
           </div>
           <button type="submit" class="btn btn-primary">Simpan</button>
         </div>
