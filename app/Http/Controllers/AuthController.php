@@ -8,10 +8,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 
+
+
 class AuthController extends Controller
 {
     public function showLoginForm()
     {
+
         if (Auth::check() && Auth::user()->Authorize === "Admin") {
             return back();
         } else if (Auth::check() && Auth::user()->Authorize === "Dokter") {
@@ -36,10 +39,13 @@ class AuthController extends Controller
                 return redirect()->intended('/dashboard-admin');
             } else if ($user->Authorize === "Dokter") {
                 return redirect()->intended('/homeDokter');
-            } else if ($user->Authorize === "Dokter") {
-                return redirect()->intended('/dashboard-dokter');
+
+             } 
+            else {
+                return redirect()->intended('pasien.dashboardpasien');
             } else {
                 return redirect()->intended('/dashboardpasien');
+
             }
         }
         $user = User::where('username', $request->username)->first();
@@ -47,7 +53,7 @@ class AuthController extends Controller
         if ($user) {
             // Jika username ditemukan tapi password salah
             return redirect()->back()->withInput($request->only('username'))->withErrors([
-                'password' => __('Password salah'),
+                'password' => __('Password yang anda masukkan salah'),
             ]);
         } else {
             // Jika username tidak ditemukan
@@ -55,6 +61,22 @@ class AuthController extends Controller
                 'username' => __('Username tidak ditemukan'),
             ]);
         }
+    }
+    }
+    public function forgot_password(){
+        return view('auth.forgot-password');    
+    }
+    public function forgot_password_act(Request $request)
+    {
+        $customMessage = [
+            'email.required' => 'Email tidak boleh kosong',
+            'email.email' => 'Email tidak valid'
+        ];
+        $request->validate([
+            'email' => 'required|email'
+        ], $customMessage);
+
+        return redirect()->route('forgot-password')->with('success', 'kami telah mengirim link reset password');
     }
     public function logout()
     {
@@ -168,3 +190,4 @@ class AuthController extends Controller
         }
     }
 }
+

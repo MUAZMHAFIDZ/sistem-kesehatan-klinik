@@ -1,5 +1,6 @@
-.riwayatPasienDok{
-    margin-left: 500px;
-    margin-top: 200px;
-    font-size: 25px;
-}
+.tabelRiwayat {
+    margin-left: 160px;
+    font-size: 14px;
+    margin-right: auto; /* Adjust pixel value for desired shift */
+  }
+  

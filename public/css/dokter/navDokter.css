@@ -1,5 +1,6 @@
 /* PROFIL DAN LOGO DISINI */
 
+
 nav .logo {
     position: fixed;
     display: flex;
@@ -8,6 +9,7 @@ nav .logo {
     margin: 0;
     justify-content: space-around;
     border-bottom: 1px solid rgb(0, 4, 255);
+    background-color: #ffffff;
 }
 .logo .img {
     width: 70%;
@@ -38,15 +40,19 @@ nav .logo {
 }
 
 /* NAVBAR DI KIRI */
+.navbarDokter{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',  Verdana, sans-serif;
+    font-size: 15px;
+}
 nav .navbarDokter {
     position: fixed;
-    top: 40px;
+    top: 45px;
 }
 .navbarDokter ul {
     display: flex;
     height: 100vh;
     width: 120%;
-    background-color: #005eff;
+    background: linear-gradient(to top, #00c6fb 0%, #005bea 100%);
     flex-direction: column;
     margin: 0;
     overflow: hidden;
@@ -78,6 +84,4 @@ nav .navbarDokter {
     color:#0a0059;
     width: 30px;
 }
-.logoutDokter{
-    font-style: bold;
-}
+
