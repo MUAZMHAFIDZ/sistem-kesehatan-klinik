@@ -1,0 +1,198 @@
+* {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    text-rendering: optimizeSpeed;
+}
+
+ul, li {
+    padding-left: 0;
+}
+
+.judul {
+    color: #4682B4;
+}
+
+.input-group-text {
+    color: white;
+    background-color: #4682B4;
+    border: 1px solid #4682B4;
+}
+.input-group-text a {
+    text-decoration: none;
+    color: #ffffff;
+}
+.fa-plus {
+    color: #ffffff;
+}
+.form-control {
+    border: 1px solid #4682B4;
+}
+.col-2, .col-11 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.col-11 {
+    width: 90%;
+    margin-left: 7px;
+}
+.util {
+    padding: 0 5px;
+}
+.content {
+    width: 95dvw;
+    padding: 10px;
+    /* background: linear-gradient(to top, #ffecad, #fff6d0); */
+    background: linear-gradient(to top, #abd9ff, #ffffff);
+}
+.tr {
+    border-top-right-radius: 8px !important;
+}
+
+.tl {
+    border-top-left-radius: 8px;
+}
+.tmb {
+    height: 38px;
+}  
+  /* CSS baru untuk tombol edit dan hapus */
+  .btn-sm {
+    padding: 0.3rem 0.5rem; /* Kurangi padding untuk memperkecil ukuran tombol */
+    font-size: 0.875rem;
+    line-height: 1.25;
+    border-radius: 0.25rem;
+    margin: 0 0.1rem; /* Kurangi margin untuk memperkecil jarak antar tombol */
+  }
+
+  .contain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0 !important;
+  }
+
+/*Tes*/
+.hapusdokter {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    right: -200%;
+    z-index: 200;
+}
+.hapusdokter.geserkan {
+    right: 0 !important;
+}
+.hapusdokter .modal-content {
+    background-color: white;
+    max-width: 500px;
+    padding: 20px;
+    /* border: 3px solid #4682B4; */
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.hapusdokter .modal-body #tombol-confirm {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.hapusdokter .modal-body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hapusantrianform {
+    width: 45%;
+}
+
+.hapusdokter .btn-primary {
+    width: 45%;
+}
+
+.hapusdokter .btn-danger {
+    width: 100%;
+}
+
+.hapusdokter p {
+    font-weight: 400;
+}
+
+#hapusdatanya {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#hapusdatanya p{
+    font-size:medium;
+    font-weight: 500;
+    margin: 0 !important;
+    text-align: left;
+    color: black;
+}
+#hapusdatanya {
+    /* background-color: #ffeaa6; */
+    /* background: linear-gradient(to right, #92ceff, #a1d5ff, #ffffff); */
+    /* background: linear-gradient(to top, #d7d7d7, #f3f3f3); */
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    width: fit-content;
+    padding: 8px 20px;
+}
+
+#notificationArea:hover {
+    cursor: pointer;
+}
+#notificationArea {
+    width: 100%;
+    margin: 0 !important;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(-50px);
+}
+#notificationArea.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.alert {
+    /* Pengaturan CSS lainnya */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(0); /* Atur posisi asli notifikasi */
+}
+
+.removing {
+    opacity: 0;
+    transform: translateY(-50px); /* Atur posisi notifikasi ke atas */
+}
+
+.isi-table {
+    height: 68vh;
+    margin-top: 0 !important;
+}
+
+#antrianTable thead {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navmutlak {
+    z-index: 999 !important;
+}
+
+.navbarz {
+    z-index: 999 !important;
+}

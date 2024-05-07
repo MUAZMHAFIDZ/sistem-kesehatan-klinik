@@ -1,4 +1,10 @@
 /*  Form Pasien  */
+* {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    text-rendering: optimizeSpeed;
+}
+
 #contentform {
     width: 100%;
 }
@@ -15,70 +21,63 @@
 #topbar p {
     font-weight: 600;
 }
-.container {
-    width: 50%;
-    margin: 0 auto;
-}
 
-.registration-form {
-    margin-top: 50px;
-    background-color: rgb(216, 216, 216);
-    border-radius: 10px;
-    padding: 20px;
-}
+.error-message {
+    color: red;
+    font-size: 0.9rem;
+  }
+  /* Custom styling */
 
-.form-group {
-    margin-bottom: 20px;
-}
 
-.input-field {
-    width: calc(100% - 22px); /* Lebar input dengan pengurangan margin */
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 5px;
-}
-
-.input-group {
-    display: flex;
-}
-
-.input-group input[type="text"],
-.input-group input[type="tel"],
-.input-group input[type="number"],
-.input-group select,
-.input-group textarea,
-.input-group input[type="date"] {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.buttons {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  .buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding-top: 20px;
 }
 
 .cancel-button, .register-button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    width: 30%; /* Lebar tombol */
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  width: 47%; /* Lebar tombol */
 }
 
 .cancel-button {
-    background-color: #fff;
-    color: blue;
-    margin-right: 10px;
-}
-.cancel-button a {
-    text-decoration: none;
+  background-color: #fff;
+  color: blue;
+  margin-right: 10px;
+  text-decoration: none;
+  text-align: center;
 }
 
 .register-button {
-    background-color: blue;
-    color: #fff;
-    border: none;
+  background-color: blue;
+  color: #fff;
+  border: none;
 }
+.form-group {
+padding: 7px;
+}
+.error-message {
+  color: red;
+  font-size: 0.8em;
+}
+
+  .container-form {
+    display: grid;
+    background: linear-gradient(to top, #cccccc, #f0f0f0);
+    grid-template-columns: repeat(2, 1fr); /* Membagi container menjadi dua kolom dengan lebar yang sama */
+    gap: 20px; /* Jarak antara dua div */
+    border-radius: 8px;
+  }
+  .container-form .sub-container {
+     /* Warna latar belakang untuk div dalam */
+    border-radius: 10px; /* Border radius */
+    padding: 20px;
+  }
+  .bungkus {
+    background: linear-gradient(to top, #92ceff, #ffffff);
+  }

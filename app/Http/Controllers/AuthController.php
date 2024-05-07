@@ -8,9 +8,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 
-class AuthController extends Controller{
 
-    public function showLoginForm() {
+
+class AuthController extends Controller
+{
+    public function showLoginForm()
+    {
+
         if (Auth::check() && Auth::user()->Authorize === "Admin") {
             return back();
         } else if (Auth::check() && Auth::user()->Authorize === "Dokter") {
@@ -35,12 +39,13 @@ class AuthController extends Controller{
                 return redirect()->intended('/dashboard-admin');
             } else if ($user->Authorize === "Dokter") {
                 return redirect()->intended('/homeDokter');
-            // } 
-            //  else if ($user->Authorize === "Dokter") {
-            //      return redirect()->intended('/dashboard-dokter');
+
              } 
             else {
                 return redirect()->intended('pasien.dashboardpasien');
+            } else {
+                return redirect()->intended('/dashboardpasien');
+
             }
         }
         $user = User::where('username', $request->username)->first();
@@ -55,6 +60,7 @@ class AuthController extends Controller{
             return redirect()->back()->withInput($request->only('username'))->withErrors([
                 'username' => __('Username tidak ditemukan'),
             ]);
+        }
     }
     }
     public function forgot_password(){
@@ -78,7 +84,8 @@ class AuthController extends Controller{
         return redirect('/');
     }
 
-    public function showRegister() {
+    public function showRegister()
+    {
 
         if (Auth::check() && Auth::user()->Authorize === "Admin") {
             return back();
@@ -98,7 +105,8 @@ class AuthController extends Controller{
                 'username' => 'required|string|min:3|max:255|unique:users',
                 'fullname' => 'required|string|min:3|max:255',
                 'password' => 'required|string|min:6|confirmed',
-                'nohp' => 'required|numeric|unique:users|digits_between:10,15'
+                'nohp' => 'required|numeric|unique:users|digits_between:10,15',
+                'email' => 'required|string|email:rfc,dns|min:3|max:255|unique:users'
             ],
             [
                 'username.required' => 'Ups! sepertinya kamu lupa memasukkan username.',
@@ -112,9 +120,12 @@ class AuthController extends Controller{
                 'nohp.numeric' => 'Nomor telepon hanya boleh menggunakan angka.',
                 'nohp.unique' => 'Maaf, nomor telepon tersebut sudah digunakan oleh pengguna lain.',
                 'nohp.digits_between' => 'Nomor telepon terlalu pendek, pastikan memasukkan nomor telepon yang benar.',
+                'email.required' => 'Ups! sepertinya kamu lupa memasukkan email',
+                'email.min' => 'Email terlalu pendek',
+                'email.unique' => 'Ups! email ini sudah terdaftar',
                 'password.required' => 'Ups, password harus diisi.',
                 'password.confirmed' => 'Konfirmasi password tidak cocok.',
-                'password.min' => 'Password terlalu pendek. Minimal 6 karakter.'
+                'password.min' => 'Password terlalu pendek. Minimal 6 karakter.',
             ]
         );
 
@@ -124,6 +135,7 @@ class AuthController extends Controller{
         $user->password = Hash::make($validateData['password']);
         $user->image =  '/storage/photoProfiles/standar.png';
         $user->nohp = $validateData['nohp'];
+        $user->email = $validateData['email'];
         $user->Authorize = "User";
         $user->save();
 
@@ -131,6 +143,50 @@ class AuthController extends Controller{
             return redirect('/login');
         } else {
             return back()->withErrors(['msg' => 'nama atau password salah!']);
+        }
+    }
+
+    public function processRecoveryPassword(Request $request)
+    {
+        $user = null;
+
+        $validateData = $request->validate(
+            [
+                'new_password' => 'required|string|min:6|confirmed',
+                'nohp' => 'required|numeric|exists:users,nohp|digits_between:10,15',
+                'email' => 'required|string|email:rfc,dns|exists:users,email|min:3|max:255'
+            ],
+            [
+                'nohp.required' => 'Nomor telepon harus diisi.',
+                'nohp.numeric' => 'Nomor telepon tidak cocok dengan pengguna yang terdaftar.',
+                'nohp.digits_between' => 'Nomor telepon tidak cocok dengan pengguna yang terdaftar.',
+                'nohp.exists' => 'Nomor telepon tidak cocok dengan pengguna yang terdaftar.',
+                'email.required' => 'Alamat email harus di isi.',
+                'email.min' => 'Alamat Email tidak cocok dengan pengguna yang terdaftar',
+                'email.exists' => 'Email tidak cocok dengan pengguna yang terdaftar.',
+                'new_password.required' => 'Password baru harus diisi.',
+                'new_password.confirmed' => 'Konfirmasi password tidak cocok.',
+                'new_password.min' => 'Password terlalu pendek. Minimal 6 karakter.'
+            ]
+        );
+
+        # Cari pengguna berdasarkan email atau nomor telepon
+        if ($request->has('email') && $request->has('nohp')) {
+            $user = User::where('email', $request->email)
+                ->Where('nohp', $request->nohp)
+                ->first();
+
+            # Jika pengguna tidak ditemukan
+            if (!$user) {
+                return redirect()->back();
+            } else {
+                # update password pengguna
+                $user->password = Hash::make($request->new_password);
+                $user->save();
+                return redirect('/login')->with('message', 'Password Berhasil Diperbarui');
+            }
+        } else {
+            return redirect()->back();
         }
     }
 }

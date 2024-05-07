@@ -11,17 +11,39 @@
 <body >
   <form method="POST" action="{{ route('login.submit') }}">
           @csrf
+
     <div class="container d-flex justify-content-center align-items-center ">
+
+
+      {{-- <div>
+        @if (session()->has('message'))
+          {{ session()->get('message') }}
+        @endif
+      </div> --}}
+
+
       <div class="auth-form-header">
         <img class="gambarDokter py-2 mt-4" src="dentalcare.png"  width="250px">
 
           <div class="border shadow p-2 rounded mt-4" style="width: 400px" >
           <div class="form-signin">
+
             <h1 class="DentalCareLogin h4 mb-4 d-flex justify-content-center text-opacity-75">Login to DentalCare</h1>
             
             <div class="position-relative mt-4">
               
                 <input type="text" class="form-control small-placeholder @error('username') is-invalid @enderror" required value="{{ old('username') }}"  name="username" placeholder="Username " >
+
+            <div>
+              @if (session()->has('message'))
+              {{ session()->get('message') }}
+              @endif
+            </div>
+            <h1 class="DentalCareLogin h4 mb-3 d-flex justify-content-center text-opacity-75">Login to DentalCare</h1>
+            <div class="position-relative">
+              <label for="username">Username</label>
+                <input type="text" class="form-control @error('username') is-invalid @enderror" required value="{{ old('username') }}"  name="username" placeholder="Username " >
+
                 @error('username')
                 <div class="invalid-feedback username-error">
                     {{ $message }}
@@ -38,7 +60,11 @@
                   {{ $message }}
               </div>
               @enderror
+
               <a class="label-link position-absolute forgotPassword" href="{{ route('forgot-password')}}">Forgot passsword?</a>
+
+              <a class="label-link position-absolute top-0 forgotPassword" id="forgot-password" href="{{ route('recoveryPassword') }}">Forgot passsword?</a>
+
             </div>
             
             <button class="mt-4 w-100 btn btn-block btn-primary" type="submit" method="POST">Login</button>

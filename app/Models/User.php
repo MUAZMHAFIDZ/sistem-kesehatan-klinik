@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\JadwalDokter;
+use App\Models\Profil;
 
 class User extends Authenticatable
 {
@@ -23,6 +24,7 @@ class User extends Authenticatable
         'password',
         'image',
         'nohp',
+        'email',
         'Authorize'
         
         
@@ -51,28 +53,34 @@ class User extends Authenticatable
         ];
     }
 
+    public function profil()
+    {
+        return $this->hasOne(Profil::class);
+    }
 
-    protected static function boot() {
+    protected static function boot()
+    {
         parent::boot();
 
-        static::created(function($user) {
+        static::created(function ($user) {
             if ($user->Authorize === 'Dokter') {
                 $jadwal = new JadwalDokter();
-                    $jadwal->id_dokter = $user->id;
-                    $jadwal->senin = '00:00-00:00';
-                    $jadwal->selasa = '00:00-00:00';
-                    $jadwal->rabu = '00:00-00:00';
-                    $jadwal->kamis = '00:00-00:00';
-                    $jadwal->jumat = '00:00-00:00';
-                    $jadwal->sabtu = '00:00-00:00';
-                    $jadwal->minggu = '00:00-00:00';
-                    $jadwal->status = 'Cuti / Libur';
-                    $jadwal->save();
+                $jadwal->id_dokter = $user->id;
+                $jadwal->senin = '00:00-00:00';
+                $jadwal->selasa = '00:00-00:00';
+                $jadwal->rabu = '00:00-00:00';
+                $jadwal->kamis = '00:00-00:00';
+                $jadwal->jumat = '00:00-00:00';
+                $jadwal->sabtu = '00:00-00:00';
+                $jadwal->minggu = '00:00-00:00';
+                $jadwal->status = 'Cuti / Libur';
+                $jadwal->save();
             }
         });
     }
 
-    protected function jadwal() {
+    protected function jadwal()
+    {
         return $this->hasOne(JadwalDokter::class);
     }
 }

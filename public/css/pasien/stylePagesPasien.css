@@ -18,7 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 5%;
+    padding: 15px 5%;
     background-color: rgba(255, 255, 255);
     /* backdrop-filter: blur(13px); */
     border-bottom: 1px solid rgb(210, 210, 210);
@@ -122,7 +122,7 @@
     position: absolute;
     top: -5%;
     margin-bottom: 10px;
-    font-size: 14.375rem;
+    font-size: 12.3rem;
     text-align: center;
 
 }
@@ -244,8 +244,7 @@
     justify-content: center;
     position: relative;
     flex-direction: row;
-    width: 65%;
-    margin: 20px 0;
+    margin: 0 5%;
 }
 
 .konten-utama .container-promo .header {
@@ -253,6 +252,7 @@
     text-align: center;
     padding-bottom: 20px;
     color: rgb(18, 39, 0);
+    margin: 0 5%;
 }
 
 .konten-utama .container-promo .header h1 {
@@ -269,9 +269,9 @@
     flex-wrap: wrap;
     position: relative;
     justify-content: center;
-    gap: 20px;
-    padding: 50px 0;
-    background-color: rgb(242, 242, 245);
+    gap: 32px;
+    padding: 32px;
+    /* r */
     border-radius: 16px;
 }
 
@@ -404,7 +404,6 @@
     flex-wrap: wrap;
     justify-content: center;
     position: relative;
-    width: 65%;
 }
 
 .fasilitas .container-fasilitas .header {
@@ -416,14 +415,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 32px;
 }
 
 
 .fasilitas .container-fasilitas .body .box-fasilitas {
     position: relative;
-    width: 480px;
-    height: 556px;
+    width: 460px;
+    height: 510px;
     background-color: rgb(242, 242, 245);
     border-radius: 16px;
 }
@@ -524,7 +523,7 @@
 .dokter .galery-dokter .box-dokter {
     position: relative;
     width: 18rem;
-    height: 25rem;
+    height: 22rem;
     background-color: rgb(240, 240, 240);
     margin: 5px;
     border-radius: 8px;
@@ -539,6 +538,7 @@
 
 .dokter .galery-dokter .box-dokter img {
     width: 100%;
+    
     transition: width 0.5s ease;
 }
 
@@ -698,6 +698,14 @@
     border-radius: 6px;
 }
 
+.register-form .register-pasien  .email-field input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0 0 0;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 6px;
+}
+
 .register-form .register-pasien  .nohp-field input:focus {
     border: 1px solid rgba(0, 0, 0, 0.7);
     box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
@@ -769,19 +777,101 @@
 /* style register page end */
 
 
-/* style dashboard pasien start */
+/* style recovery password start */
 
+.recoverypasword-form {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 60%;
+    margin: 73px auto;
+    border-radius: 10px;
+}
+
+.recoverypasword-form .recoveryPassword {
+    padding: 20px;
+    width: 50%;
+}
+
+.recoverypasword-form .recoveryPassword span {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.recoverypasword-form .recoveryPassword p {
+    text-align: center;
+    font-size: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.recoverypasword-form .recoveryPassword input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0 0 0;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 6px;
+}
+
+.recoverypasword-form .recoveryPassword input:focus {
+    border: 1px solid rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 10px;
+}
+
+.recoverypasword-form .recoveryPassword .tombol-register {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0 7px 0;
+}
+
+.recoverypasword-form .recoveryPassword .tombol-register button {
+    width: 40%;
+    padding: 8px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(24, 111, 255);
+    border-radius: 8px;
+    border: 1px solid rgb(0, 91, 238);
+}
+
+.recoverypasword-form .recoveryPassword .tombol-register button:hover {
+    background-color: rgb(0, 90, 234);
+    transition: 0.3s;
+}
+
+.recoverypasword-form .recoveryPassword .question {
+    display: flex;
+    justify-content: center;
+}
+
+.recoverypasword-form .recoveryPassword .question a {
+    color: rgb(24, 111, 255);
+}
+
+.recoverypasword-form .recoveryPassword .question a:hover {
+    color: rgb(0, 90, 234);
+}
+
+
+/* style recovery password end */
+
+
+/* style dashboard pasien start */
 
 .dashboard-pasien {
     display: flex;
     justify-content: center;
     margin-top: 73px;
-    height: 100vh;
 }
 
 .container-dashboard-pasien {
     width: 60%;
-    max-width: 1200px;
 }
 
 .container-pasien {
@@ -851,9 +941,24 @@
     border-radius: 6px;
 }
 
-.card-dashboard .card1, .card2, .card3, .card4 p {
-    font-size: 13px;
-    font-weight: 350;
+.card-dashboard .card1 p {
+    font-size: 14px;
+    color: rgb(53, 53, 53);
+}
+
+.card-dashboard .card2 p {
+    font-size: 14px;
+    color: rgb(53, 53, 53);
+}
+
+.card-dashboard .card3 p {
+    font-size: 14px;
+    color: rgb(53, 53, 53);
+}
+
+.card-dashboard .card4 p {
+    font-size: 14px;
+    color: rgb(53, 53, 53);
 }
 
 .card-dashboard .card1 ion-icon {
