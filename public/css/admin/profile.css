@@ -1,83 +1,114 @@
-body {
-    background: rgb(255, 255, 255)
-}
-
-.bigcontent {
-    padding: 0px 12px !important;
-    border-radius: 10px !important;
-    /* border: 1px solid rgb(204, 204, 204); */
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-}
-
-.form-control:focus {
-    box-shadow: none;
-    border-color: #5185a9
-}
-
-.profile-button {
-    background: #046FBC;
-    box-shadow: none;
-    border: none
-}
-
-.profile-button:hover {
-    background: #035997
-}
-
-.profile-button:focus {
-    background: #046FBC;
-    box-shadow: none
-}
-
-.profile-button:active {
-    background: #046FBC;
-    box-shadow: none
-}
-
-.back:hover {
-    color: #046FBC;
-    cursor: pointer
-}
-
-.labels {
-    font-size: 11px
-}
-
-.add-experience:hover {
-    background: #046FBC;
-    color: #fff;
-    cursor: pointer;
-    border: solid 1px #BA68C8
-}
-
-.profileft {
-    background: #046FBC;
-    color: white;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
-}
-
-.profileft h5 {
-    margin-top: 10px;
-}
-
-.profimid {
-    /* width: 75%; */
-    border-top: 1px solid rgb(223, 223, 223);
-    /* border-bottom: 1px solid rgb(204, 204, 204); */
-    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
-}
-
-.profimg {
-    object-fit: cover;
-    border: 2px solid white;
-}
-
-.profiright {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-top: 1px solid rgb(223, 223, 223);
-    /* border-bottom: 1px solid rgb(204, 204, 204); */
-    /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
-}
+ul, li {
+    padding-left: 0;
+    }
+    .navmutlak {
+    z-index: 999 !important;
+    }
+    .navbarz {
+    z-index: 999 !important;
+    }
+    .logoz {
+    z-index: 999 !important;
+    }
+    body {
+      background-color: #f0f5f9;
+    }
+    .profile-card {
+      background-color: #fff;
+      padding: 20px;
+      margin: 0;
+    }
+    .profile-picture {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+    }
+    .col-md-5 .first {
+      /* background: linear-gradient(to bottom, #6399c5, #b8dfff, #fafdff, #ffffff); */
+      background: linear-gradient(to top, #4682B4, #6da8d7);
+      height: 85vh;
+      border-radius: 10px 0 0 10px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+    .col-md-7 .second {
+      height: 85vh;
+      border-radius: 0 10px 10px 0;
+      border: 1px solid #ccc;
+      border-left: none;
+    }
+    .col-md-5 .second {
+        height: 85vh;
+        border: 1px solid #ccc;
+        border-left: none;
+        border-right: none;
+        border-top: none;
+      }
+    .col-md-2 .third {
+        height: 85vh;
+        border-radius: 0 10px 10px 0;
+        border: 1px solid #ccc;
+        border-left: none ;
+        border-top: none;
+    }
+    .row.no-gutters {
+      padding: 0;
+      box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.3);
+      border-radius: 10px;
+    }
+    .sembunyikan {
+      display: none;
+    }
+    .content {
+        padding: 0 !important;
+        background-color: #fff;
+    }
+    .haloh {
+        padding: 10px !important;
+        height: 89vh;
+    }
+    .col-md-5 .form-group label {
+        color: #fff;
+    }
+    #profil .col-md-5 {
+        color: #fff;
+    }
+    form .col-md-7 {
+        color: black;
+    }
+    form .col-md-5 {
+        color: #fff;
+    }
+    .list-inline a {
+        color: #fff;
+        margin: 5px;
+    }
+    #profil .col-md-5 .second {
+        color: #000;
+    }
+    #profil .col-md-5 .second h6 {
+      color: #0072cf;
+    }
+    .form-group .btn {
+      background-color: #fff;
+      color: #000;
+    }
+    .form-group .btn:hover {
+      background-color: #b7b7b7;
+    }
+    .form-group .remove-pengalaman, .form-group .remove-pendidikan {
+      margin-left: 4px;
+      color: #afafaf;
+      height: 37px;
+      border-color: #afafaf;
+    }
+    .form-group input {
+      margin-top: 5px;
+      margin-bottom: 0;
+    }
+    #pengalamanContainer .form-group, #pendidikanContainer .form-group {
+      margin: 0;
+      padding: 0;
+      height: 47px;
+    }

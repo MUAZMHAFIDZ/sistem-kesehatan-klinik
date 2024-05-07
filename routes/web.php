@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DokterFrontendController;
 use App\Http\Controllers\KelolaRumahSakitController;
 use App\Http\Controllers\PasienFrontendController;
+use App\Http\Controllers\AdminPasienController;
 
 /* 
 --------------------------
@@ -99,3 +100,12 @@ Route::get('/homeDokter', [DokterFrontendController::class, 'dashboard'])->middl
 Route::get('/profilDokter', [DokterFrontendController::class, 'funProfilDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.profilDokter');
 Route::get('/antrianPasienDok', [DokterFrontendController::class, 'funAntrianPasienDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.antrianPasienDok');
 Route::get('/riwayatPasienDok', [DokterFrontendController::class, 'funRiwayatPasienDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.riwayatPasienDok');
+
+//route antrian
+Route::post('/dashboard-admin/formantrian', [AdminPasienController::class, 'buatAntrian'])->name('admin.formpasien.submit');
+Route::get('/antrian/{id}/edit', [AdminPasienController::class, 'edit'])->name('antrian.edit');
+Route::put('/antrian/{id}', [AdminPasienController::class, 'update'])->name('antrian.update');
+Route::delete('/antrian/{id}', [AdminPasienController::class, 'destroy'])->name('antrian.destroy');
+
+//profil
+Route::put('/dashboard-admin/profil/update/{id}', [KelolaRumahSakitController::class, 'updateProfilnya'])->name('admin.profil.update');

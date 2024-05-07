@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\JadwalDokter;
+use App\Models\Profil;
 
 class User extends Authenticatable
 {
@@ -50,6 +51,10 @@ class User extends Authenticatable
         ];
     }
 
+    public function profil()
+    {
+        return $this->hasOne(Profil::class);
+    }
 
     protected static function boot()
     {

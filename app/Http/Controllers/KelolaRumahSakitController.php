@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\JadwalDokter;
 use App\Models\Obat;
+use App\Models\Profil;
 
 class KelolaRumahSakitController extends Controller
 {
@@ -210,5 +213,52 @@ class KelolaRumahSakitController extends Controller
         }
         
         return back();
+    }
+
+    // =============================================
+    //              CRUD PROFIL ADMIN
+    // =============================================
+    public function updateProfilnya(Request $request, $id) {
+        //Get ID yang arep diedit YGY!
+        $userpro = User::findOrFail($id);
+    
+        //Simpan perubahan info user lah CUY!
+        $userpro->update([
+            'fullname' => $request->input('nama'),
+            'nohp' => $request->input('telepon'),
+        ]);
+    
+        //Cek profil terkait pengguna CUYY!!
+        $profil = Profil::where('user_id', $id)->first();
+    
+        //Buat profil baru jika belum ada CUYY
+        if (!$profil) {
+            $profil = new Profil();
+            $profil->user_id = $userpro->id;
+        }
+    
+        //Simpan/perbarui info profil CuY
+        $profil->deskripsi = $request->input('deskripsi');
+        $profil->email = $request->input('email');
+        // $profil->pengalaman = $request->input('pengalaman');
+    // Periksa apakah pengalaman ada
+    $pengalaman = $request->input('pengalaman');
+    if (is_null($pengalaman)) {
+        $profil->pengalaman = json_encode(['Tidak ada']);
+    } else {
+        $profil->pengalaman = json_encode($pengalaman);
+    }
+    // Periksa apakah pendidikan ada
+    $pendidikan = $request->input('pendidikan');
+    if (is_null($pendidikan)) {
+        $profil->pendidikan = json_encode(['Tidak ada']);
+    } else {
+        $profil->pendidikan = json_encode($pendidikan);
+    }
+
+        $profil->alamat = $request->input('alamat');
+        $profil->save();
+    
+        return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
     }
 }
