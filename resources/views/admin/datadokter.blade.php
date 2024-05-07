@@ -22,6 +22,8 @@
                             <th>Username</th>
                             <th>Full Name</th>
                             <th>No HP</th>
+                            <th>Pendidikan Terakhir</th>
+                            <th>Alamat</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -37,8 +39,10 @@
                                 <td>{{ $dokter->username }}</td>
                                 <td>dr. {{ $dokter->fullname }}</td>
                                 <td>{{ $dokter->nohp }}</td>
+                                <td>{{ $dokter->riwayat_pendidikan }}</td>
+                                <td>{{ $dokter->alamat }}</td>
                                 <td class="aksi">
-                                    <button onclick="editDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', event)" class="green">Edit</button>
+                                    <button onclick="editDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', '{{$dokter->riwayat_pendidikan }}', '{{$dokter->alamat }}', event)" class="green">Edit</button>
                                     <button class="red" onclick="terimaHapusId({{ $dokter->id }}, event)">Hapus</button>
                                 </td>
                             </tr>
@@ -97,7 +101,7 @@
 
         // EDIT DOKTER
         var pengeditanDokter = ':id'
-        function editDataDokter (editId, username, fullname, nohp, event) {
+        function editDataDokter (editId, username, fullname, nohp, riwayat_pendidikan, alamat, event) {
             event.preventDefault()
             const klikAdmin = document.getElementById('editdatadokter')
             klikAdmin.classList.add('geserkan')
@@ -105,6 +109,8 @@
             document.getElementById('editNama').value = username
             document.getElementById('editFullname').value = fullname
             document.getElementById('editNoHP').value = nohp
+            document.getElementById('editAlamat').value = alamat
+            document.getElementById('editRiwayat_pendidikan').value = riwayat_pendidikan
 
             var aksiEdit = document.getElementById('editdataform').getAttribute('action').replace(pengeditanDokter, editId)
             pengeditanDokter = editId
@@ -119,6 +125,6 @@
             pengeditanDokter = ':id'
             document.getElementById('editdataform').setAttribute('action', aksiEdit)
         }
-    </script>    
+    </script>
 </body>
 </html>

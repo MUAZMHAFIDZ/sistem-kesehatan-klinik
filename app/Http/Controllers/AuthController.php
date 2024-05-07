@@ -8,8 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 
-class AuthController extends Controller
-{
+class AuthController extends Controller {
     public function showLoginForm() {
         if (Auth::check() && Auth::user()->Authorize === "Admin") {
             return back();
@@ -55,9 +54,9 @@ class AuthController extends Controller
             return redirect()->back()->withInput($request->only('username'))->withErrors([
                 'username' => __('Username tidak ditemukan'),
             ]);
+        }
     }
-    public function logout()
-    {
+    public function logout() {
         Auth::logout();
         return redirect('/');
     }

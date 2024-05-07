@@ -13,8 +13,6 @@
     @include('admin.component.navbar');
     <div id="content" class="content">
         
-    
-    
     <!-- ========================== pasien hari ini ========================== -->
     <div class="home">
         <div class="item">
@@ -25,63 +23,6 @@
                 <div class="data">
                     <p>xxxx</p>
                 </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
             </div>
         </div>
         <!-- ========================== dokter bertugas hari ini ========================== -->
@@ -90,12 +31,11 @@
                 <p>Dokter Bertugas Hari ini</p>
             </div>
             <div class="card">
+                @foreach($dokterBertugas as $activeDT)
                 <div class="data">
-                    <p>dr. xxxx</p>
+                    <p>dr. {{ $activeDT->users->fullname }} <span> | {{$activeDT->$hariIni}}</span></p>
                 </div>
-                <div class="data">
-                    <p>dr. xxxx</span></p>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- ========================== dokter aktif ========================== -->
@@ -104,12 +44,11 @@
                 <p>Dokter Online</p>
             </div>
             <div class="card">
+                @foreach($activeDokter as $activeD)
                 <div class="data">
-                    <p>dr. xxxx</p>
+                    <p>dr. {{ $activeD->fullname }}</p>
                 </div>
-                <div class="data">
-                    <p>dr. xxxx</p>
-                </div>
+                @endforeach
             </div>
         </div>
         <!-- ========================== admin aktif ========================== -->
@@ -128,34 +67,31 @@
         <!-- ========================== survey pasien ========================== -->
         <div class="itemlong">
             <div class="headcard">
-                <p>Survey Pasien</p>
+                <p>Jumlah Pasien</p>
             </div>
             <div class="card">
                 <div class="data">
-                    <p>Pasien Kurang Puas</p>
-                    <div class="percent1"><p>20%</p></div>
+                    <p>Dalam Sehari</p>
+                    <div class="percent1"><p>20</p></div>
                 </div>
                 <div class="data">
-                    <p>Pasien Lumayan Puas</p>
-                    <div class="percent2"><p>10%</p></div>
+                    <p>Dalam Seminggu</p>
+                    <div class="percent2"><p>30</p></div>
                 </div>
                 <div class="data">
-                    <p>Pasien Sangat Puas</p>
-                    <div class="percent3"><p>70%</p></div>
+                    <p>Dalam Sebulan</p>
+                    <div class="percent3"><p>70</p></div>
                 </div>
             </div>
         </div>
-        <!-- ========================== stok obat ========================== -->
+        <!-- ========================== absen dokter ========================== -->
         <div class="item">
             <div class="headcard">
-                <p>Stok Obat Yang Menipis</p>
+                <p>Absensi Dokter</p>
             </div>
             <div class="card">
                 <div class="data">
-                    <p>xxx obat : <span>( 3 tablet )</span></p>
-                </div>
-                <div class="data">
-                    <p>xxx obat : <span>( 3 tablet )</span></p>
+                    <p>dr. xxx <span>( Hadir )</span></p>
                 </div>
             </div>
         </div>
@@ -168,16 +104,9 @@
                 <div class="data">
                     <p>xxxx</p>
                 </div>
-                <div class="data">
-                    <p>xxxx</span></p>
-                </div>
             </div>
         </div>
     </div>
-    
-    
-    
-    
     
     </div>
     <script>

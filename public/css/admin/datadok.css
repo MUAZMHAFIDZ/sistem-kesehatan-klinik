@@ -21,6 +21,7 @@
     padding: 15px;
     background-color: #0094ff;
     border-bottom: 1px solid #555;
+    color: #ffffff;
 }
 .datadokter td {
     border-bottom: 1px solid #555;
@@ -33,36 +34,45 @@
     height: 45px;
     overflow: hidden;
 }
+.datadokter .aksi {
+    justify-content: space-around;
+    padding: 5px;
+}
 .aksi button {
     width: 60px;
     height: 27px;
     cursor: pointer;
     color: #ffffff;
-    margin-right: 10px;
+    margin: 5px 10px;
 }
 /* button crud */
 .crud {
     display: flex;
     margin-top: 30px;
+    max-width: 145px;
+    flex-direction: column;
 }
 .crud button {
     width: 70px;
     height: 30px;
     cursor: pointer;
-    color: #ffffff;
     margin-right: 10px;
+    color: #ffffff;
 }
 .crud button:hover, .aksi button:hover {
     border: 1px solid #ffffff;
 }
 .blue {
-    background-color: blue;
+    background-color: #0094ff;
+    border: 1px solid #0094ff;
 }
 .red {
-    background-color: red;
+    background-color: #ff4040;
+    border: 1px solid #0094ff;
 }
 .green {
-    background-color: green;
+    background-color: #0094ff;
+    border: 1px solid #0094ff;
 }
 
 /* pendaftarandokter */
@@ -80,26 +90,36 @@
 .pendaftarandokter.geserkan {
     right: 0;
 }
-.pendaftarandokter div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-}
 .pendaftarandokter form {
     padding-top: 10px;
     height: 90%;
-    width: 80%;
+    width: 90%;
     background-color: #ffffff;
     text-align: center;
     border-radius: 5px;
 }
-.pendaftarandokter input {
-    height: 5vh;
+.pendaftarandokter .reowwww {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+.pendaftarandokter .colll {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.pendaftarandokter .reowwww div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.pendaftarandokter .reowwww input {
     width: 80%;
+    height: 43px;
     border: 1px solid #0094ff;
-    border-radius: 5px;
-    margin: 10px auto;
+    margin-top: 10px;
 }
 .pendaftarandokter button {
     width: 39%;

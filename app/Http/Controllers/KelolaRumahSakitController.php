@@ -23,6 +23,8 @@ class KelolaRumahSakitController extends Controller
             'password' => 'required|string|min:6|confirmed',
             'nohp' => 'required|numeric|min:10|unique:users',
             'image' => 'nullable|image|file',
+            'riwayat_pendidikan' => 'required|string|min:3|max:255',
+            'alamat' => 'required|string|min:3|max:255',
         ]);
 
         $photonames = 'standar.png';
@@ -38,6 +40,8 @@ class KelolaRumahSakitController extends Controller
             $user->image = '/storage/photoProfiles/' . $photonames;
             $user->nohp = $validateData['nohp'];
             $user->Authorize = "Dokter";
+            $user->riwayat_pendidikan = $validateData['riwayat_pendidikan'];
+            $user->alamat = $validateData['alamat'];
             $user->save();
 
         if ($user) {
@@ -99,6 +103,18 @@ class KelolaRumahSakitController extends Controller
                 'nohp' => intval($request->input('nohp')),
             ]);
         }
+
+        if ($request->input('riwayat_pendidikan') != $userss->riwayat_pendidikan && strlen($request->input('riwayat_pendidikan')) >= 3) {
+            User::where('id', $id)->update([
+                'riwayat_pendidikan' => $request->input('riwayat_pendidikan'),
+            ]);
+        }
+
+        if ($request->input('alamat') != $userss->alamat && strlen($request->input('alamat')) >= 3) {
+            User::where('id', $id)->update([
+                'alamat' => $request->input('alamat'),
+            ]);
+        }
         
         return back();
     }
@@ -140,8 +156,9 @@ class KelolaRumahSakitController extends Controller
             JadwalDokter::where('id', $id)->update([ 'minggu' => $minggu, ]);
         }
         if ($request->input('status') != $jadwal->status) {
-            Obat::where('id', $id)->update([ 'status' => intval($request->input('status')), ]);
+            JadwalDokter::where('id', $id)->update([ 'status' => $request->input('status'), ]);
         }
+        return back();
     }
 
 

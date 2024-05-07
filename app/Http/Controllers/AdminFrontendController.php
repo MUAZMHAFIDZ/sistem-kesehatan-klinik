@@ -17,20 +17,21 @@ class AdminFrontendController extends Controller
         $user->save();
         $onlineUser = User::where('last_activity', '>=', Carbon::now()->subMinutes(2))->get();
 
+        Carbon::setlocale('id');
+        $hariIni = strtolower(Carbon::now()->translatedFormat('l'));
+        $dokterBertugas = JadwalDokter::where($hariIni, '!=', '00:00-00:00' )->where('status', '!=', 'Cuti / Libur')->get();
+
         $activeUser = $onlineUser->filter(function ($user) { return $user->Authorize === "User"; });
         $activeDokter = $onlineUser->filter(function ($user) { return $user->Authorize === "Dokter"; });
         $activeAdmin = $onlineUser->filter(function ($user) { return $user->Authorize === "Admin"; });
 
-        return view('admin.home', compact('user', 'activeAdmin'));
+        return view('admin.home', compact('user', 'activeAdmin', 'activeUser', 'activeDokter', 'dokterBertugas', 'hariIni'));
     }
     public function dashboardjadwaldokter() {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
 
-
-
-        // $dokters = User::where('Authorize', 'Dokter')->get();
         $dokterjadwal = JadwalDokter::all();
         return view('admin.jadwaldok', compact('user', 'dokterjadwal'));
     }

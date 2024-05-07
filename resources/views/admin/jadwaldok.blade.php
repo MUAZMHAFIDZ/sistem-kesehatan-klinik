@@ -59,7 +59,7 @@
 
     <!-- update data -->
     <div class="editjadwaldokter" id="editdatadokter">
-        <form id="editdatasform" method="POST" action="{{ route('editjadwaldokter.jadwal', ':id') }}" enctype="multipart/form-data">
+        <form id="editdatasform" method="POST" action="{{ route('editjadwaldokter.jadwal', ':id' ) }}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <h3 id="namaDokter">edit Jadwal Dokter </h3>
@@ -148,10 +148,10 @@
                         </thead>
                         <tbody>
                             <td>
-                                <input id="kamis" type="time" name="kamis1"  required>
+                                <input id="kamis1" type="time" name="kamis1"  required>
                             </td>
                             <td>
-                                <input id="kamis" type="time" name="kamis2"  required>
+                                <input id="kamis2" type="time" name="kamis2"  required>
                             </td>
                         </tbody>
                     </table>
@@ -171,10 +171,10 @@
                         </thead>
                         <tbody>
                             <td>
-                                <input id="jumat" type="time" name="jumat1"  required>
+                                <input id="jumat1" type="time" name="jumat1"  required>
                             </td>
                             <td>
-                                <input id="jumat" type="time" name="jumat2"  required>
+                                <input id="jumat2" type="time" name="jumat2"  required>
                             </td>
                         </tbody>
                     </table>
@@ -194,10 +194,10 @@
                         </thead>
                         <tbody>
                             <td>
-                                <input id="sabtu" type="time" name="sabtu1"  required>
+                                <input id="sabtu1" type="time" name="sabtu1"  required>
                             </td>
                             <td>
-                                <input id="sabtu" type="time" name="sabtu2"  required>
+                                <input id="sabtu2" type="time" name="sabtu2"  required>
                             </td>
                         </tbody>
                     </table>
@@ -217,19 +217,19 @@
                         </thead>
                         <tbody>
                             <td>
-                                <input id="minggu" type="time" name="minggu1"  required>
+                                <input id="minggu1" type="time" name="minggu1"  required>
                             </td>
                             <td>
-                                <input id="minggu" type="time" name="minggu2"  required>
+                                <input id="minggu2" type="time" name="minggu2"  required>
                             </td>
                         </tbody>
                     </table>
                 </div>
-                <div>
+                <div class="statuses">
                     <label for="status">Status</label>
-                    <select id="status" type="text" name="status" required>
-                        <option value="Cuti / Libur">Cuti / Libur</option>
+                    <select id="statuses" type="hidden" name="status" required>
                         <option value="Aktif Bekerja">Aktif Bekerja</option>
+                        <option value="Cuti / Libur">Cuti / Libur</option>
                     </select>
                 </div>
             </div>
@@ -245,6 +245,7 @@
             activeMenu('menu3')
         })
         
+
         // EDIT DOKTER
         var pengeditanDokter = ':id'
         function editJadwalDokter(editId, senin,  selasa,  rabu,  kamis,  jumat,  sabtu,  minggu,  status, event) {
@@ -261,8 +262,6 @@
             let sabtus = sabtu.split('-')
             let minggus = minggu.split('-')
 
-            console.log(kl[1])
-
             document.getElementById('senin1').value = senins[0]
             document.getElementById('senin2').value = senins[1]
             document.getElementById('selasa1').value = selasas[0]
@@ -278,7 +277,7 @@
             document.getElementById('minggu1').value = minggus[0]
             document.getElementById('minggu2').value = minggus[1]
 
-            document.getElementById('status').value = status
+            document.getElementById('statuses').value = status
 
             var aksiEdit = document.getElementById('editdatasform').getAttribute('action').replace(pengeditanDokter, editId)
             pengeditanDokter = editId

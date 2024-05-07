@@ -23,7 +23,9 @@ class User extends Authenticatable
         'password',
         'image',
         'nohp',
-        'Authorize'
+        'Authorize',
+        'alamat',
+        'riwayat_pendidikan'
     ];
 
     /**

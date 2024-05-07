@@ -5,12 +5,13 @@
     justify-content: space-around;
     flex-wrap: wrap;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: #ffffff;
 }
 .content .home .item {
     height: 260px;
     width: 280px;
     margin: 15px 10px;
-    background-color: #ffffff;
+    background-color: #0094ff;
     border-radius: 5px;
 }
 .content .home .item .headcard, .content .home .itemlong .headcard {
@@ -33,7 +34,7 @@
     height: 260px;
     width: 595px;
     margin: 10px 10px;
-    background-color: #ffffff;
+    background-color: #0094ff;
     border-radius: 5px;
 }
 .content .home .itemlong .card {
@@ -43,6 +44,31 @@
     width: 95%;
     margin: auto;
 }
+@media (max-width: 575px) {
+    .content .home .itemlong {
+        height: 700px;
+        width: 280px;
+        text-align: center;
+    }
+    .content .home .itemlong .card {
+        display: flex;
+        flex-direction: column;
+        height: 90%;
+        width: 95%;
+        margin: auto 80px;
+    }
+    .home .itemlong .card .data {
+        width: 280px;
+        height: 100%;
+        display: grid;
+        justify-content: space-around;
+        text-align: left;
+        margin-top: 10px;
+    }
+    .home .itemlong .card .data .percent1, .home .itemlong .card .data .percent2, .home .itemlong .card .data .percent3 {
+        margin: 5px;
+    }
+}
 .home .itemlong .card .data {
     width: 30%;
     height: 100%;
@@ -50,38 +76,41 @@
     margin-top: 10px;
 }
 .home .itemlong .card .data .percent1 {
+    background-color: #0094ff;
     height: 120px;
     width: 120px;
-    border: 20px solid red;
+    border: 20px solid #ffffff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 30px auto;
-    color: red;
+    color: #ffffff;
     font-weight: bold;
 }
 .home .itemlong .card .data .percent2 {
+    background-color: #0094ff;
     height: 120px;
     width: 120px;
-    border: 20px solid green;
+    border: 20px solid #ffffff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 30px auto;
-    color: green;
+    color: #ffffff;
     font-weight: bold;
 }
 .home .itemlong .card .data .percent3 {
+    background-color: #0094ff;
     height: 120px;
     width: 120px;
-    border: 20px solid blue;
+    border: 20px solid #ffffff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 30px auto;
-    color: blue;
+    color: #ffffff;
     font-weight: bold;
 }

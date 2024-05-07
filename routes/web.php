@@ -7,6 +7,16 @@ use App\Http\Controllers\DokterFrontendController;
 use App\Http\Controllers\KelolaRumahSakitController;
 use App\Http\Controllers\PasienFrontendController;
 
+// Route::get('/fooconcon', function () {
+//     Artisan::call('storage:link');
+// });
+// Route::get('/fooconconmigratefresh', function () {
+//     Artisan::call('migrate:fresh');
+// });
+// Route::get('/fooconconmigrate', function () {
+//     Artisan::call('migrate');
+// });
+
 /* 
 --------------------------
 ^ route dashboard pasien

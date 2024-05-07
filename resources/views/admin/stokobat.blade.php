@@ -121,7 +121,7 @@
             document.getElementById('keterangan').value = keterangan
 
             var aksiEdit = document.getElementById('editdataform').getAttribute('action').replace(pengeditanObat, editId)
-            pengeditan = editId
+            pengeditanObat = editId
             document.getElementById('editdataform').setAttribute('action', aksiEdit)
         }
         function batalEditDataDokter (event) {
@@ -130,7 +130,7 @@
             klikAdmin.classList.remove('geserkan')
 
             var aksiEdit = document.getElementById('editdataform').getAttribute('action').replace(pengeditanObat, ':id')
-            pengeditan = ':id'
+            pengeditanObat = ':id'
             document.getElementById('editdataform').setAttribute('action', aksiEdit)
         }
     </script>
