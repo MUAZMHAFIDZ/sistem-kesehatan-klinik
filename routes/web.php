@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DokterFrontendController;
 use App\Http\Controllers\KelolaRumahSakitController;
 use App\Http\Controllers\PasienFrontendController;
+use App\Http\Controllers\ProfileDokterController;
 
 /* 
 --------------------------
@@ -63,6 +64,8 @@ Route::put('/dashboard-admin/stokobat/{id}', [KelolaRumahSakitController::class,
 // login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.submit');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+Route::get('/forgot-password', [AuthController::class, 'forgot_password'])->name('forgot-password');
+Route::post('/forgot-password-act', [AuthController::class, 'forgot_password_act'])->name('forgot-password-act');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 Route::post('/signup', [AuthController::class, 'register'])->name('register.submit');
 Route::get('/signup', [AuthController::class, 'showRegister'])->name('login');
@@ -75,3 +78,4 @@ Route::get('/homeDokter', [DokterFrontendController::class, 'dashboard'])->middl
 Route::get('/profilDokter', [DokterFrontendController::class, 'funProfilDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.profilDokter');
 Route::get('/antrianPasienDok', [DokterFrontendController::class, 'funAntrianPasienDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.antrianPasienDok');
 Route::get('/riwayatPasienDok', [DokterFrontendController::class, 'funRiwayatPasienDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.riwayatPasienDok');
+Route::post('/user/profile/update', [ProfileDokterController::class, 'UpdateProfile'])->name('user.profile.update');

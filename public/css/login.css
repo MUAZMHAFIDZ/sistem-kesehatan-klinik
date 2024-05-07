@@ -1,9 +1,10 @@
 .DentalCareLogin{
     color: rgb(51, 110, 250);
 }
-.form-control{
-    font-size: 14px;
+.bgBodyLogin{
+  background: radial-gradient(592px at 48.2% 50%, rgba(255, 255, 249, 0.6) 0%, rgb(160, 199, 254) 74.6%);
 }
+
 .form-signin {
     width: 100%;
     max-width: 400px;
@@ -36,17 +37,75 @@
   .forgotPassword{
     margin-left: 70%;
     font-size: 12px; 
-    margin-top: 11px;
     font-family:sans-serif;
   }
 .question{
     position: relative;
     margin-left: 79px;
-    margin-top:5px ;
+    margin-top:9px ;
+    font-size: 12px;
+
 }
 .form-select{
     font-size:14px ;
 }
+/* styles.css */
+
+/* Mengatur ukuran kolom input untuk versi besar */
+.form-control {
+  padding: .5rem 1rem;
+  font-size: 1rem; /* Sesuaikan ukuran font sesuai kebutuhan */
+  line-height: 1.5;
+  border-radius: .3rem;
+}
+/* css/login.css */
+
+/* Style untuk pesan kesalahan */
+.invalid-feedback {
+  position: absolute;
+  bottom: -1.5rem; /* Menempatkan pesan kesalahan di bawah input */
+  left: 0;
+  width: 100%;
+  font-size: 11px;
+  color: #dc3545; 
+ 
+}
+
+
+/* Style untuk pesan kesalahan pada kolom password */
+.password-error {
+  position: absolute;
+  bottom: 15px; /* Menempatkan pesan kesalahan sedikit di atas input password */
+  left: 0;
+  width: 100%;
+  font-size:11px;
+  color: #dc3545; /* Warna merah standar Bootstrap untuk pesan kesalahan */
+}
+.small-placeholder{
+  font-size: 14px;
+}
+.username-error {
+  position: absolute;
+  top: 35px; /* Menempatkan pesan kesalahan sedikit di atas input password */
+  left: 0;
+  width: 100%;
+  font-size:11px;
+  color: #dc3545; /* Warna merah standar Bootstrap untuk pesan kesalahan */
+}
+.gambarMata img{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  position:absolute;
+ width: 15px;
+ cursor: pointer;
+ left: 300px;
+bottom: 45px;
+}
+.Mata{
+  height: 25;
+}
+
 
 
 

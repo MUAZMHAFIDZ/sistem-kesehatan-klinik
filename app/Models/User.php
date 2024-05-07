@@ -24,6 +24,8 @@ class User extends Authenticatable
         'image',
         'nohp',
         'Authorize'
+        
+        
     ];
 
     /**

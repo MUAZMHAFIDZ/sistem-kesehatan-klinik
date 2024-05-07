@@ -15,22 +15,29 @@
         <div class="img">
         <img src="{{ asset('dentalcare.png') }}" alt="">
     </div>
-     <div class="profil">
+    <div class="profil">
         <span>{{ $user->username }}</span>
-        <img src="/ilhamss.jpg" alt="Foto_profil"> 
+        <img src="profildokter3.jpg" alt="Foto_profil"> 
      </div>
+
+  
+        
+
 </div>
 <div class="navbarDokter">
 <ul>
-    <li style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><a id="menu1" href="{{ route('dokter.homeDokter') }}"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
-    <li style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><a id="menu2" href="{{ route('dokter.profilDokter') }}"><i class="fa-solid fa-user"></i><span>Profil</span></a></li>
-    <li style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif"><a id="menu6" href="{{ route('dokter.antrianPasienDok') }}"><i class="fa-solid fa-id-card"></i><span>Antrian Pasien</span></a></li>
-    <li style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif" ><a id="menu7" href="{{ route('dokter.riwayatPasienDok')}}"><i class="fa-solid fa-book-medical"></i><span>Riwayat Pasien</span></li>
+    <li style=""><a id="menu1" href="{{ route('dokter.homeDokter') }}"><i class="fa-solid fa-house"></i><span>Beranda</span></a></li>
+    <li style=""><a id="menu2" href="{{ route('dokter.profilDokter') }}"><i class="fa-solid fa-user"></i><span>My Profile</span></a></li>
+    <li style=""><a id="menu3" href="{{ route('dokter.antrianPasienDok') }}"><i class="fa-solid fa-id-card"></i><span>Antrian Pasien</span></a></li>
+    <li style="" ><a id="menu4" href="{{ route('dokter.riwayatPasienDok')}}"><i class="fa-solid fa-book-medical"></i><span>Riwayat Pasien</span></li>
                
     <li class="out"><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span></a></li>
-    <form action="{{ route('logout') }}" method="POST" id="logout-form" style="displat: none;">@csrf</form>
+    <form action="{{ route('logout') }}" method="POST" id="logout-form" style="display: none;">@csrf</form>
 </ul>
+
 </div>
     </nav>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
