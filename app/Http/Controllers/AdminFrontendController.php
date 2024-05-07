@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Obat;
 use App\Models\JadwalDokter;
 use Carbon\Carbon;
+use App\Models\Antrian;
+use App\Models\Profil;
 
 class AdminFrontendController extends Controller
 {
@@ -35,10 +37,33 @@ class AdminFrontendController extends Controller
         return view('admin.jadwaldok', compact('user', 'dokterjadwal'));
     }
     public function dashboardprofil() {
-        $user = Auth::user();
+        $user = Auth::user()->load('profil');
         $user->last_activity = now();
         $user->save();
-        return view('admin.profil', compact('user'));
+        $onlineUser = User::where('last_activity', '>=', Carbon::now()->subMinutes(2))->get();
+
+        $activeUser = $onlineUser->filter(function ($user) { return $user->Authorize === "User"; });
+        $activeDokter = $onlineUser->filter(function ($user) { return $user->Authorize === "Dokter"; });
+        $activeAdmin = $onlineUser->filter(function ($user) { return $user->Authorize === "Admin"; });
+        $admin = User::where('Authorize', 'Admin')->get();
+
+        // Ambil profil admin
+        $profil = $user->profil;
+
+    // Periksa apakah profil admin tidak null
+    if (!$profil) {
+        // Atur $profil ke nilai default atau kosong jika tidak ada profil
+        $profil = (object) [
+            'user_id' => Auth::id(),
+            'deskripsi' => 'Tidak ada',
+            'email' => 'Tidak ada',
+            'pengalaman' => json_encode(['Tidak ada']),
+            'pendidikan' => json_encode(['Tidak ada']),
+            'alamat' => 'Tidak ada',
+        ];
+    }
+
+        return view('admin.profil', compact('user', 'activeAdmin', 'admin', 'profil'));
     }
     public function dashboardstokobat() {
         $user = Auth::user();
@@ -58,7 +83,8 @@ class AdminFrontendController extends Controller
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
-        return view('admin.antrian', compact('user'));
+        $data = Antrian::orderBy('tanggal_periksa')->get();
+        return view('admin.antrian', compact('user','data'));
     }
     public function dashboarddatapasien() {
         $user = Auth::user();

@@ -55,6 +55,7 @@ class AuthController extends Controller
             return redirect()->back()->withInput($request->only('username'))->withErrors([
                 'username' => __('Username tidak ditemukan'),
             ]);
+        }
     }
     public function logout()
     {

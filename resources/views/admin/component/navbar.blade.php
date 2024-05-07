@@ -1,4 +1,4 @@
-<nav>
+<nav class="navmutlak">
     <div class="logoz">
         <div class="img">
             <img src="{{ asset('logo.png') }}" alt="">
