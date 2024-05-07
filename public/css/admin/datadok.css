@@ -1,4 +1,7 @@
-.content {
+:root {
+    --warna-utama: #6666ff;
+}
+.content.contentzz {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,17 +17,14 @@
 }
 .jadwaldokter table {
     width: 100%;
-    border-collapse: collapse;
 }
 .datadokter th {
     text-align: left;
     padding: 15px;
-    background-color: #0094ff;
-    border-bottom: 1px solid #555;
+    background-color: var(--warna-utama);
     color: #ffffff;
 }
 .datadokter td {
-    border-bottom: 1px solid #555;
     text-align: left;
     padding-left: 15px;
     padding-right: 15px;
@@ -63,16 +63,16 @@
     border: 1px solid #ffffff;
 }
 .blue {
-    background-color: #0094ff;
-    border: 1px solid #0094ff;
+    background-color: var(--warna-utama);
+    border: 1px solid var(--warna-utama);
 }
 .red {
     background-color: #ff4040;
-    border: 1px solid #0094ff;
+    border: 1px solid var(--warna-utama);
 }
 .green {
-    background-color: #0094ff;
-    border: 1px solid #0094ff;
+    background-color: var(--warna-utama);
+    border: 1px solid var(--warna-utama);
 }
 
 /* pendaftarandokter */
@@ -118,7 +118,7 @@
 .pendaftarandokter .reowwww input {
     width: 80%;
     height: 43px;
-    border: 1px solid #0094ff;
+    border: 1px solid var(--warna-utama);
     margin-top: 10px;
 }
 .pendaftarandokter button {
@@ -210,7 +210,7 @@
 .tambahobat input {
     height: 5vh;
     width: 80%;
-    border: 1px solid #0094ff;
+    border: 1px solid var(--warna-utama);
     border-radius: 5px;
     margin: 10px auto;
     padding-left: 1%;
@@ -221,7 +221,7 @@
     width: 90%;
     overflow: auto;
     resize: none;
-    border: 1px solid #0094ff;
+    border: 1px solid var(--warna-utama);
     margin-left: 5%;
     padding-left: 1%;
     padding-right: 1%;
@@ -273,7 +273,7 @@
 .editjadwaldokter form .divdivndiv div {
     width: 30%;
     height: 15%;
-    border: 1px solid #0094ff;
+    border: 1px solid var(--warna-utama);
     margin: 0 5%;
 }
 .editjadwaldokter form .divdivndiv div table {

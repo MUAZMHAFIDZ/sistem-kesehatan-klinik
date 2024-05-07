@@ -12,7 +12,7 @@
 </head>
 <body>
     @include('admin.component.navbar');
-    <div id="content" class="content">
+    <div id="content" class="content contentzz">
         <div class="itemcontent">
             <div class="datadokter">
                 <table>

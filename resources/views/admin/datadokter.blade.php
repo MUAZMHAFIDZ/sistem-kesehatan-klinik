@@ -11,7 +11,7 @@
 </head>
 <body>
     @include('admin.component.navbar');
-    <div id="content" class="content">
+    <div id="content" class="content contentzz">
         <div class="itemcontent">
             <div class="datadokter">
                 <table>
@@ -42,7 +42,7 @@
                                 <td>{{ $dokter->riwayat_pendidikan }}</td>
                                 <td>{{ $dokter->alamat }}</td>
                                 <td class="aksi">
-                                    <button onclick="editDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', '{{$dokter->riwayat_pendidikan }}', '{{$dokter->alamat }}', event)" class="green">Edit</button>
+                                    <button onclick="editDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', '{{$dokter->riwayat_pendidikan }}', '{{$dokter->alamat }}', '{{$dokter->email }}', event)" class="green">Edit</button>
                                     <button class="red" onclick="terimaHapusId({{ $dokter->id }}, event)">Hapus</button>
                                 </td>
                             </tr>
@@ -101,7 +101,7 @@
 
         // EDIT DOKTER
         var pengeditanDokter = ':id'
-        function editDataDokter (editId, username, fullname, nohp, riwayat_pendidikan, alamat, event) {
+        function editDataDokter (editId, username, fullname, nohp, riwayat_pendidikan, alamat, email, event) {
             event.preventDefault()
             const klikAdmin = document.getElementById('editdatadokter')
             klikAdmin.classList.add('geserkan')
@@ -110,6 +110,7 @@
             document.getElementById('editFullname').value = fullname
             document.getElementById('editNoHP').value = nohp
             document.getElementById('editAlamat').value = alamat
+            document.getElementById('editEmail').value = email
             document.getElementById('editRiwayat_pendidikan').value = riwayat_pendidikan
 
             var aksiEdit = document.getElementById('editdataform').getAttribute('action').replace(pengeditanDokter, editId)

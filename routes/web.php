@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DokterFrontendController;
 use App\Http\Controllers\KelolaRumahSakitController;
 use App\Http\Controllers\PasienFrontendController;
+use App\Http\Controllers\ProfileDokterController;
+use App\Http\Controllers\AdminPasienController;
 
 // Route::get('/fooconcon', function () {
 //     Artisan::call('storage:link');
@@ -16,6 +18,7 @@ use App\Http\Controllers\PasienFrontendController;
 // Route::get('/fooconconmigrate', function () {
 //     Artisan::call('migrate');
 // });
+
 
 /* 
 --------------------------
@@ -28,7 +31,7 @@ Route::get('/', function () {
     return view('pasien.landingpage');
 });
 
-Route::get('pasien.dashboardpasien', [
+Route::get('/dashboardpasien', [
     PasienFrontendController::class, 'dashboardPasien'
 ])->middleware('auth')->name('/dashboardpasien');
 
@@ -36,9 +39,15 @@ Route::get('auth.login', [
     PasienFrontendController::class, 'loginPasien'
 ])->middleware('guest')->name('/login');
 
-Route::get('auth.register', [
+Route::get('/register', [
     PasienFrontendController::class, 'registerPasien'
 ])->middleware('guest')->name('/register');
+
+/* 
+--------------------------
+^ route pages pasien end
+--------------------------
+*/
 
 
 // admin dashboard get
@@ -73,6 +82,8 @@ Route::put('/dashboard-admin/stokobat/{id}', [KelolaRumahSakitController::class,
 // login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.submit');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+Route::get('/forgot-password', [AuthController::class, 'forgot_password'])->name('forgot-password');
+Route::post('/forgot-password-act', [AuthController::class, 'forgot_password_act'])->name('forgot-password-act');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 Route::post('/signup', [AuthController::class, 'register'])->name('register.submit');
 Route::get('/signup', [AuthController::class, 'showRegister'])->name('login');
@@ -80,8 +91,40 @@ Route::get('/signup', [AuthController::class, 'showRegister'])->name('login');
 Route::get('/checklogin', [AuthController::class, 'statusOnline'])->name('logincheck.check');
 
 
+/* 
+--------------------------
+^ recovery password start
+--------------------------
+*/
+Route::get('/recoveryPassword', [
+    PasienFrontendController::class, 'recoveryPassword'
+])->middleware('guest')->name('recoveryPassword');
+
+Route::post('/recoveryPassword', [
+    AuthController::class, 'processRecoveryPassword'
+])->middleware('guest')->name('proccesRecoveryPassword');
+/* 
+--------------------------
+^ recovery password end
+--------------------------
+*/
+
+
 // dokter dashboard
 Route::get('/homeDokter', [DokterFrontendController::class, 'dashboard'])->middleware(['auth', 'can:Dokter'])->name('dokter.homeDokter');
 Route::get('/profilDokter', [DokterFrontendController::class, 'funProfilDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.profilDokter');
 Route::get('/antrianPasienDok', [DokterFrontendController::class, 'funAntrianPasienDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.antrianPasienDok');
 Route::get('/riwayatPasienDok', [DokterFrontendController::class, 'funRiwayatPasienDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.riwayatPasienDok');
+
+Route::post('/user/profile/update', [ProfileDokterController::class, 'UpdateProfile'])->name('user.profile.update');
+
+
+//route antrian
+Route::post('/dashboard-admin/formantrian', [AdminPasienController::class, 'buatAntrian'])->name('admin.formpasien.submit');
+Route::get('/antrian/{id}/edit', [AdminPasienController::class, 'edit'])->name('antrian.edit');
+Route::put('/antrian/{id}', [AdminPasienController::class, 'update'])->name('antrian.update');
+Route::delete('/antrian/{id}', [AdminPasienController::class, 'destroy'])->name('antrian.destroy');
+
+//profil
+Route::put('/dashboard-admin/profil/update/{id}', [KelolaRumahSakitController::class, 'updateProfilnya'])->name('admin.profil.update');
+

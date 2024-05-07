@@ -1,14 +1,17 @@
+:root {
+    --warna-utama: #6666ff;
+}
 body {
     background-color: #eee;
 }
-nav {
+.navmutlak {
     margin: 0;
     padding: 0;
     border: 0;
 }
 
 /* logo navbar */
-nav .logoz {
+.navmutlak .logoz {
     position: fixed;
     display: flex;
     height: 65px;
@@ -32,7 +35,7 @@ nav .logoz {
 }
 .logoz .accountz span {
     margin: auto 10px;
-    color: #0094ff;
+    color: var(--warna-utama);
     font-weight: bold;
 }
 @media (max-width: 574px) {
@@ -45,7 +48,8 @@ nav .logoz {
 .logoz .accountz img {
     width: 50px;
     height: 50px;
-    border: 2px solid #0094ff;
+    object-fit: cover;
+    border: 2px solid var(--warna-utama);
     border-radius: 50%;
     margin-top: 7px;
     margin-right: 10px;
@@ -61,7 +65,7 @@ nav .navbarz {
     display: flex;
     height: 100vh;
     width: 45px;
-    background-color: #0094ff;
+    background-color: var(--warna-utama);
     flex-direction: column;
     margin: 0;
     overflow: hidden;
@@ -105,7 +109,7 @@ nav .navbarz {
 /* perbaikan posisi content */
 .content {
     width: 96dvw;
-    margin-top: 50px;
+    margin-top: 41px;
     margin-left: 47px;
     /* width: 96% !important; */
 }

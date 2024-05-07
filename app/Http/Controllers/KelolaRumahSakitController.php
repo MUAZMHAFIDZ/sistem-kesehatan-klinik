@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\JadwalDokter;
 use App\Models\Obat;
+use App\Models\Profil;
 
 class KelolaRumahSakitController extends Controller
 {
@@ -22,9 +25,10 @@ class KelolaRumahSakitController extends Controller
             'fullname' => 'required|string|min:3|max:255',
             'password' => 'required|string|min:6|confirmed',
             'nohp' => 'required|numeric|min:10|unique:users',
-            'image' => 'nullable|image|file',
+            'image' => 'nullable',
             'riwayat_pendidikan' => 'required|string|min:3|max:255',
             'alamat' => 'required|string|min:3|max:255',
+            'email' => 'required|string|email|min:3|max:255|unique:users',
         ]);
 
         $photonames = 'standar.png';
@@ -42,6 +46,7 @@ class KelolaRumahSakitController extends Controller
             $user->Authorize = "Dokter";
             $user->riwayat_pendidikan = $validateData['riwayat_pendidikan'];
             $user->alamat = $validateData['alamat'];
+            $user->email = $validateData['email'];
             $user->save();
 
         if ($user) {
@@ -101,6 +106,12 @@ class KelolaRumahSakitController extends Controller
         if ($request->input('nohp') != $userss->nohp && strlen(strval($request->input('nohp'))) >= 10) {
             User::where('id', $id)->update([
                 'nohp' => intval($request->input('nohp')),
+            ]);
+        }
+
+        if ($request->input('email') != $userss->email && strlen($request->input('email')) >= 3) {
+            User::where('id', $id)->update([
+                'email' => $request->input('email'),
             ]);
         }
 
@@ -227,5 +238,34 @@ class KelolaRumahSakitController extends Controller
         }
         
         return back();
+    }
+
+    // =============================================
+    //              CRUD PROFIL ADMIN
+    // =============================================
+    public function updateProfilnya(Request $request, $id) {
+        $userpro = User::findOrFail($id);
+        $userpro->update([
+            'fullname' => $request->input('nama'),
+            'email' => $request->input('email'),
+            'alamat' => $request->input('alamat'),
+        ]);
+        $profil = Profil::where('user_id', $id)->first();
+        if (!$profil) {
+            $profil = new Profil();
+            $profil->user_id = $userpro->id;
+        }
+        $profil->deskripsi = $request->input('deskripsi');
+        $pengalaman = $request->input('pengalaman');
+
+        if (is_null($pengalaman)) {
+            $profil->pengalaman = json_encode(['Tidak ada']);
+        } else {
+            $profil->pengalaman = json_encode($pengalaman);
+        }
+
+        $profil->save();
+    
+        return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
     }
 }

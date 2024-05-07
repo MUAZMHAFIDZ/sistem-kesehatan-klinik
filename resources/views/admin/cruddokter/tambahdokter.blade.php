@@ -23,12 +23,12 @@
         </div>
         <div class="reowwww">
             <div>
-                <label for="password">Password ( biarkan kosong jika tidak ada perubahan )</label>
-                <input type="password" name="password" placeholder="Password (Biarkan Kosong Jika tidak ada Perubahan)">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password" required>
             </div>
             <div>
-                <label for="password_confirmation">Password Confirm ( kosong jika tidak ada perubahan )</label>
-                <input type="password" name="password_confirmation" placeholder="Password (Biarkan Kosong Jika tidak ada Perubahan)" autocomplete="new-password">
+                <label for="password_confirmation">Password Confirm</label>
+                <input type="password" name="password_confirmation" placeholder="Ulangi Password" autocomplete="new-password" required>
             </div>
         </div>
         <div class="reowwww">
@@ -42,10 +42,10 @@
             </div>
         </div>
         <div class="colll">
-            <label for="image-upload2">
-                <i style="color: royalblue; cursor: pointer;" class="fa-solid fa-image"> Foto Profile (opsional)</i>
+            <label for="image-upload">
+                <i style="color: royalblue; cursor: pointer;" class="fa-solid fa-image"> Foto Profile</i>
             </label>
-            <input type="file" name="image" style="display: none;">
+            <input type="file" name="image" id="image-upload" style="display: none;">
         </div>
         <button type="submit" class="blue">Daftarkan</button>
         <button type="button" onclick="batalKelolaDokter(event)" id="batal" class="red">Batal</button>

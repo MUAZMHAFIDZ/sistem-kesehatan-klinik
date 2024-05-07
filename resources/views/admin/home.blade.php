@@ -20,9 +20,11 @@
                 <p>Pasien Hari Ini</p>
             </div>
             <div class="card">
+                @foreach($pasienHariIni as $phi)
                 <div class="data">
-                    <p>xxxx</p>
+                    <p>{{$phi->nama}}</p>
                 </div>
+                @endforeach
             </div>
         </div>
         <!-- ========================== dokter bertugas hari ini ========================== -->
@@ -72,15 +74,15 @@
             <div class="card">
                 <div class="data">
                     <p>Dalam Sehari</p>
-                    <div class="percent1"><p>20</p></div>
+                    <div class="percent1"><p>{{$pasienPerHari}}</p></div>
                 </div>
                 <div class="data">
                     <p>Dalam Seminggu</p>
-                    <div class="percent2"><p>30</p></div>
+                    <div class="percent2"><p>{{$pasienPerMinggu}}</p></div>
                 </div>
                 <div class="data">
                     <p>Dalam Sebulan</p>
-                    <div class="percent3"><p>70</p></div>
+                    <div class="percent3"><p>{{$pasienPerBulan}}</p></div>
                 </div>
             </div>
         </div>
