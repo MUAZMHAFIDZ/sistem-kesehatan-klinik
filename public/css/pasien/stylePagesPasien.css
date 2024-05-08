@@ -666,8 +666,8 @@
 }
 
 .register-form .register-pasien  .username-field input:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
 
 .register-form .register-pasien .username-field label {
@@ -686,8 +686,8 @@
 }
 
 .register-form .register-pasien  .fullname-field input:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
 
 .register-form .register-pasien  .nohp-field input {
@@ -698,6 +698,11 @@
     border-radius: 6px;
 }
 
+.register-form .register-pasien  .nohp-field input:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
+}
+
 .register-form .register-pasien  .email-field input {
     width: 100%;
     padding: 10px;
@@ -706,10 +711,12 @@
     border-radius: 6px;
 }
 
-.register-form .register-pasien  .nohp-field input:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+
+.register-form .register-pasien  .email-field input:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
+
 
 .register-form .register-pasien  .password-field input {
     width: 100%;
@@ -720,8 +727,8 @@
 }
 
 .register-form .register-pasien  .password-field input:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
 
 .register-form .register-pasien  .password-confirmation-field input {
@@ -733,8 +740,8 @@
 }
 
 .register-form .register-pasien  .password-confirmation-field input:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
 
 .invalid-feedback {
@@ -998,6 +1005,8 @@
 }
 
 /* style dashboard buat janji start*/
+
+/* style dashboard formulir pendaftaran pasien */
 .appointment-pasien {
     display: flex;
     justify-content: center;
@@ -1013,36 +1022,65 @@
     font-size: 14px;
 }
 
-.appointment-pasien .nama-pasien,
-.appointment-pasien .usia-pasien,
-.appointment-pasien .jk-pasien,
-.appointment-pasien .ttl-pasien,
-.appointment-pasien .tanggalBuatJanji,
-.appointment-pasien .alamat-pasien,
-.appointment-pasien .kondisiPasien {
+.appointment-pasien .nama-field,
+.appointment-pasien .nohp-field,
+.appointment-pasien .alamat-field,
+.appointment-pasien .usia-field,
+.appointment-pasien .jk-field,
+.appointment-pasien .jk-field,
+.appointment-pasien .tanggal-periksa-field,
+.appointment-pasien .kondisiGigi-field,
+.appointment-pasien .kategori-layanan-field,
+.appointment-pasien .kategori-layanan-field {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
-.appointment-pasien .nama-pasien input,
-.appointment-pasien .usia-pasien input,
-.appointment-pasien .ttl-pasien input,
-.appointment-pasien .tanggalBuatJanji input,
-.appointment-pasien .alamat-pasien input,
-.appointment-pasien .kondisiPasien input {
+.appointment-pasien .nama-field input,
+.appointment-pasien .nohp-field input,
+.appointment-pasien .alamat-field input,
+.appointment-pasien .usia-field input,
+.appointment-pasien .jk-field input,
+.appointment-pasien .jk-field input,
+.appointment-pasien .tanggal-periksa-field input,
+.appointment-pasien .kondisiGigi-field input,
+.appointment-pasien .kategori-layanan-field input,
+.appointment-pasien .kategori-layanan-field input {
     width: 100%;
     padding: 10px;
-
     border: 1px solid rgb(210, 210, 210);
     border-radius: 6px;
     resize: none;
 }
 
-.appointment-pasien .jk-pasien select {
+.appointment-pasien .nama-field input:focus,
+.appointment-pasien .nohp-field input:focus,
+.appointment-pasien .alamat-field input:focus,
+.appointment-pasien .usia-field input:focus,
+.appointment-pasien .jk-field input:focus,
+.appointment-pasien .jk-field input:focus,
+.appointment-pasien .tanggal-periksa-field input:focus,
+.appointment-pasien .kondisiGigi-field input:focus,
+.appointment-pasien .kategori-layanan-field input:focus,
+.appointment-pasien .kategori-layanan-field input:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
+}
+
+.appointment-pasien .jk-field select, 
+.appointment-pasien .kondisiGigi-field select,
+.appointment-pasien .kategori-layanan-field select {
     width: 100%;
     padding: 10px;
     border: 1px solid rgb(210, 210, 210);
     border-radius: 6px;
+}
+
+.appointment-pasien .jk-field select:focus, 
+.appointment-pasien .kondisiGigi-field select:focus,
+.appointment-pasien .kategori-layanan-field select:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
 
 .appointment-pasien button {
@@ -1057,16 +1095,67 @@
 .appointment-pasien button:hover {
     background-color: rgb(0, 90, 234);
     transition: 0.3s;
-}
+} */
 
 /* style dashboard buat janji end*/
 
 
+/* style dashboard tampilkan janji start*/
 
+.appointment-results {
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    border-spacing: 16px;
+}
+
+.appointment-results th {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    font-weight: 550;
+    text-align: left;
+    width: 15%;
+}
+
+.appointment-results td {
+    width: 45%;
+    padding: 16px;
+    font-size: 14px;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 8px;
+    
+}
+
+.appointment-results td:hover {
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
+}
+
+/* .appointment-results button {
+    width: 150px;
+    padding: 8px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(24, 111, 255);
+    border-radius: 8px;
+    border: 1px solid rgb(0, 91, 238);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.appointment-results button:hover {
+    background-color: rgb(0, 90, 234);
+} */
+
+/* style dashboard tampilkan janji end*/
+
+
+.content {
+    display: none;
+}
 #dashboardMenuPasien {
     display: block;
 }
-
 
 /* style dashboard pasien end */
 

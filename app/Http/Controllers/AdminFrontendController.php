@@ -13,19 +13,27 @@ use App\Models\Profil;
 
 class AdminFrontendController extends Controller
 {
-    public function dashboard() {
+    public function dashboard()
+    {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
         $onlineUser = User::where('last_activity', '>=', Carbon::now()->subMinutes(2))->get();
 
-        $activeUser = $onlineUser->filter(function ($user) { return $user->Authorize === "User"; });
-        $activeDokter = $onlineUser->filter(function ($user) { return $user->Authorize === "Dokter"; });
-        $activeAdmin = $onlineUser->filter(function ($user) { return $user->Authorize === "Admin"; });
+        $activeUser = $onlineUser->filter(function ($user) {
+            return $user->Authorize === "User";
+        });
+        $activeDokter = $onlineUser->filter(function ($user) {
+            return $user->Authorize === "Dokter";
+        });
+        $activeAdmin = $onlineUser->filter(function ($user) {
+            return $user->Authorize === "Admin";
+        });
 
         return view('admin.home', compact('user', 'activeAdmin'));
     }
-    public function dashboardjadwaldokter() {
+    public function dashboardjadwaldokter()
+    {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
@@ -36,63 +44,75 @@ class AdminFrontendController extends Controller
         $dokterjadwal = JadwalDokter::all();
         return view('admin.jadwaldok', compact('user', 'dokterjadwal'));
     }
-    public function dashboardprofil() {
+    public function dashboardprofil()
+    {
         $user = Auth::user()->load('profil');
         $user->last_activity = now();
         $user->save();
         $onlineUser = User::where('last_activity', '>=', Carbon::now()->subMinutes(2))->get();
 
-        $activeUser = $onlineUser->filter(function ($user) { return $user->Authorize === "User"; });
-        $activeDokter = $onlineUser->filter(function ($user) { return $user->Authorize === "Dokter"; });
-        $activeAdmin = $onlineUser->filter(function ($user) { return $user->Authorize === "Admin"; });
+        $activeUser = $onlineUser->filter(function ($user) {
+            return $user->Authorize === "User";
+        });
+        $activeDokter = $onlineUser->filter(function ($user) {
+            return $user->Authorize === "Dokter";
+        });
+        $activeAdmin = $onlineUser->filter(function ($user) {
+            return $user->Authorize === "Admin";
+        });
         $admin = User::where('Authorize', 'Admin')->get();
 
         // Ambil profil admin
         $profil = $user->profil;
 
-    // Periksa apakah profil admin tidak null
-    if (!$profil) {
-        // Atur $profil ke nilai default atau kosong jika tidak ada profil
-        $profil = (object) [
-            'user_id' => Auth::id(),
-            'deskripsi' => 'Tidak ada',
-            'email' => 'Tidak ada',
-            'pengalaman' => json_encode(['Tidak ada']),
-            'pendidikan' => json_encode(['Tidak ada']),
-            'alamat' => 'Tidak ada',
-        ];
-    }
+        // Periksa apakah profil admin tidak null
+        if (!$profil) {
+            // Atur $profil ke nilai default atau kosong jika tidak ada profil
+            $profil = (object) [
+                'user_id' => Auth::id(),
+                'deskripsi' => 'Tidak ada',
+                'email' => 'Tidak ada',
+                'pengalaman' => json_encode(['Tidak ada']),
+                'pendidikan' => json_encode(['Tidak ada']),
+                'alamat' => 'Tidak ada',
+            ];
+        }
 
         return view('admin.profil', compact('user', 'activeAdmin', 'admin', 'profil'));
     }
-    public function dashboardstokobat() {
+    public function dashboardstokobat()
+    {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
         $obat = Obat::all();
         return view('admin.stokobat', compact('user', 'obat'));
     }
-    public function dashboarddatadokter() {
+    public function dashboarddatadokter()
+    {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
         $dokters = User::where('Authorize', 'Dokter')->get();
         return view('admin.datadokter', compact('user', 'dokters'));
     }
-    public function dashboardantrian() {
+    public function dashboardantrian()
+    {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
         $data = Antrian::orderBy('tanggal_periksa')->get();
-        return view('admin.antrian', compact('user','data'));
+        return view('admin.antrian', compact('user', 'data'));
     }
-    public function dashboarddatapasien() {
+    public function dashboarddatapasien()
+    {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
         return view('admin.datapasien', compact('user'));
     }
-    public function dashboardformpasien() {
+    public function dashboardformpasien()
+    {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
