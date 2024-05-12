@@ -1,5 +1,32 @@
-.profilDokter{
-    margin-left: 500px;
-    margin-top: 200px;
-    font-size: 25px;
+.profilDokter {
+    margin-left: 170px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    background-color: white;
+
 }
+.ok{
+  background-color: rgb(242, 243, 250);
+} 
+.container{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',  Verdana, sans-serif;
+}
+.editProfilDokter{
+  margin-left: 170px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.btnSubmitProfile{
+  margin-left: 370px;
+  padding-bottom: 40px;
+}
+
+
+.usernameDokter{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',  Verdana, sans-serif;
+}
+
+  
+  

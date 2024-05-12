@@ -25,7 +25,9 @@ class User extends Authenticatable
         'image',
         'nohp',
         'email',
-        'Authorize'
+        'Authorize',
+        'alamat',
+        'riwayat_pendidikan'
     ];
 
     /**

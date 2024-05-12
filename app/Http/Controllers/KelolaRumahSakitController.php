@@ -25,7 +25,10 @@ class KelolaRumahSakitController extends Controller
             'fullname' => 'required|string|min:3|max:255',
             'password' => 'required|string|min:6|confirmed',
             'nohp' => 'required|numeric|min:10|unique:users',
-            'image' => 'nullable|image|file',
+            'image' => 'nullable',
+            'riwayat_pendidikan' => 'required|string|min:3|max:255',
+            'alamat' => 'required|string|min:3|max:255',
+            'email' => 'required|string|email|min:3|max:255|unique:users',
         ]);
 
         $photonames = 'standar.png';
@@ -41,6 +44,9 @@ class KelolaRumahSakitController extends Controller
             $user->image = '/storage/photoProfiles/' . $photonames;
             $user->nohp = $validateData['nohp'];
             $user->Authorize = "Dokter";
+            $user->riwayat_pendidikan = $validateData['riwayat_pendidikan'];
+            $user->alamat = $validateData['alamat'];
+            $user->email = $validateData['email'];
             $user->save();
 
         if ($user) {
@@ -102,6 +108,24 @@ class KelolaRumahSakitController extends Controller
                 'nohp' => intval($request->input('nohp')),
             ]);
         }
+
+        if ($request->input('email') != $userss->email && strlen($request->input('email')) >= 3) {
+            User::where('id', $id)->update([
+                'email' => $request->input('email'),
+            ]);
+        }
+
+        if ($request->input('riwayat_pendidikan') != $userss->riwayat_pendidikan && strlen($request->input('riwayat_pendidikan')) >= 3) {
+            User::where('id', $id)->update([
+                'riwayat_pendidikan' => $request->input('riwayat_pendidikan'),
+            ]);
+        }
+
+        if ($request->input('alamat') != $userss->alamat && strlen($request->input('alamat')) >= 3) {
+            User::where('id', $id)->update([
+                'alamat' => $request->input('alamat'),
+            ]);
+        }
         
         return back();
     }
@@ -143,8 +167,9 @@ class KelolaRumahSakitController extends Controller
             JadwalDokter::where('id', $id)->update([ 'minggu' => $minggu, ]);
         }
         if ($request->input('status') != $jadwal->status) {
-            Obat::where('id', $id)->update([ 'status' => intval($request->input('status')), ]);
+            JadwalDokter::where('id', $id)->update([ 'status' => $request->input('status'), ]);
         }
+        return back();
     }
 
 
@@ -219,44 +244,25 @@ class KelolaRumahSakitController extends Controller
     //              CRUD PROFIL ADMIN
     // =============================================
     public function updateProfilnya(Request $request, $id) {
-        //Get ID yang arep diedit YGY!
         $userpro = User::findOrFail($id);
-    
-        //Simpan perubahan info user lah CUY!
         $userpro->update([
             'fullname' => $request->input('nama'),
-            'nohp' => $request->input('telepon'),
+            'email' => $request->input('email'),
+            'alamat' => $request->input('alamat'),
         ]);
-    
-        //Cek profil terkait pengguna CUYY!!
         $profil = Profil::where('user_id', $id)->first();
-    
-        //Buat profil baru jika belum ada CUYY
         if (!$profil) {
             $profil = new Profil();
             $profil->user_id = $userpro->id;
         }
-    
-        //Simpan/perbarui info profil CuY
         $profil->deskripsi = $request->input('deskripsi');
-        $profil->email = $request->input('email');
-        // $profil->pengalaman = $request->input('pengalaman');
-    // Periksa apakah pengalaman ada
-    $pengalaman = $request->input('pengalaman');
-    if (is_null($pengalaman)) {
-        $profil->pengalaman = json_encode(['Tidak ada']);
-    } else {
-        $profil->pengalaman = json_encode($pengalaman);
-    }
-    // Periksa apakah pendidikan ada
-    $pendidikan = $request->input('pendidikan');
-    if (is_null($pendidikan)) {
-        $profil->pendidikan = json_encode(['Tidak ada']);
-    } else {
-        $profil->pendidikan = json_encode($pendidikan);
-    }
+        $pengalaman = $request->input('pengalaman');
 
-        $profil->alamat = $request->input('alamat');
+        if (is_null($pengalaman)) {
+            $profil->pengalaman = json_encode(['Tidak ada']);
+        } else {
+            $profil->pengalaman = json_encode($pengalaman);
+        }
         $profil->save();
     
         return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
