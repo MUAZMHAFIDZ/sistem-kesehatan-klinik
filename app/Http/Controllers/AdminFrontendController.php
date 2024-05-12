@@ -44,10 +44,27 @@ class AdminFrontendController extends Controller
             return $user->Authorize === "Admin";
         });
 
+        Carbon::setlocale('id');
+        $hariIni = strtolower(Carbon::now()->translatedFormat('l'));
+        $dokterBertugas = JadwalDokter::where($hariIni, '!=', '00:00-00:00')->where('status', '!=', 'Cuti / Libur')->get();
+
+        $activeUser = $onlineUser->filter(function ($user) {
+            return $user->Authorize === "User";
+        });
+        $activeDokter = $onlineUser->filter(function ($user) {
+            return $user->Authorize === "Dokter";
+        });
+        $activeAdmin = $onlineUser->filter(function ($user) {
+            return $user->Authorize === "Admin";
+        });
+
         $pasienHariIni = Antrian::where('tanggal_periksa', now()->toDateString())->get();
         $pasienPerHari = Antrian::where('tanggal_periksa', now()->toDateString())->count();
         $pasienPerBulan = Antrian::whereMonth('tanggal_periksa', date('m'))->count();
         $pasienPerMinggu = Antrian::whereBetween('tanggal_periksa', [now()->startOfWeek()->toDateString(), now()->endOfWeek()->toDateString()])->count();
+
+        return view('admin.home', compact('user', 'activeAdmin', 'activeUser', 'activeDokter', 'dokterBertugas', 'hariIni', 'pasienHariIni', 'pasienPerHari', 'pasienPerMinggu', 'pasienPerBulan',));
+
         return view('admin.home', compact('user', 'activeAdmin', 'activeUser', 'activeDokter', 'dokterBertugas', 'hariIni', 'pasienHariIni', 'pasienPerHari', 'pasienPerMinggu', 'pasienPerBulan',));
     }
     public function dashboardjadwaldokter()
