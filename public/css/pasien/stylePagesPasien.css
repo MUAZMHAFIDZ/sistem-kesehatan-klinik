@@ -10,7 +10,7 @@
 
 /* body {
     height: 8000px;
-} */
+} 
 
 /* style navbar start  */
 
@@ -271,7 +271,6 @@
     justify-content: center;
     gap: 32px;
     padding: 32px;
-    /* r */
     border-radius: 16px;
 }
 
@@ -288,92 +287,11 @@
     overflow: hidden;
 }
 
-.konten-utama .container-promo .cardpromo .promo .gambar1 {
-    position: absolute;
-    background-image: url('/promoPicture1.jpg'); 
-    bottom: 0;
-    background-repeat: no-repeat;
+.konten-utama .container-promo .cardpromo .promo img {
     filter: brightness(80%);
-    width: 100%;
-    height: 100%;
-    background-size: cover;  
-}
-
-.konten-utama .container-promo .cardpromo .promo .gambar2 {
-    position: absolute;
-    background-image: url('/promoPicture2.jpg'); 
-    bottom: 0;
-    background-repeat: no-repeat;
-    filter: brightness(80%);
-    width: 100%;
-    height: 100%;
-    background-size: cover; 
-}
-
-.konten-utama .container-promo .cardpromo .promo .gambar3 {
-    position: absolute;
-    background-image: url('/promoPicture3.jpg'); 
-    bottom: 0;
-    background-repeat: no-repeat;
-    filter: brightness(80%);
-    width: 100%;
-    height: 100%;
-    background-size: cover; 
-}
-
-.konten-utama .container-promo .cardpromo .promo .gambar4 {
-    position: absolute;
-    background-image: url('/promoPicture4.jpg'); 
-    bottom: 0;
-    background-repeat: no-repeat;
-    filter: brightness(80%);
-    width: 100%;
-    height: 100%;
-    background-size: cover; 
-}
-
-.konten-utama .container-promo .cardpromo .promo .gambar5 {
-    position: absolute;
-    background-image: url('/promoPicture5.jpg'); 
-    bottom: 0;
-    background-repeat: no-repeat;
-    filter: brightness(80%);
-    width: 100%;
-    height: 100%;
-    background-size: cover; 
-}
-
-.konten-utama .container-promo .cardpromo .promo .gambar6 {
-    position: absolute;
-    background-image: url('/promoPicture6.jpg'); 
-    bottom: 0;
-    background-repeat: no-repeat;
-    filter: brightness(80%);
-    width: 100%;
-    height: 100%;
-    background-size: cover; 
-}
-
-.konten-utama .container-promo .cardpromo .promo .gambar7 {
-    position: absolute;
-    background-image: url('/promoPicture7.jpg'); 
-    bottom: 0;
-    background-repeat: no-repeat;
-    filter: brightness(80%);
-    width: 100%;
-    height: 100%;
-    background-size: cover; 
-}
-
-.konten-utama .container-promo .cardpromo .promo .gambar8 {
-    position: absolute;
-    background-image: url('/promoPicture8.jpg'); 
-    bottom: 0;
-    background-repeat: no-repeat;
-    filter: brightness(80%);
-    width: 100%;
-    height: 100%;
-    background-size: cover; 
+    width: 120%;
+    height: 120%;
+    object-fit: cover;
 }
 
 .konten-utama .container-promo .cardpromo .promo p {
@@ -409,6 +327,7 @@
 .fasilitas .container-fasilitas .header {
     font-size: 2rem;
     text-align: center;
+    padding: 1.5rem;
 }
 
 .fasilitas .container-fasilitas .body {
@@ -431,41 +350,15 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
-.fasilitas .container-fasilitas .body .box-fasilitas .gambar1 {
+.fasilitas .container-fasilitas .body .box-fasilitas img {
     width: 100%;
     height: 100%;
-    background-image: url('/fasilitasPicture1.jpg');
-    background-size: cover;
-    border-radius: 16px;
-}
-
-.fasilitas .container-fasilitas .body .box-fasilitas .gambar2 {
-    width: 100%;
-    height: 100%;
-    background-image: url('/fasilitasPicture2.jpg');
-    background-size: cover;
-    border-radius: 16px;
-}
-
-.fasilitas .container-fasilitas .body .box-fasilitas .gambar3 {
-    width: 100%;
-    height: 100%;
-    background-image: url('/fasilitasPicture3.jpg');
-    background-size: cover;
-    border-radius: 16px;
-}
-
-.fasilitas .container-fasilitas .body .box-fasilitas .gambar4 {
-    width: 100%;
-    height: 100%;
-    background-image: url('/fasilitasPicture4.jpg');
-    background-size: cover;
+    object-fit: cover;
     border-radius: 16px;
 }
 
 .fasilitas .box-fasilitas .keterangan {
     position: absolute;
-    /* padding: 12px; */
     text-align: center;
     bottom: 0;
     height: 40px;
@@ -570,31 +463,29 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 5rem;
 }
 
 .jam-kerja .info-jam-kerja {
     display: flex;
-    position: relative;
     flex-wrap: wrap;
     justify-content: center;
-    position: relative;
     width: 65%;
     height: 37.5rem;
     margin-bottom: 150px;
+    padding: 3.6rem 0;
 }
 
 .jam-kerja .info-jam-kerja .header {
     font-size: 2rem;
     text-align: center;
+    padding: 1.5rem;
 }
 
 .jam-kerja .info-jam-kerja .jadwal-jam-kerja {
     width: 100%;
     background-color: rgb(242, 242, 245);
-    box-shadow: 0 0px 5px 0 rgba(0,0,0,0.2);
-    color: rgb(0, 0, 0);
-    border-radius: 8px;
+    box-shadow: 0 0px 16px 0 rgba(0,0,0,0.3);
+    padding-bottom: 1.5rem;
 }
 
 .jam-kerja .info-jam-kerja .jadwal-jam-kerja .jadwal {
@@ -605,13 +496,12 @@
     margin: 5px 4rem;
     font-size: 16px;
     font-weight: 450;
-    padding-bottom: 8px;
+    padding-bottom: .5rem;
     border-bottom: 1px solid rgb(18, 39, 0);
 }
 
 .jam-kerja .info-jam-kerja .jadwal-jam-kerja .jadwal ion-icon {
-    font-size: 23px;
-    margin-right: 10px;
+    font-size: 24px;
     vertical-align: middle;
 }
 /* style working hours end*/
@@ -622,6 +512,43 @@
 
 /* style footer start */
 
+.container-footer {
+    padding-top: 3.6rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 17.5%;
+    background-color: rgb(245, 244, 247);
+}
+
+.footer ul {
+    list-style-type: none;
+}
+
+.footer a {
+    color: rgb(67, 67, 67);
+    display: inline-block;
+    font-size: 14px;
+}
+
+.footer a:hover {
+    color: rgb(24, 111, 255);
+}
+
+.coppyright_footer {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 14px;
+    width: 100%;
+    padding: .5rem;
+    /* background-color: rgb(144, 213, 101); */
+    background-color:rgb(24, 111, 255);
+    color: rgb(255, 255, 255);
+    
+}
 
 /* style footer end */
 
@@ -666,8 +593,8 @@
 }
 
 .register-form .register-pasien  .username-field input:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
 
 .register-form .register-pasien .username-field label {
@@ -686,8 +613,8 @@
 }
 
 .register-form .register-pasien  .fullname-field input:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
 
 .register-form .register-pasien  .nohp-field input {
@@ -698,6 +625,11 @@
     border-radius: 6px;
 }
 
+.register-form .register-pasien  .nohp-field input:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
+}
+
 .register-form .register-pasien  .email-field input {
     width: 100%;
     padding: 10px;
@@ -706,10 +638,12 @@
     border-radius: 6px;
 }
 
-.register-form .register-pasien  .nohp-field input:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+
+.register-form .register-pasien  .email-field input:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
+
 
 .register-form .register-pasien  .password-field input {
     width: 100%;
@@ -720,8 +654,8 @@
 }
 
 .register-form .register-pasien  .password-field input:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
 
 .register-form .register-pasien  .password-confirmation-field input {
@@ -733,8 +667,8 @@
 }
 
 .register-form .register-pasien  .password-confirmation-field input:focus {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0 0 0 3px rgba(24, 111, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
 
 .invalid-feedback {
@@ -883,11 +817,10 @@
     padding: 20px;
 }
 
-.profile-picture {
+.profile-picture img {
     width: 70px;
     height: 70px;
-    background-image: url('/defaultProfile.png');
-    background-size: cover;
+    object-fit: cover;
     border-radius: 50%;
     margin-bottom: 20px;
 }
@@ -998,6 +931,8 @@
 }
 
 /* style dashboard buat janji start*/
+
+/* style dashboard formulir pendaftaran pasien */
 .appointment-pasien {
     display: flex;
     justify-content: center;
@@ -1013,36 +948,65 @@
     font-size: 14px;
 }
 
-.appointment-pasien .nama-pasien,
-.appointment-pasien .usia-pasien,
-.appointment-pasien .jk-pasien,
-.appointment-pasien .ttl-pasien,
-.appointment-pasien .tanggalBuatJanji,
-.appointment-pasien .alamat-pasien,
-.appointment-pasien .kondisiPasien {
+.appointment-pasien .nama-field,
+.appointment-pasien .nohp-field,
+.appointment-pasien .alamat-field,
+.appointment-pasien .usia-field,
+.appointment-pasien .jk-field,
+.appointment-pasien .jk-field,
+.appointment-pasien .tanggal-periksa-field,
+.appointment-pasien .kondisiGigi-field,
+.appointment-pasien .kategori-layanan-field,
+.appointment-pasien .kategori-layanan-field {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
-.appointment-pasien .nama-pasien input,
-.appointment-pasien .usia-pasien input,
-.appointment-pasien .ttl-pasien input,
-.appointment-pasien .tanggalBuatJanji input,
-.appointment-pasien .alamat-pasien input,
-.appointment-pasien .kondisiPasien input {
+.appointment-pasien .nama-field input,
+.appointment-pasien .nohp-field input,
+.appointment-pasien .alamat-field input,
+.appointment-pasien .usia-field input,
+.appointment-pasien .jk-field input,
+.appointment-pasien .jk-field input,
+.appointment-pasien .tanggal-periksa-field input,
+.appointment-pasien .kondisiGigi-field input,
+.appointment-pasien .kategori-layanan-field input,
+.appointment-pasien .kategori-layanan-field input {
     width: 100%;
     padding: 10px;
-
     border: 1px solid rgb(210, 210, 210);
     border-radius: 6px;
     resize: none;
 }
 
-.appointment-pasien .jk-pasien select {
+.appointment-pasien .nama-field input:focus,
+.appointment-pasien .nohp-field input:focus,
+.appointment-pasien .alamat-field input:focus,
+.appointment-pasien .usia-field input:focus,
+.appointment-pasien .jk-field input:focus,
+.appointment-pasien .jk-field input:focus,
+.appointment-pasien .tanggal-periksa-field input:focus,
+.appointment-pasien .kondisiGigi-field input:focus,
+.appointment-pasien .kategori-layanan-field input:focus,
+.appointment-pasien .kategori-layanan-field input:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
+}
+
+.appointment-pasien .jk-field select, 
+.appointment-pasien .kondisiGigi-field select,
+.appointment-pasien .kategori-layanan-field select {
     width: 100%;
     padding: 10px;
     border: 1px solid rgb(210, 210, 210);
     border-radius: 6px;
+}
+
+.appointment-pasien .jk-field select:focus, 
+.appointment-pasien .kondisiGigi-field select:focus,
+.appointment-pasien .kategori-layanan-field select:focus {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
 
 .appointment-pasien button {
@@ -1062,17 +1026,61 @@
 /* style dashboard buat janji end*/
 
 
+/* style dashboard tampilkan janji start*/
 
+.appointment-results {
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    border-spacing: 16px;
+}
+
+.appointment-results th {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    font-weight: 550;
+    text-align: left;
+    width: 15%;
+}
+
+.appointment-results td {
+    width: 45%;
+    padding: 16px;
+    font-size: 14px;
+    border: 1px solid rgb(210, 210, 210);
+    border-radius: 8px;
+    
+}
+
+.appointment-results td:hover {
+    box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
+}
+
+/* .appointment-results button {
+    width: 150px;
+    padding: 8px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(24, 111, 255);
+    border-radius: 8px;
+    border: 1px solid rgb(0, 91, 238);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.appointment-results button:hover {
+    background-color: rgb(0, 90, 234);
+} */
+
+/* style dashboard tampilkan janji end*/
+
+
+.content {
+    display: none;
+}
 #dashboardMenuPasien {
     display: block;
 }
 
-
 /* style dashboard pasien end */
-
-
-
-
-
-
-
