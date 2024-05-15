@@ -16,7 +16,9 @@
             <div class="container-pasien">
                 <div class="sidebar-pasien">
                     <div class="profile-picture">
+                        <img src="{{ asset('/image/defaultProfile.png') }}">
 
+                        {{-- <img src="{{ $user->image }}" alt=""> --}}
                     </div>
                     <div class="nama-pasien">
                         <span>
@@ -179,35 +181,35 @@
                     <table class="appointment-results">
                           <tr>
                               <th>Nama Lengkap</th>
-                              <td>{{ $Antrian->nama }}</td>
+                              <td>{{ $user->fullname }}</td>
                           </tr>
                           <tr>
                               <th>Nomor Telepon</th>
-                              <td>{{ $Antrian->no_telepon }}</td>
+                              <td>{{ $user->no_telepon }}</td>
                           </tr>
                           <tr>
                               <th>Alamat</th>
-                              <td>{{ $Antrian->alamat }}</td>
+                              <td>{{ $user->alamat }}</td>
                           </tr>
                           <tr>
                               <th>Usia</th>
-                              <td>{{ $Antrian->usia }}</td>
+                              <td>{{ $user->usia }}</td>
                           </tr>
                           <tr>
                               <th>Jenis Kelamin</th>
-                              <td>{{ $Antrian->jenis_kelamin }}</td>
+                              <td>{{ $user->jenis_kelamin }}</td>
                           </tr>
                           <tr>
                               <th>Tanggal Periksa</th>
-                              <td>{{ $Antrian->tanggal_periksa }}</td>
+                              <td>{{ $user->tanggal_periksa }}</td>
                           </tr>
                           <tr>
                               <th>Jam</th>
-                              <td>{{ $Antrian->tanggal_periksa }}</td>
+                              <td>{{ $user->tanggal_periksa }}</td>
                           </tr>
                           <tr>
                               <th>Layanan</th>
-                              <td>{{ $Antrian->kategori_layanan }}</td>
+                              <td>{{ $user->kategori_layanan }}</td>
                           </tr>
                     </table>
                 </div>
@@ -215,7 +217,7 @@
         </div>
     </section>
 
-<script src="/js/dashboardPasien.js"></script>
+<script src="{{ asset ('/js/dashboardPasien.js')}}"></script>
 
 </body>
 </html>
