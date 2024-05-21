@@ -41,6 +41,23 @@
                 <input type="text" name="alamat" placeholder="Alamat" required>
             </div>
         </div>
+        <div class="reowwww">
+            <div>
+                <label for="jenis_kelamin">Jenis Kelamin</label>
+                <div style="display: flex; flex-direction: row;">
+                    <label>
+                        <input style="width: 15px; height: 15px;" type="radio" name="jenis_kelamin" value="laki-laki" required>Laki Laki
+                    </label>
+                    <label>
+                        <input style="width: 15px; height: 15px;" type="radio" name="jenis_kelamin" value="perempuan" required>Perempuan
+                    </label>
+                </div>
+            </div>
+            <div>
+                <label for="tanggal_lahir">Tanggal Lahir</label>
+                <input type="date" name="tanggal_lahir" required>
+            </div>
+        </div>
         <div class="colll">
             <label for="image-upload">
                 <i style="color: royalblue; cursor: pointer;" class="fa-solid fa-image"> Foto Profile</i>

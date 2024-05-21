@@ -10,6 +10,7 @@ use App\Models\JadwalDokter;
 use Carbon\Carbon;
 use App\Models\Antrian;
 use App\Models\Profil;
+use App\Models\KehadiranDokter;
 
 class AdminFrontendController extends Controller
 {
@@ -58,14 +59,14 @@ class AdminFrontendController extends Controller
             return $user->Authorize === "Admin";
         });
 
+        $absensiDokter = KehadiranDokter::where('terakhir_hadir', now()->toDateString())->get();
+
         $pasienHariIni = Antrian::where('tanggal_periksa', now()->toDateString())->get();
         $pasienPerHari = Antrian::where('tanggal_periksa', now()->toDateString())->count();
         $pasienPerBulan = Antrian::whereMonth('tanggal_periksa', date('m'))->count();
         $pasienPerMinggu = Antrian::whereBetween('tanggal_periksa', [now()->startOfWeek()->toDateString(), now()->endOfWeek()->toDateString()])->count();
 
-        return view('admin.home', compact('user', 'activeAdmin', 'activeUser', 'activeDokter', 'dokterBertugas', 'hariIni', 'pasienHariIni', 'pasienPerHari', 'pasienPerMinggu', 'pasienPerBulan',));
-
-        return view('admin.home', compact('user', 'activeAdmin', 'activeUser', 'activeDokter', 'dokterBertugas', 'hariIni', 'pasienHariIni', 'pasienPerHari', 'pasienPerMinggu', 'pasienPerBulan',));
+        return view('admin.home', compact('user', 'activeAdmin', 'activeUser', 'activeDokter', 'dokterBertugas', 'hariIni', 'pasienHariIni', 'pasienPerHari', 'pasienPerMinggu', 'pasienPerBulan', 'absensiDokter', ));
     }
     public function dashboardjadwaldokter()
     {
@@ -149,5 +150,11 @@ class AdminFrontendController extends Controller
         $user->last_activity = now();
         $user->save();
         return view('admin.formpasien', compact('user'));
+    }
+    public function rekammedis() {
+        $user = Auth::user();
+        $user->last_activity = now();
+        $user->save();
+        return view('admin.rekammedis', compact('user'));
     }
 }
