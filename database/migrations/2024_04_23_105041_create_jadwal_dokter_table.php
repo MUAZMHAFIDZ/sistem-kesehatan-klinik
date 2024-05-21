@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('jadwal_dokter', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_dokter');
-            $table->string('senin');
-            $table->string('selasa');
-            $table->string('rabu');
-            $table->string('kamis');
-            $table->string('jumat');
-            $table->string('sabtu');
-            $table->string('minggu');
-            $table->string('status');
+            $table->string('senin',12);
+            $table->string('selasa',12);
+            $table->string('rabu',12);
+            $table->string('kamis',12);
+            $table->string('jumat',12);
+            $table->string('sabtu',12);
+            $table->string('minggu',12);
+            $table->string('status',15);
             $table->timestamps();
 
             $table->foreign('id_dokter')->references('id')->on('users')->onDelete('cascade');

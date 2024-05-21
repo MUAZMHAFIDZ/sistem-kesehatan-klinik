@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\JadwalDokter;
 use App\Models\Profil;
+use App\Models\KehadiranDokter;
 
 class User extends Authenticatable
 {
@@ -27,7 +28,9 @@ class User extends Authenticatable
         'email',
         'Authorize',
         'alamat',
-        'riwayat_pendidikan'
+        'riwayat_pendidikan',
+        'jenis_kelamin',
+        'tanggal_lahir',
     ];
 
     /**
@@ -75,6 +78,10 @@ class User extends Authenticatable
                 $jadwal->minggu = '00:00-00:00';
                 $jadwal->status = 'Cuti / Libur';
                 $jadwal->save();
+                $kehadiran = new KehadiranDokter();
+                $kehadiran->id_dokter = $user->id;
+                $kehadiran->terakhir_hadir = date('Y-m-d');
+                $kehadiran->save();
             }
         });
     }
