@@ -128,6 +128,11 @@ Route::get('/antrian/{id}/edit', [AdminPasienController::class, 'edit'])->name('
 Route::put('/antrian/{id}', [AdminPasienController::class, 'update'])->name('antrian.update');
 Route::delete('/antrian/{id}', [AdminPasienController::class, 'destroy'])->name('antrian.destroy');
 
+Route::get('/dashboardpasien/{id}', [PasienFrontendController::class, 'showAntrian'])->name('showAntrianPasien');
+
+Route::post('/appointmentPasien', [
+    AdminPasienController::class, 'buatAntrian'
+])->name('pasienBuatAntrian');
+
 //profil
 Route::put('/dashboard-admin/profil/update/{id}', [KelolaRumahSakitController::class, 'updateProfilnya'])->name('admin.profil.update');
-
