@@ -5,7 +5,7 @@
 <section id="home" class="konten-utama">
     <div class="box-konten-utama">
         <h1>DentalCare</h1>
-        <img src="/doctorLandingPage.png" alt="Doctor Wearing Green Uniform">
+        <img src="{{ asset('/image/doctorLandingPage.png') }}" alt="">
         <span class="textpromo1">
             Yuk, periksa gigi sekarang! <br> Didalam tubuh yang sehat <br> terdapat gigi yang kuat
         </span>
@@ -33,43 +33,35 @@
         </div>
         <div class="cardpromo">
             <div class="promo">
-                <div class="gambar1">
-                </div>
+                <img src="{{ asset('/image/promoPicture1.jpg') }}" alt="">
                 <p>Tenaga Medis <br> Bersertifikasi</p>
             </div>
             <div class="promo">
-                <div class="gambar2">
-                </div>
+                <img src="{{ asset('/image/promoPicture2.jpg') }}" alt="">
                 <p>Dilengkapi <br> Dengan Teknologi <br> Canggih</p>
             </div>
             <div class="promo">
-                <div class="gambar3">
-                </div>
+                <img src="{{ asset('/image/promoPicture3.jpg') }}" alt="">
                 <p>Mudah <br> Dijangkau</p>
             </div>
             <div class="promo">
-                <div class="gambar4">
-                </div>
+                <img src="{{ asset('/image/promoPicture4.jpg') }}" alt="">
                 <p>Harga <br> Terjangkau</p>
             </div>
             <div class="promo">
-                <div class="gambar5">
-                </div>
+                <img src="{{ asset('/image/promoPicture5.jpg') }}" alt="">
                 <p>Cicilan 0%</p>
             </div>
             <div class="promo">
-                <div class="gambar6">
-                </div>
+                <img src="{{ asset('/image/promoPicture6.jpg') }}" alt="">
                 <p>Non-tunai <br> Dengan Asuransi Anda</p>
             </div>
             <div class="promo">
-                <div class="gambar7">
-                </div>
+                <img src="{{ asset('/image/promoPicture7.jpg') }}" alt="">
                 <p>Layanan <br> Yang Sangat Baik</p>
             </div>
             <div class="promo">
-                <div class="gambar8">
-                </div>
+                <img src="{{ asset('/image/promoPicture8.jpg') }}" alt="">
                 <p>Covid-19 Ready</p>
             </div>
         </div>
@@ -85,8 +77,7 @@
         </div>
         <div class="body">
             <div class="box-fasilitas">
-                <div class="gambar1">
-                </div>
+                <img src="{{ asset('/image/fasilitasPicture1.jpg') }}" alt="">
                 <div class="keterangan">
                     <h4>PERALATAN DENTAL YANG MODERN</h4>
                     <p>
@@ -95,8 +86,7 @@
                 </div>
             </div>
             <div class="box-fasilitas">
-                <div class="gambar2">
-                </div>
+                <img src="{{ asset('/image/fasilitasPicture2.jpg') }}" alt="">
                 <div class="keterangan">
                     <h4>STERELISASI ALAT UNTUK PERLINDUNGAN MAKSIMAL</h4>
                     <p>
@@ -105,8 +95,7 @@
                 </div>
             </div>
             <div class="box-fasilitas">
-                <div class="gambar3">
-                </div>
+                <img src="{{ asset('/image/fasilitasPicture3.jpg') }}" alt="">
                 <div class="keterangan">
                     <h4>RUANG TUNGGU YANG NYAMAN</h4>
                     <p>
@@ -115,8 +104,7 @@
                 </div>
             </div>
             <div class="box-fasilitas">
-                <div class="gambar4">
-                </div>
+                <img src="{{ asset('/image/fasilitasPicture4.jpg') }}" alt="">
                 <div class="keterangan">
                     <h4>KIDS AREA YANG MENYENANGKAN</h4>
                     <p>
@@ -137,49 +125,49 @@
     </div>
     <div class="galery-dokter">
         <div class="box-dokter">
-            <img src="/profilDokter1.png" alt="">
+            <img src="{{ asset('/image/profilDokter1.png') }}" alt="">
             <div class="profil">
                 Dr. Andika Pratama, Sp. KGA.
             </div>
         </div>
         <div class="box-dokter">
-            <img src="/profilDokter2.png" alt="">
+            <img src="{{ asset('/image/profilDokter2.png') }}" alt="">
             <div class="profil">
                 Dr. Dito Santoso, Sp. Ort.
             </div>
         </div>
         <div class="box-dokter">
-            <img src="/profilDokter3.jpg" alt="">
+            <img src="{{ asset('/image/profilDokter3.jpg') }}" alt="">
             <div class="profil">
                 Dr. Fajar Nugroho, MDS.
             </div>
         </div>
         <div class="box-dokter">
-            <img src="/profilDokter4.jpg" alt="">
+            <img src="{{ asset('/image/profilDokter4.jpg') }}" alt="">
             <div class="profil">
                 Dr. Galih Wijaya, Sp. KG.
             </div>
         </div>
         <div class="box-dokter">
-            <img src="/profilDokter5.jpg" alt="">
+            <img src="{{ asset('/image/profilDokter5.jpg') }}" alt="">
             <div class="profil">
                 Dr. Bunga Cahaya, Sp. KG
             </div>
         </div>
         <div class="box-dokter">
-            <img src="/profilDokter6.jpg" alt="">
+            <img src="{{ asset('/image/profilDokter6.jpg') }}" alt="">
             <div class="profil">
                 Dr. Citra Lestari, MDS.
             </div>
         </div>
         <div class="box-dokter">
-            <img src="/profilDokter7.jpg" alt="">
+            <img src="{{ asset('/image/profilDokter7.jpg') }}" alt="">
             <div class="profil">
                 Dr. Desi Pratiwi, Sp. KG.
             </div>
         </div>
         <div class="box-dokter">
-            <img src="/profilDokter8.jpg" alt="">
+            <img src="{{ asset('/image/profilDokter8.jpg') }}" alt="">
             <div class="profil">
                 Dr. Elsa Permata, M. Kes.
             </div>
@@ -199,43 +187,90 @@
         </div>
         <div class="jadwal-jam-kerja">
             <div class="jadwal">
-                <span><ion-icon name="time"></ion-icon>Senin</span>
+                <span><ion-icon name="time"></ion-icon> Senin</span>
                 <span>08:00 - 21:00</span>
             </div>
             <div class="jadwal">
-                <span><ion-icon name="time"></ion-icon>Selasa</span>
+                <span><ion-icon name="time"></ion-icon> Selasa</span>
                 <span>08:00 - 21:00</span>
             </div>
             <div class="jadwal">
-                <span><ion-icon name="time"></ion-icon>Rabu</span>
+                <span><ion-icon name="time"></ion-icon> Rabu</span>
                 <span>08:00 - 21:00</span>
             </div>
             <div class="jadwal">
-                <span><ion-icon name="time"></ion-icon>Kamis</span>
+                <span><ion-icon name="time"></ion-icon> Kamis</span>
                 <span>08:00 - 21:00</span>
             </div>
             <div class="jadwal">
-                <span><ion-icon name="time"></ion-icon>Jum'at</span>
+                <span><ion-icon name="time"></ion-icon> Jum'at</span>
                 <span>08:00 - 21:00</span>
             </div>
             <div class="jadwal">
-                <span><ion-icon name="time"></ion-icon>Sabtu</span>
+                <span><ion-icon name="time"></ion-icon> Sabtu</span>
                 <span>08:00 - 21:00</span>
             </div>
             <div class="jadwal">
-                <span><ion-icon name="time"></ion-icon>Minggu</span>
+                <span><ion-icon name="time"></ion-icon> Minggu</span>
                 <span>08:00 - 21:00</span>
             </div> 
         </div>
     </div>
 </setion>
 
-<!-- Working hours Section Start -->
+<!-- Working hours Section End -->
 
 <!-- Body Section End -->
 
 
 
 <!-- Footer Start -->
+
+<section id="footer" class="container-footer">
+    <div class="footer">
+        <div class="footLink">
+            <h3>Contact</h3>
+            <ul>
+                <li>
+                    <a href="https://whatsapp.com" target="blank">WhatsApp</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footLink">
+            <h3>Follow Us</h3>
+            <ul>
+                <li>
+                    <a href="https://instagram.com" target="blank">Instagram</a>
+                </li>
+                <li>
+                    <a href="https://tiktok.com" target="blank">TikTok</a>
+                </li>
+                <li>
+                    <a href="https://facebook.com" target="blank">Facebook</a>
+                </li>
+                <li>
+                    <a href="https://youtube.com" target="blank">Youtube</a>
+                </li>
+            </ul>
+        </div>
+        <div class="footLink">
+            <h3>Layanan Pengaduan Konsumen</h3>
+            <h4>Klinik Dental Care</h4>
+            <p>
+                Jl. Serayu No.84, Pandean, <br> Taman, Pandean, Kec. Taman, Kota Madiun
+            </p>
+            <p>
+                <a href="mailto:help@klinikdentalcare.com">help@klinikdentalcare.com</a>
+            </p>
+        </div>
+
+    </div>
+    <div class="coppyright_footer">
+        <p>
+            &copy; Kelompok 1 Desain Dan Pemrograman Web <br>
+            Website Dikembangkan Oleh Mahasiswa Politeknik Negeri Madiun
+        </p>
+    </div>
+</section>
 
 <!-- Footer End -->

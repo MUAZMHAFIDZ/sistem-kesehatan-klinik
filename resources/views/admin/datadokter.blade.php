@@ -13,18 +13,17 @@
     @include('admin.component.navbar');
     <div id="content" class="content contentzz">
         <div class="itemcontent">
+            <input class="caridokterzz" type="text" id="cariDokter" placeholder="Cari berdasarkan Nama Lengkap atau Username" onkeyup="cariDataDokter()">
             <div class="datadokter">
-                <table>
+                <table id="tablesss">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th style="border-top-left-radius: 20px;">No</th>
                             <th>Foto</th>
                             <th>Username</th>
-                            <th>Full Name</th>
-                            <th>No HP</th>
-                            <th>Pendidikan Terakhir</th>
-                            <th>Alamat</th>
-                            <th>Aksi</th>
+                            <th>Nama Lengkap</th>
+                            <th>Selengkapnya</th>
+                            <th style="border-top-right-radius: 20px;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,11 +37,11 @@
                                 <td><img class="imagedok" src="{{ $dokter->image }}" alt=""></td>
                                 <td>{{ $dokter->username }}</td>
                                 <td>dr. {{ $dokter->fullname }}</td>
-                                <td>{{ $dokter->nohp }}</td>
-                                <td>{{ $dokter->riwayat_pendidikan }}</td>
-                                <td>{{ $dokter->alamat }}</td>
+                                <td>
+                                    <button class="btnjaditext" onclick="tampilkanDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', '{{$dokter->riwayat_pendidikan }}', '{{$dokter->alamat }}', '{{$dokter->email }}', '{{$dokter->jenis_kelamin }}', '{{$dokter->tanggal_lahir }}', '{{$dokter->image }}', event)">Lihat Detail Data</button>
+                                </td>
                                 <td class="aksi">
-                                    <button onclick="editDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', '{{$dokter->riwayat_pendidikan }}', '{{$dokter->alamat }}', '{{$dokter->email }}', event)" class="green">Edit</button>
+                                    <button onclick="editDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', '{{$dokter->riwayat_pendidikan }}', '{{$dokter->alamat }}', '{{$dokter->email }}', '{{$dokter->jenis_kelamin }}', '{{$dokter->tanggal_lahir }}', event)" class="green">Edit</button>
                                     <button class="red" onclick="terimaHapusId({{ $dokter->id }}, event)">Hapus</button>
                                 </td>
                             </tr>
@@ -59,11 +58,35 @@
     @include('admin.cruddokter.tambahdokter')
     @include('admin.cruddokter.hapusdokter')
     @include('admin.cruddokter.editdokter')
+    @include('admin.cruddokter.tampildok')
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             activeMenu('menu9')
         })
+
+        // cari data dokter
+        function cariDataDokter () {
+            let input, filter, table, tr, tdName, tdUsername, i, txtValueName, txtValueUsername
+            input = document.getElementById('cariDokter')
+            filter = input.value.toUpperCase();
+            table = document.getElementById('tablesss')
+            tr = table.getElementsByTagName("tr")
+            for (i = 0; i < tr.length; i++) {
+                tdName = tr[i].getElementsByTagName("td")[3]
+                tdUsername = tr[i].getElementsByTagName("td")[2]
+                if (tdName && tdUsername) {
+                    txtValueName = tdName.textContent || tdUsername.textContent
+                    txtValueUsername = tdUsername.textContent || tdName.textContent
+                    if (txtValueName.toUpperCase().indexOf(filter) > -1 || txtValueUsername.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = ""
+                    } else {
+                        tr[i].style.display = "none"
+                    }
+                }
+            }
+        }
+
         // TAMBAH DOKTER
         function kelolaDokter (e) {
             e.preventDefault()
@@ -101,7 +124,7 @@
 
         // EDIT DOKTER
         var pengeditanDokter = ':id'
-        function editDataDokter (editId, username, fullname, nohp, riwayat_pendidikan, alamat, email, event) {
+        function editDataDokter (editId, username, fullname, nohp, riwayat_pendidikan, alamat, email, jenis_kelamin, tanggal_lahir, event) {
             event.preventDefault()
             const klikAdmin = document.getElementById('editdatadokter')
             klikAdmin.classList.add('geserkan')
@@ -112,6 +135,13 @@
             document.getElementById('editAlamat').value = alamat
             document.getElementById('editEmail').value = email
             document.getElementById('editRiwayat_pendidikan').value = riwayat_pendidikan
+            document.getElementById('editTanggalLahir').value = tanggal_lahir
+
+            if (jenis_kelamin == "laki-laki") {
+                document.getElementById('editJenis1').checked = true
+            } else if (jenis_kelamin == "perempuan") {
+                document.getElementById('editJenis2').checked = true
+            }
 
             var aksiEdit = document.getElementById('editdataform').getAttribute('action').replace(pengeditanDokter, editId)
             pengeditanDokter = editId
@@ -125,6 +155,28 @@
             var aksiEdit = document.getElementById('editdataform').getAttribute('action').replace(pengeditanDokter, ':id')
             pengeditanDokter = ':id'
             document.getElementById('editdataform').setAttribute('action', aksiEdit)
+        }
+
+        // tampilkan dokter
+        function tampilkanDataDokter(idDokter, username, fullname, nohp, riwayat_pendidikan, alamat, email, jenis_kelamin, tanggal_lahir, imagedok, event) {
+            event.preventDefault()
+            const klikAdmin = document.getElementById('tampillahdok')
+            klikAdmin.classList.add('geserkan')
+
+            document.getElementById('txtUsername').innerHTML = username
+            document.getElementById('txtNama').innerHTML = fullname
+            document.getElementById('txtNoHP').innerHTML = nohp
+            document.getElementById('txtAlamat').innerHTML = alamat
+            document.getElementById('txtEmail').innerHTML = email
+            document.getElementById('txtRiwayat_pendidikan').innerHTML = riwayat_pendidikan
+            document.getElementById('txtTanggalLahir').innerHTML = tanggal_lahir
+            document.getElementById('txtJK').innerHTML = jenis_kelamin
+            document.getElementById('txtImage').src = imagedok
+        }
+        function selesaiTampilDok(event) {
+            event.preventDefault()
+            const klikAdmin = document.getElementById('tampillahdok')
+            klikAdmin.classList.remove('geserkan')
         }
     </script>
 </body>

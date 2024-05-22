@@ -13,15 +13,15 @@ class AdminPasienController extends Controller
     public function buatAntrian(Request $request)
     {
         $request->validate([
-            'nama'=>'required',
-            'no_telepon'=>'required|numeric',
-            'alamat'=>'required',
-            'usia'=>'required|numeric',
-            'jenis_kelamin'=>'required_with:tanggal_periksa|nullable',
-            'tanggal_periksa'=>'required',
-            'gigi_sakit'=>'required_with:tanggal_periksa|nullable',
-            'gigi_berdarah'=>'required_with:tanggal_periksa|nullable',
-            'kategori_layanan'=>'required|string',
+            'nama' => 'required',
+            'no_telepon' => 'required|numeric',
+            'alamat' => 'required',
+            'usia' => 'required|numeric',
+            'jenis_kelamin' => 'required_with:tanggal_periksa|nullable',
+            'tanggal_periksa' => 'required',
+            'gigi_sakit' => 'required_with:tanggal_periksa|nullable',
+            'gigi_berdarah' => 'required_with:tanggal_periksa|nullable',
+            'kategori_layanan' => 'required|string',
         ]);
 
         // Hitung durasi layanan
@@ -60,11 +60,25 @@ class AdminPasienController extends Controller
             'nomor' => $antrian_terakhir ? $antrian_terakhir->nomor + 1 : 1,
         ];
 
+        // Antrian::create($data);
+        // return redirect()->to('dashboard-admin/antrian')->with('success', 'Data berhasil ditambahkan!');
+
         Antrian::create($data);
-        return redirect()->to('dashboard-admin/antrian')->with('success', 'Data berhasil ditambahkan!');
+        if (Auth::check()) {
+            if (Auth::user()->Authorize === "Admin") {
+                # Jika yang melakukan tambah janji adalah admin arahkan ke..
+                return redirect()->to('dashboard-admin/antrian')->with('success', 'Data berhasil ditambahkan!');
+            } else {
+                # Jika yang melakukan tambah janji adalah user (sisi pasien) arahkan ke..
+                return redirect()->to('/dashboardpasien')->with('data', $data)->with('success', 'Pendaftaran berhasil!');
+            }
+        } else {
+            # Jika tidak ada yang terautentikasi, redirect ke halaman login
+            return redirect()->route('login');
+        }
     }
 
-    // Fungsi ghitung durasi layanan berdasarkan kategori layanan
+    // Fungsi hitung durasi layanan berdasarkan kategori layanan
     private function hitungDurasiLayanan($kategori_layanan)
     {
         $durasi_layanan = [
@@ -103,9 +117,9 @@ class AdminPasienController extends Controller
             'gigi_berdarah' => 'required_with:tanggal_periksa|nullable',
             'kategori_layanan' => 'required|string',
         ]);
-    
+
         $antrian = Antrian::findOrFail($id);
-        
+
         $antrian->nama = $request->nama;
         $antrian->no_telepon = $request->no_telepon;
         $antrian->alamat = $request->alamat;
@@ -116,7 +130,7 @@ class AdminPasienController extends Controller
         $antrian->gigi_berdarah = $request->gigi_berdarah;
         $antrian->kategori_layanan = $request->kategori_layanan;
         $antrian->save();
-        
+
         return redirect()->route('admin.antrian')->with('success', 'Data berhasil diperbarui!');
     }
     

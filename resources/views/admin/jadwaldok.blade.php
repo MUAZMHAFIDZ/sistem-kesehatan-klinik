@@ -13,11 +13,12 @@
     @include('admin.component.navbar');
     <div id="content" class="content contentzz">
         <div class="itemcontent">
+            <input class="caridokterzz" type="text" id="cariDokter" placeholder="Cari berdasarkan Nama" onkeyup="cariDataDokter()">
             <div class="datadokter">
-                <table>
+                <table  id="tablesss">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th style="border-top-left-radius: 20px;">No</th>
                             <th>Nama</th>
                             <th>Senin</th>
                             <th>Selasa</th>
@@ -27,7 +28,7 @@
                             <th>Sabtu</th>
                             <th>Minggu</th>
                             <th>Status</th>
-                            <th>Aksi</th>
+                            <th style="border-top-right-radius: 20px;">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -245,6 +246,24 @@
             activeMenu('menu3')
         })
         
+        function cariDataDokter () {
+            let input, filter, table, tr, tdName, i, txtValueName
+            input = document.getElementById('cariDokter')
+            filter = input.value.toUpperCase();
+            table = document.getElementById('tablesss')
+            tr = table.getElementsByTagName("tr")
+            for (i = 0; i < tr.length; i++) {
+                tdName = tr[i].getElementsByTagName("td")[1]
+                if (tdName) {
+                    txtValueName = tdName.textContent
+                    if (txtValueName.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = ""
+                    } else {
+                        tr[i].style.display = "none"
+                    }
+                }
+            }
+        }
 
         // EDIT DOKTER
         var pengeditanDokter = ':id'

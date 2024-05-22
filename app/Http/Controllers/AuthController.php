@@ -97,7 +97,7 @@ class AuthController extends Controller
                 'fullname' => 'required|string|min:3|max:255',
                 'password' => 'required|string|min:6|confirmed',
                 'nohp' => 'required|numeric|unique:users|digits_between:10,15',
-                'email' => 'required|string|email:rfc,dns|min:3|max:255|unique:users'
+                'email' => 'required|string|email|min:3|max:255|unique:users'
             ],
             [
                 'username.required' => 'Ups! sepertinya kamu lupa memasukkan username.',
@@ -128,6 +128,7 @@ class AuthController extends Controller
         $user->nohp = $validateData['nohp'];
         $user->email = $validateData['email'];
         $user->Authorize = "User";
+        $user->jenis_kelamin = $request->input('jenis_kelamin');
         $user->save();
 
         if ($user) {

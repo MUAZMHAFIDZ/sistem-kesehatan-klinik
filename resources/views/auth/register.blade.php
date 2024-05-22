@@ -69,6 +69,18 @@
                     </div>
                 @enderror
             </div>
+
+            <div style="font-size: 13px; text-align: center;">
+                <label for="jenis_kelamin">Jenis Kelamin</label>
+                <div style="display: flex; flex-direction: row;">
+                    <label>
+                        <input style="margin-left: 90px; width: 12px; height: 12px;" type="radio" name="jenis_kelamin" value="laki-laki" required>Laki Laki
+                    </label>
+                    <label>
+                        <input style="margin-left: 30px; width: 12px; height: 12px;" type="radio" name="jenis_kelamin" value="perempuan" required>Perempuan
+                    </label>
+                </div>
+            </div>
     
             <!-- <div>
                 <label for="photo">Foto Profil</label>

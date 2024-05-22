@@ -20,8 +20,6 @@ use App\Http\Controllers\AdminPasienController;
 // });
 
 
-
-
 /* 
 --------------------------
 ^ route pages pasien start
@@ -50,16 +48,20 @@ Route::get('/register', [
 --------------------------
 */
 
+Route::get('/pdf', function() {
+    return view('admin.rekammedis.pdf');
+})->name('admin.rekammedis.pdf');
+Route::get('/rekammedis/pdf', [KelolaRumahSakitController::class, 'pdfDownload'])->name('rekammedis.pdf');
 
 // admin dashboard get
 Route::get('/dashboard-admin', [AdminFrontendController::class, 'dashboard'])->middleware(['auth', 'can:Admin'])->name('admin.home');
 Route::get('/dashboard-admin/jadwaldokter', [AdminFrontendController::class, 'dashboardjadwaldokter'])->middleware(['auth', 'can:Admin'])->name('admin.jadwaldok');
 Route::get('/dashboard-admin/profil', [AdminFrontendController::class, 'dashboardprofil'])->middleware(['auth', 'can:Admin'])->name('admin.profil');
-Route::get('/dashboard-admin/stokobat', [AdminFrontendController::class, 'dashboardstokobat'])->middleware(['auth', 'can:Admin'])->name('admin.stok');
 Route::get('/dashboard-admin/antrian', [AdminFrontendController::class, 'dashboardantrian'])->middleware(['auth', 'can:Admin'])->name('admin.antrian');
 Route::get('/dashboard-admin/data-pasien', [AdminFrontendController::class, 'dashboarddatapasien'])->middleware(['auth', 'can:Admin'])->name('admin.datapasien');
 Route::get('/dashboard-admin/datadokter', [AdminFrontendController::class, 'dashboarddatadokter'])->middleware(['auth', 'can:Admin'])->name('admin.datadokter');
 Route::get('/dashboard-admin/formantrian', [AdminFrontendController::class, 'dashboardformpasien'])->middleware(['auth', 'can:Admin'])->name('admin.formpasien');
+Route::get('/dashboard-admin/rekammedis', [AdminFrontendController::class, 'rekammedis'])->middleware(['auth', 'can:Admin'])->name('admin.rekammedis');
 
 // admin kelola dokter
 // admin dashboard post
@@ -126,6 +128,11 @@ Route::get('/antrian/{id}/edit', [AdminPasienController::class, 'edit'])->name('
 Route::put('/antrian/{id}', [AdminPasienController::class, 'update'])->name('antrian.update');
 Route::delete('/antrian/{id}', [AdminPasienController::class, 'destroy'])->name('antrian.destroy');
 
+Route::get('/dashboardpasien/{id}', [PasienFrontendController::class, 'showAntrian'])->name('showAntrianPasien');
+
+Route::post('/appointmentPasien', [
+    AdminPasienController::class, 'buatAntrian'
+])->name('pasienBuatAntrian');
+
 //profil
 Route::put('/dashboard-admin/profil/update/{id}', [KelolaRumahSakitController::class, 'updateProfilnya'])->name('admin.profil.update');
-

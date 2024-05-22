@@ -29,7 +29,7 @@
         <div class="profile-card text-center p-5 first">
           <img src="{{ $user->image }}" alt="Profile Picture" class="profile-picture mb-3">
           <h2 class="mb-3">{{ $user->fullname }}</h2>
-          <p class="lead"><p>{{ $profil->deskripsi }}</p></p>
+          <p class="lead"><p>{{ $user->tanggal_lahir }}</p></p>
           <ul class="list-inline">
             <a href="#"><li class="fab fa-facebook"></li></a>
             <a href="#"><li class="fab fa-instagram"></li></a>
@@ -38,18 +38,11 @@
       </div>
       <div class="col col-md-5">
         <div class="profile-card text-start p-5 second">
-          <h6>Pengalaman Kerja</h6>
-            @if($profil->pengalaman)
-                <?php $pengalaman = json_decode($profil->pengalaman, true); ?>
-                @foreach($pengalaman as $item)
-                    <p>- {{ $item }}</p>
-                @endforeach
-            @else
-                <p>Tidak ada pengalaman yang tersedia.</p>
-            @endif
+          <h6>Jenis Kelamin</h6>
+          <p>{{ $user->jenis_kelamin}}</p>
           <h6>Riwayat Pendidikan</h6>
-          @if($profil->pendidikan)
-              <?php $pendidikan = json_decode($profil->pendidikan, true); ?>
+          @if($user->riwayat_pendidikan)
+              <?php $pendidikan = json_decode($user->riwayat_pendidikan, true); ?>
               @foreach($pendidikan as $items)
                   <p>- {{ $items }}</p>
               @endforeach
@@ -57,11 +50,11 @@
               <p>Tidak ada pengalaman yang tersedia.</p>
           @endif
           <h6>Email</h6>
-          <p>{{ $profil->email }}</p>
+          <p>{{ $user->email }}</p>
           <h6>No Telepon</h6>
           <p>+62 {{ $user->nohp }}</p>
           <h6>Alamat</h6>
-          <p>{{ $profil->alamat }}</p>
+          <p>{{ $user->alamat }}</p>
         </div>
       </div>
       <div class="col col-md-2">
@@ -87,8 +80,8 @@
             <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" value="{{ $user->fullname }}">
           </div>
           <div class="form-group">
-            <label for="deskripsi">Deskripsi</label>
-            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" placeholder="Deskripsi">{{ $profil->deskripsi }}</textarea>
+            <label for="tanggal_lahir">Tanggal Lahir</label>
+            <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $user->tanggal_lahir }}">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
@@ -106,75 +99,40 @@
           <div class="row">
           <div class="col-md-6">
           <div class="form-group">
-    <label for="pengalaman">Pengalaman Kerja</label>
-    <div id="pengalamanContainer">
-        @php
-            // Cek afakh $profil->pengalaman adalah string atau array
-            if (is_string($profil->pengalaman)) {
-                $pengalamanArray = json_decode($profil->pengalaman);
-            } elseif (is_array($profil->pengalaman)) {
-                // nek udah array
-                $pengalamanArray = $profil->pengalaman;
-            } else {
-                // Jika bukan string atau array, atur menjadi array kosong
-                $pengalamanArray = [];
-            }
-
-            $jumlahPengalaman = count($pengalamanArray);
-        @endphp
-
-        @foreach ($pengalamanArray as $pengalaman)
-          <div class="form-group d-flex align-items-center posisifix">
-            <input type="text" class="form-control mb-2" name="pengalaman[]" value="{{ $pengalaman }}" placeholder="Pengalaman Kerja">
-            <button type="button" class="btn btn-danger btn-sm remove-pengalaman">-</button>
-        </div>
-        @endforeach
-    </div>
-    <button type="button" id="tambahPengalaman" class="btn btn-secondary mt-3">+ Pengalaman</button>
+            <label for="jenis_kelamin">Jenis Kelamin</label>
+            <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+              <option value="">Pilih Jenis Kelamin</option>
+              <option value="Laki-laki" {{ $user->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+              <option value="Perempuan" {{ $user->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+            </select>
+            {{-- <input type="text" class="form-control mb-2" name="jenis_kelamin" value="{{ $user->jenis_kelamin }}" placeholder="Jenis Kelamin"> --}}
           </div>
           </div>
           <div class="col-md-6">
           <div class="form-group">
-    <label for="pendidikan">Pendidikan Terakhir</label>
+    <label for="pendidikan">Riwayat Pendidikan</label>
     <div id="pendidikanContainer">
+        @php
+            // Cek apkh $profil->pendidikan adalah string atau array
+            if (is_string($user->riwayat_pendidikan)) {
+                $pendidikanArray = json_decode($user->riwayat_pendidikan);
+            } elseif (is_array($user->riwayat_pendidikan)) {
+                $pendidikanArray = $user->riwayat_pendidikan;
+            } else {
+                $pendidikanArray = [];
+            }
+
+            $jumlahPendidikan = count($pendidikanArray);
+        @endphp
+
+        @foreach ($pendidikanArray as $pendidikan)
         <div class="form-group d-flex align-items-center posisifix">
-          <input type="text" class="form-control mb-2" name="riwayat_pendidikan" value="{{ $user->riwayat_pendidikan }}" placeholder="Riwayat Pendidikan">
-        </div>
-      </div>
-      <div class="col col-md-5">
-        <div class="profile-card text-start p-5 second">
-          <h6>Pengalaman Kerja</h6>
-            @if($profil->pengalaman)
-                <?php $pengalaman = json_decode($profil->pengalaman, true); ?>
-                @foreach($pengalaman as $item)
-                    <p>- {{ $item }}</p>
-                @endforeach
-            @else
-                <p>Tidak ada pengalaman yang tersedia.</p>
-            @endif
-          <h6>Riwayat Pendidikan</h6>
-          @if($profil->pendidikan)
-              <?php $pendidikan = json_decode($profil->pendidikan, true); ?>
-              @foreach($pendidikan as $items)
-                  <p>- {{ $items }}</p>
-              @endforeach
-          @else
-              <p>Tidak ada pengalaman yang tersedia.</p>
-          @endif
-          <h6>Email</h6>
-          <p>{{ $profil->email }}</p>
-          <h6>No Telepon</h6>
-          <p>+62 {{ $user->nohp }}</p>
-          <h6>Alamat</h6>
-          <p>{{ $profil->alamat }}</p>
-        </div>
-      </div>
-      <div class="col col-md-2">
-        <div class="profile-card text-start p-5 third">
-            <button id="editButton" class="btn btn-primary">Edit Profil</button>
-        </div>
-      </div>
+            <input type="text" class="form-control mb-2" name="pendidikan[]" value="{{ $pendidikan }}" placeholder="Riwayat Pendidikan">
+            <button type="button" class="btn btn-danger btn-sm remove-pendidikan">-</button>
+          </div>
+        @endforeach
     </div>
+    <button type="button" id="tambahPendidikan" class="btn btn-secondary mt-3">+ Pendidikan</button>
           </div>
           </div>
           </div>
@@ -201,36 +159,19 @@ document.addEventListener("DOMContentLoaded", () => {
       profilElement.classList.toggle('sembunyikan');
       formEditElement.classList.toggle('sembunyikan');
     });
-// Ambil data pengalaman yang sudah ada dari input yang tersembunyi
-var existingPengalaman = {!! json_encode($profil->pengalaman) !!};
-if (existingPengalaman) {
-    existingPengalaman = JSON.parse(existingPengalaman);
-}
 
-// Ambil container untuk input pengalaman
-var pengalamanContainer = document.getElementById('pengalamanContainer');
-
-document.getElementById('tambahPengalaman').addEventListener('click', function() {
-    var pengalamanContainer = document.getElementById('pengalamanContainer');
-    var inputBaru = document.createElement('input');
-    inputBaru.setAttribute('type', 'text');
-    inputBaru.setAttribute('class', 'form-control mb-2');
-    inputBaru.setAttribute('placeholder', 'Pengalaman Kerja');
-    inputBaru.setAttribute('name', 'pengalaman[]');
-    pengalamanContainer.appendChild(inputBaru);
-});
-// hapus input pengalam dan pendidikaaan
+// hapus input pendidikaaan
 document.addEventListener('click', function(event) {
-  if (event.target.classList.contains('remove-pengalaman') || event.target.classList.contains('remove-pendidikan')) {
+  if (event.target.classList.contains('remove-pendidikan')) {
         event.target.parentElement.remove();
   }
 });
 // Fungsi untuk menambah input pengalaman saat tombol tambah ditekan
-document.getElementById('tambahPengalaman').addEventListener('click', function() {
-    tambahkanInputPengalaman();
+document.getElementById('tambahPendidikan').addEventListener('click', function() {
+    tambahkanInputPendidikan();
 });
 
-var existingPendidikan = {!! json_encode($profil->pendidikan) !!};
+var existingPendidikan = {!! json_encode($user->riwayat_pendidikan) !!};
 if (existingPendidikan) {
     existingPendidikan = JSON.parse(existingPendidikan);
 }

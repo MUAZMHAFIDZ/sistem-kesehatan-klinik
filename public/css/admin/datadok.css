@@ -1,5 +1,5 @@
 :root {
-    --warna-utama: #6666ff;
+    --warna-utama: #005fff;
 }
 .content.contentzz {
     display: flex;
@@ -11,24 +11,42 @@
     padding: auto;
     max-width: 100%;
 }
+.content .itemcontent .caridokterzz {
+    height: 20px;
+    padding: 15px;
+    font-size: 15px;
+    width: 100%;
+    margin: 20px 0;
+    border: 1px solid var(--warna-utama);
+    border-radius: 5px;
+    color: var(--warna-utama);
+}
 .content .datadokter {
     width: 100%;
     overflow: auto;
 }
-.jadwaldokter table {
+.datadokter table {
     width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
 }
-.datadokter th {
-    text-align: left;
-    padding: 15px;
+.datadokter table thead {
+    border-radius: 20px 20px 0 0;
     background-color: var(--warna-utama);
+}
+.datadokter table th {
+    text-align: left;
+    padding: 15px 20px;
+    border: none;
     color: #ffffff;
+    margin: 0;
 }
 .datadokter td {
     text-align: left;
-    padding-left: 15px;
+    padding-left: 20px;
     padding-right: 15px;
-    background-color: #ffffff;
+    color: #000;
+    background-color: #eeeeee;
 }
 .datadokter td .imagedok {
     height: 45px;
@@ -60,19 +78,19 @@
     color: #ffffff;
 }
 .crud button:hover, .aksi button:hover {
-    border: 1px solid #ffffff;
+    border: 1px solid #eeeeee;
 }
 .blue {
     background-color: var(--warna-utama);
-    border: 1px solid var(--warna-utama);
+    border-radius: 10px;
 }
 .red {
     background-color: #ff4040;
-    border: 1px solid var(--warna-utama);
+    border-radius: 10px;
 }
 .green {
     background-color: var(--warna-utama);
-    border: 1px solid var(--warna-utama);
+    border-radius: 10px;
 }
 
 /* pendaftarandokter */
@@ -92,25 +110,30 @@
 }
 .pendaftarandokter form {
     padding-top: 10px;
-    height: 90%;
-    width: 90%;
+    height: 99vh;
+    width: 95vw;
     background-color: #ffffff;
     text-align: center;
     border-radius: 5px;
 }
+@media (max-width: 576px) {
+    .pendaftarandokter form {
+        font-size: 13px;
+    }
+}
 .pendaftarandokter .reowwww {
     display: flex;
     justify-content: space-around;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 .pendaftarandokter .colll {
-    margin-top: 40px;
+    margin-top: 30px;
     margin-bottom: 40px;
 }
 .pendaftarandokter .reowwww div {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 7px;
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -119,7 +142,9 @@
     width: 80%;
     height: 43px;
     border: 1px solid var(--warna-utama);
-    margin-top: 10px;
+    margin-top: 5px;
+    padding-left: 5px;
+    border-radius: 10px;
 }
 .pendaftarandokter button {
     width: 39%;
@@ -175,68 +200,6 @@
     justify-content: space-around;
 }
 
-/* crud obat */
-.tambahobat {
-    position: fixed;
-    height: 100vh;
-    width: 100vw;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.3);
-    right: -200%;
-}
-.tambahobat.geserkan {
-    right: 0;
-}
-.tambahobat div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-}
-.tambahobat .rowww {
-    flex-direction: row;
-}
-.tambahobat form {
-    padding-top: 10px;
-    height: 90%;
-    width: 90%;
-    background-color: #ffffff;
-    text-align: center;
-    border-radius: 5px;
-}
-.tambahobat input {
-    height: 5vh;
-    width: 80%;
-    border: 1px solid var(--warna-utama);
-    border-radius: 5px;
-    margin: 10px auto;
-    padding-left: 1%;
-    padding-right: 1%;
-}
-.tambahobat textarea {
-    height: 20vh;
-    width: 90%;
-    overflow: auto;
-    resize: none;
-    border: 1px solid var(--warna-utama);
-    margin-left: 5%;
-    padding-left: 1%;
-    padding-right: 1%;
-}
-.tambahobat button {
-    width: 39%;
-    height: 43px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: white;
-}
-.tambahobat button:hover {
-    border: 4px solid white;
-}
-
 /* update jadwal dokter */
 .editjadwaldokter {
     position: fixed;
@@ -261,7 +224,7 @@
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    padding-bottom: 1%;
+    padding-bottom: 2%;
 }
 .editjadwaldokter form .divdivndiv {
     width: 100%;
@@ -269,12 +232,22 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding-top: 1%;
 }
 .editjadwaldokter form .divdivndiv div {
     width: 30%;
     height: 15%;
     border: 1px solid var(--warna-utama);
     margin: 0 5%;
+}
+@media (max-width: 1280px) {
+    .editjadwaldokter form .divdivndiv div {
+        width: 300px;
+        height: 50px;
+        font-size: 15px;
+        border: none;
+        margin: 0 5%;
+    }
 }
 .editjadwaldokter form .divdivndiv div table {
     margin-left: 20%;
@@ -289,4 +262,67 @@
 }
 .editjadwaldokter button:hover {
     border: 4px solid white;
+}
+
+.btnjaditext {
+    border: none;
+    background-color: #eeeeee;
+    cursor: pointer;
+    color: #0055ff;
+    text-decoration: underline;
+}
+
+
+/* menampilkan data dokter */
+.tampillahdok {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: -200%;
+}
+.tampillahdok.geserkan {
+    right: 0;
+}
+.tampillahdok div {
+    width: 90%;
+    height: 90%;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.tampillahdok div .imgnamaz {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    color: #0055ff;
+    font-size: 20px;
+}
+.tampillahdok div .imgnamaz .imgg {
+    border: 1px solid #0090ff;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.tampillahdok div .imgnamaz .imgg img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.tampillahdok div .detailakundokter {
+    width: 40%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
 }

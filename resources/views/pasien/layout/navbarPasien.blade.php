@@ -25,7 +25,9 @@
         @auth
 
         <div class="navbar-extra">
+            
             <div class="navbar-logout">
+                <a href="{{ route('/dashboardpasien') }}">Dashboard</a>
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
                     <button type="submit">Sign out</button>
@@ -39,7 +41,7 @@
                 <a href="/#fasilitas">Fasilitas</a>
                 <a href="/#dokter">Dokter</a>
                 <a href="/#jam-kerja">Jam Kerja</a>
-                <a href="/#">Kontak</a>
+                <a href="/#footer">Kontak</a>
             </div>
 
             <div class="navbar-guest">
