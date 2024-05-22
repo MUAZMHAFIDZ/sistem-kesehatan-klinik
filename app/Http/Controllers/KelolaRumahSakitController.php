@@ -11,6 +11,8 @@ use App\Models\User;
 use App\Models\JadwalDokter;
 use App\Models\Obat;
 use App\Models\Profil;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class KelolaRumahSakitController extends Controller
 {
@@ -29,6 +31,8 @@ class KelolaRumahSakitController extends Controller
             'riwayat_pendidikan' => 'required|string|min:3|max:255',
             'alamat' => 'required|string|min:3|max:255',
             'email' => 'required|string|email|min:3|max:255|unique:users',
+            'jenis_kelamin' => 'required',
+            'tanggal_lahir' => 'required|date'
         ]);
 
         $photonames = 'standar.png';
@@ -47,6 +51,8 @@ class KelolaRumahSakitController extends Controller
             $user->riwayat_pendidikan = $validateData['riwayat_pendidikan'];
             $user->alamat = $validateData['alamat'];
             $user->email = $validateData['email'];
+            $user->jenis_kelamin = $validateData['jenis_kelamin'];
+            $user->tanggal_lahir = $validateData['tanggal_lahir'];
             $user->save();
 
         if ($user) {
@@ -126,6 +132,18 @@ class KelolaRumahSakitController extends Controller
                 'alamat' => $request->input('alamat'),
             ]);
         }
+
+        if ($request->input('jenis_kelamin') != $userss->jenis_kelamin) {
+            User::where('id', $id)->update([
+                'jenis_kelamin' => $request->input('jenis_kelamin'),
+            ]);
+        }
+
+        if ($request->input('tanggal_lahir') != $userss->jenis_kelamin) {
+            User::where('id', $id)->update([
+                'tanggal_lahir' => $request->input('tanggal_lahir'),
+            ]);
+        }
         
         return back();
     }
@@ -174,73 +192,6 @@ class KelolaRumahSakitController extends Controller
 
 
     // =============================================
-    //                  crud obat
-    // =============================================
-    public function tambahObat(Request $request) {
-        $validateData = $request->validate([
-            'nama_obat' => 'required|string|max:255|unique:obat',
-            'jenis_obat' => 'required|string|max:255',
-            'jumlah' => 'required|numeric',
-            'satuan' => 'required|string|max:255',
-            'harga_satuan' => 'required|numeric',
-            'tanggal_kadaluarsa' => 'required|date',
-            'supplier' => 'required|string|max:255',
-            'keterangan' => 'required|string|max:1000',
-        ]);
-
-        $obat = new Obat();
-        $obat->nama_obat = $validateData['nama_obat'];
-        $obat->jenis_obat = $validateData['jenis_obat'];
-        $obat->jumlah = $validateData['jumlah'];
-        $obat->satuan = $validateData['satuan'];
-        $obat->harga_satuan = $validateData['harga_satuan'];
-        $obat->tanggal_kadaluarsa = $validateData['tanggal_kadaluarsa'];
-        $obat->supplier = $validateData['supplier'];
-        $obat->keterangan = $validateData['keterangan'];
-        $obat->save();
-
-        if ($obat) {
-            return back();
-        }
-    }
-    public function deleteObat($id) {
-        $obat = Obat::findOrFail($id);
-        $obat->delete();
-        return back();
-    }
-    public function editObat(Request $request, $id) {
-
-        $obat = Obat::find($id);
-        
-        if ($request->input('nama_obat') != $obat->nama_obat && strlen($request->input('nama_obat')) >= 1) {
-            Obat::where('id', $id)->update([ 'nama_obat' => $request->input('nama_obat'), ]);
-        }
-        if ($request->input('jenis_obat') != $obat->jenis_obat && strlen($request->input('jenis_obat')) >= 1) {
-            Obat::where('id', $id)->update([ 'jenis_obat' => $request->input('jenis_obat'), ]);
-        }
-        if ($request->input('jumlah') != $obat->jumlah) {
-            Obat::where('id', $id)->update([ 'jumlah' => intval($request->input('jumlah')), ]);
-        }
-        if ($request->input('satuan') != $obat->satuan) {
-            Obat::where('id', $id)->update([ 'satuan' => intval($request->input('satuan')), ]);
-        }
-        if ($request->input('harga_satuan') != $obat->harga_satuan) {
-            Obat::where('id', $id)->update([ 'harga_satuan' => intval($request->input('harga_satuan')), ]);
-        }
-        if ($request->input('tanggal_kadaluarsa') != $obat->tanggal_kadaluarsa) {
-            Obat::where('id', $id)->update([ 'tanggal_kadaluarsa' => intval($request->input('tanggal_kadaluarsa')), ]);
-        }
-        if ($request->input('supplier') != $obat->supplier) {
-            Obat::where('id', $id)->update([ 'supplier' => intval($request->input('supplier')), ]);
-        }
-        if ($request->input('keterangan') != $obat->keterangan) {
-            Obat::where('id', $id)->update([ 'keterangan' => intval($request->input('keterangan')), ]);
-        }
-        
-        return back();
-    }
-
-    // =============================================
     //              CRUD PROFIL ADMIN
     // =============================================
     public function updateProfilnya(Request $request, $id) {
@@ -266,5 +217,28 @@ class KelolaRumahSakitController extends Controller
         $profil->save();
     
         return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
+    }
+
+    // =============================================
+    //                  REKAM MEDIS
+    // =============================================
+    public function pdfDownload() {
+        $pdf = new Dompdf();
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        // $options->set('isRemoteEnabled', true);
+        $pdf->setOptions($options);
+
+        $pdf->loadHtml(view('admin.rekammedis.pdf'));
+        $pdf->setPaper('A4');
+        $pdf->render();
+        //dd(view('admin.rekammedis.pdf')->render());
+
+        $nama_file = 'rekam_medis_' . Carbon::now()->format('dmy') . '.pdf';
+
+        Storage::put('pdf/' . $nama_file, $pdf->output());
+
+        $file_url = 'storage/pdf/' . $nama_file;
+        return response()->download($file_url)->deleteFileAfterSend();
     }
 }

@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\kehadiranDokter;
 
 class ProfileDokterController extends Controller
 {
@@ -25,6 +26,13 @@ class ProfileDokterController extends Controller
             
             return Redirect()->back()->with('success');
         } 
+        }
+        public function kehadiranDokter(Request $request)
+        {
+            $id = Auth::user()->id;
+            kehadiranDokter::where('id', $id)->update([ 'terakhir_hadir' => date('Y-m-d') ]);
+                
+            return Redirect()->back();
         }
     }
 
