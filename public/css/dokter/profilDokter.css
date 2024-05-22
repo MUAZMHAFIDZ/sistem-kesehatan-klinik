@@ -1,25 +1,32 @@
+.formProfilDokter{
+  margin-left: 50px;
+  margin-right: 10px;
+}
 .profilDokter {
     margin-left: 170px;
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 12px;
     background-color: white;
+    margin-top: 37px;
+    display: flex;
+    flex-direction: column;
+}
 
+.fontNamaDok{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-.ok{
-  background-color: rgb(242, 243, 250);
-} 
-.container{
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',  Verdana, sans-serif;
-}
+/* profil bawah */
 .editProfilDokter{
   margin-left: 170px;
   font-size: 14px;
   margin-bottom: 10px;
   background-color: white;
-}
 
+}
+.fontEditDok{
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 .btnSubmitProfile{
-  margin-left: 370px;
+  margin-left: 360px;
   padding-bottom: 40px;
 }
 
@@ -28,5 +35,38 @@
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',  Verdana, sans-serif;
 }
 
-  
-  
+.profImg {
+  margin-left: 100px;
+}
+.profImg img{
+  object-fit: cover;
+  border-radius: 50%;
+}
+.textUserEmail{
+  margin-left:50px;
+  margin-bottom: 110px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',  Verdana, sans-serif;
+}
+.profimg {
+  border-radius: 50%; /* Membuat gambar menjadi lingkaran */
+  box-shadow: 0px 0px 5px #5f6cfa; /* Efek bayangan 3D */
+}
+.riwayatDok{
+  background-color:  rgb(51, 110, 250);
+  color: white;
+  border: solid;
+  border-radius: 10px;
+  text-align: center;
+  display: inline-block;
+  padding: 5px;
+
+}
+.infoPribadi {
+  color: #005eff;
+  margin-left:  15px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',  Verdana, sans-serif;
+
+
+}
+
+

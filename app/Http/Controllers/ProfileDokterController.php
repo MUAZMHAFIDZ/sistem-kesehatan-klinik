@@ -16,7 +16,10 @@ class ProfileDokterController extends Controller
         if ($user) {
             $user->username = $request->input('username');
             $user->fullname = $request->input('fullname');
+            $user->email = $request->input('email');
             $user->nohp = $request->input('nohp');
+            $user->alamat = $request->input('alamat');
+            $user->riwayat_pendidikan = $request->input('riwayat_pendidikan');
 
             $user->save();
             

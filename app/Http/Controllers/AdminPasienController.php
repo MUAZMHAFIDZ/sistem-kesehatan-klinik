@@ -119,7 +119,7 @@ class AdminPasienController extends Controller
         
         return redirect()->route('admin.antrian')->with('success', 'Data berhasil diperbarui!');
     }
-
+    
     public function destroy($id)
     {
         $antrian = Antrian::findOrFail($id);
