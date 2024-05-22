@@ -1,7 +1,14 @@
 .tabelAntrian {
     margin-left: 160px;
-    font-size: 14px;
+    font-size: 13px;
     margin-right: auto; /* Adjust pixel value for desired shift */
-  
-  }
-  
+    margin-top: 37px ;
+}
+.tabelantriandok{
+    margin-left: 60px;
+    margin-right: 10px;
+
+}
+ .panjangsearchantrian {
+    margin-right: 550px;
+ }

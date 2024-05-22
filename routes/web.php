@@ -118,7 +118,7 @@ Route::get('/homeDokter', [DokterFrontendController::class, 'dashboard'])->middl
 Route::get('/profilDokter', [DokterFrontendController::class, 'funProfilDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.profilDokter');
 Route::get('/antrianPasienDok', [DokterFrontendController::class, 'funAntrianPasienDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.antrianPasienDok');
 Route::get('/riwayatPasienDok', [DokterFrontendController::class, 'funRiwayatPasienDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.riwayatPasienDok');
-
+Route::get('/resepObatDok', [DokterFrontendController::class, 'funResepObatDokter'])->middleware(['auth', 'can:Dokter'])->name('dokter.resepObatDokter');
 Route::post('/user/profile/update', [ProfileDokterController::class, 'UpdateProfile'])->name('user.profile.update');
 
 

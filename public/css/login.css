@@ -1,8 +1,5 @@
 .DentalCareLogin{
-    color: rgb(51, 110, 250);
-}
-.bgBodyLogin{
-  background: radial-gradient(592px at 48.2% 50%, rgba(255, 255, 249, 0.6) 0%, rgb(160, 199, 254) 74.6%);
+    color: rgb(59, 110, 200);
 }
 
 .form-signin {
@@ -32,16 +29,16 @@
   }
   .gambarDokter {
     margin-left:19%;
-    margin-top: 10px;
+    position: relative;
   }
   .forgotPassword{
-    margin-left: 60%;
+    margin-left: 70%;
     font-size: 12px; 
     font-family:sans-serif;
   }
 .question{
     position: relative;
-    margin-left: 79px;
+    margin-left: 80px;
     margin-top:9px ;
     font-size: 12px;
 
