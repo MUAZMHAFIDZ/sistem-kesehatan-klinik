@@ -23,7 +23,6 @@
                             <th>Nama Pasien</th>
                             <th>Nama Dokter</th>
                             <th>Tanggal Kunjungan</th>
-                            <th>Keluhan</th>
                             <th>Layanan</th>
                             <th>Diagnosa</th>
                             <th>Jumlah Kunjungan</th>
@@ -36,7 +35,6 @@
                         @endphp
                             <tr>
                                 <td>{{ $count++ }}</td>
-                                <td>aaaa</td>
                                 <td>aaaa</td>
                                 <td>aaaa</td>
                                 <td>aaaa</td>
