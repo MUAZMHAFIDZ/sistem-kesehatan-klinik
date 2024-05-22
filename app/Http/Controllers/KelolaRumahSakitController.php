@@ -245,26 +245,26 @@ class KelolaRumahSakitController extends Controller
     // =============================================
     public function updateProfilnya(Request $request, $id) {
         $userpro = User::findOrFail($id);
+        if ($request->hasFile('image')) {
+            $photonames = $userpro->username . "." . $request->file('image')->getClientOriginalExtension();
+            if (Storage::exists('public/storage/photoProfiles/' . $userpro->username)) {
+                Storage::delete('public/storage/photoProfiles/' . $userpro->username);
+            }
+            $request->file('image')->storeAs('photoProfiles', $photonames);
+            $photonames = '/storage/photoProfiles/' . $photonames;
+            User::where('id', $id)->update([
+                'image' => $photonames,
+            ]);
+        }
+        $pendidikan = $request->input('pendidikan');
         $userpro->update([
             'fullname' => $request->input('nama'),
             'email' => $request->input('email'),
             'alamat' => $request->input('alamat'),
-        ]);
-        $profil = Profil::where('user_id', $id)->first();
-        if (!$profil) {
-            $profil = new Profil();
-            $profil->user_id = $userpro->id;
-        }
-        $profil->deskripsi = $request->input('deskripsi');
-        $pengalaman = $request->input('pengalaman');
-
-        if (is_null($pengalaman)) {
-            $profil->pengalaman = json_encode(['Tidak ada']);
-        } else {
-            $profil->pengalaman = json_encode($pengalaman);
-        }
-        $profil->save();
-    
+            'jenis_kelamin' => $request->input('jenis_kelamin'),
+            'tanggal_lahir' => $request->input('tanggal_lahir'),
+            'riwayat_pendidikan' => json_encode($pendidikan),
+        ]);    
         return redirect()->back()->with('success', 'Profil berhasil diperbarui.');
     }
 }

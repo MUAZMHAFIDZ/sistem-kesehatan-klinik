@@ -27,7 +27,9 @@ class User extends Authenticatable
         'email',
         'Authorize',
         'alamat',
-        'riwayat_pendidikan'
+        'riwayat_pendidikan',
+        'jenis_kelamin',
+        'tanggal_lahir'
     ];
 
     /**
@@ -51,11 +53,6 @@ class User extends Authenticatable
             'password' => 'hashed',
             'nohp' => 'integer',
         ];
-    }
-
-    public function profil()
-    {
-        return $this->hasOne(Profil::class);
     }
 
     protected static function boot()

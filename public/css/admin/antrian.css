@@ -7,15 +7,17 @@
 ul, li {
     padding-left: 0;
 }
-
+body {
+    background-color: #e8e8e8;
+}
 .judul {
-    color: #4682B4;
+    color: #005bea;
 }
 
 .input-group-text {
     color: white;
-    background-color: #4682B4;
-    border: 1px solid #4682B4;
+    background-color: #005bea;
+    border: 1px solid #005bea;
 }
 .input-group-text a {
     text-decoration: none;
@@ -25,7 +27,7 @@ ul, li {
     color: #ffffff;
 }
 .form-control {
-    border: 1px solid #4682B4;
+    border: 1px solid #005bea;
 }
 .col-2, .col-11 {
     display: flex;
@@ -43,8 +45,6 @@ ul, li {
 .content {
     width: 95dvw;
     padding: 10px;
-    /* background: linear-gradient(to top, #ffecad, #fff6d0); */
-    background: linear-gradient(to top, #abd9ff, #ffffff);
 }
 .tr {
     border-top-right-radius: 8px !important;
@@ -195,4 +195,10 @@ ul, li {
 
 .navbarz {
     z-index: 999 !important;
+}
+.biru-tema {
+    background-color:  #005bea;
+}
+.teks-putih {
+    color: #ffffff;
 }
