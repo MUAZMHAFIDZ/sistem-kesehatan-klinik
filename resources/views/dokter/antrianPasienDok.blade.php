@@ -22,9 +22,8 @@
             <!-- FORM PENCARIAN -->
             <div class="search pb-3">
                 <form class="d-flex" action="" method="get">
-                   <!-- Bagian HTML -->
-<input class="panjangsearchantrian form-control" type="search" name="katakunci" id="searchInput"
-placeholder="Masukkan nama pasien" aria-label="Search" oninput="searchData()">
+                    <input class="panjangsearchantrian form-control" type="search" name="katakunci" id="searchInput"
+                        placeholder="Masukkan nama pasien" aria-label="Search" oninput="searchData()">
 
 
                 </form>
@@ -39,7 +38,7 @@ placeholder="Masukkan nama pasien" aria-label="Search" oninput="searchData()">
                         <th class="col-md-2">No Antrian</th>
                         <th class="col-md-2">Tanggal Periksa</th>
                         <th class="col-md-1">Waktu</th>
-                        <th >Aksi</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,7 +52,7 @@ placeholder="Masukkan nama pasien" aria-label="Search" oninput="searchData()">
                             </td>
                             <td><a href='' class="btn btn-warning btn-sm">Accept</a></td>
                             <td><a href='' class="btn btn-warning btn-sm">Decline</a></td>
-                            @endforeach
+                    @endforeach
                 </tbody>
             </table>
 
@@ -62,30 +61,29 @@ placeholder="Masukkan nama pasien" aria-label="Search" oninput="searchData()">
         <!-- AKHIR DATA -->
 
         <script>
-// Bagian JavaScript
-function searchData() {
-    // Ambil nilai dari input pencarian
-    var katakunci = document.getElementById('searchInput').value.toLowerCase();
+            // Bagian JavaScript
+            function searchData() {
+                // Ambil nilai dari input pencarian
+                var katakunci = document.getElementById('searchInput').value.toLowerCase();
 
-    // Ambil semua baris data
-    var rows = document.querySelectorAll('.table tbody tr');
+                // Ambil semua baris data
+                var rows = document.querySelectorAll('.table tbody tr');
 
-    // Loop melalui setiap baris data
-    rows.forEach(function(row) {
-        // Ambil teks dari kolom nama pada baris saat ini
-        var nama = row.querySelector('.kolom-nama').textContent.toLowerCase();
+                // Loop melalui setiap baris data
+                rows.forEach(function(row) {
+                    // Ambil teks dari kolom nama pada baris saat ini
+                    var nama = row.querySelector('.kolom-nama').textContent.toLowerCase();
 
-        // Periksa apakah teks nama mengandung kata kunci pencarian
-        if (nama.indexOf(katakunci) === -1) {
-            // Jika tidak cocok, sembunyikan baris
-            row.style.display = 'none';
-        } else {
-            // Jika cocok, tampilkan baris
-            row.style.display = '';
-        }
-    });
-}
-
+                    // Periksa apakah teks nama mengandung kata kunci pencarian
+                    if (nama.indexOf(katakunci) === -1) {
+                        // Jika tidak cocok, sembunyikan baris
+                        row.style.display = 'none';
+                    } else {
+                        // Jika cocok, tampilkan baris
+                        row.style.display = '';
+                    }
+                });
+            }
         </script>
 </body>
 

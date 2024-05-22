@@ -22,9 +22,9 @@ class ProfileDokterController extends Controller
             $user->riwayat_pendidikan = $request->input('riwayat_pendidikan');
 
             $user->save();
-            
+
             return Redirect()->back()->with('success');
-        } 
+        }
         }
     }
 

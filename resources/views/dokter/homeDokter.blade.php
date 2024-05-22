@@ -21,16 +21,6 @@
         </div>
     </div>
 
-    <div class="antriseluruh rounded shadow-sm">
-        <div class="py-4 d-flex align-items-center">
-            <i class="bi bi-clipboard"></i>
-            <div>
-                <span>100</span>
-                <span class="d-block">Total Pasien</span>
-            </div>
-        </div>
-    </div>
-
 
 </body>
 </html>
