@@ -16,7 +16,9 @@
             <div class="container-pasien">
                 <div class="sidebar-pasien">
                     <div class="profile-picture">
+                        <img src="{{ asset('/image/defaultProfile.png') }}">
 
+                        {{-- <img src="{{ $user->image }}" alt=""> --}}
                     </div>
                     <div class="nama-pasien">
                         <span>
@@ -28,8 +30,9 @@
                     <div class="sidebar">
                         <ul>
                             <li><a href="#" class="sidebar-link" data-target="dashboardMenuPasien">Beranda</a></li>
-                            <li><a href="#" class="sidebar-link" data-target="dashboardAppointmentPasien">Buat Janji Temu</a></li>
+                            <li><a href="#" class="sidebar-link" data-target="formAppointmentPasien">Buat Janji Temu</a></li>
                             <li><a href="#" class="sidebar-link" data-target="akunPasien">Informasi Akun</a></li>
+                            <li><a href="#" class="sidebar-link" data-target="antrianPasien">Antrian</a></li>
                         </ul>
                     </div>
                 </div>
@@ -61,48 +64,88 @@
                     </div>
                 </div>
 
-                <div class="content" id="dashboardAppointmentPasien">
+                <div class="content" id="formAppointmentPasien">
                     <h1>Formulir Pendaftaran</h1>
                     <p>Silahkan masukkan data yang sebenarnya agar dapat melakukan proses buat janji dengan dokter kami.</p>
-                    <form class="appointment-pasien" method="POST" action="" >
-                        @csrf
-                        <div class="nama-pasien">
-                            <input type="text" name="fullname" placeholder="Nama Lengkap" value="{{ old('fullname') }}">
-                        </div>
-
-                        <div class="usia-pasien">
-                            <input type="text" name="usiaPasien" placeholder="Usia" value="{{ old('usiaPasien') }}">
-                        </div>
-
-                        <div class="jk-pasien">
-                            <select id="jenis-kelamin" name="jenisKelamin">
-                                <option value="laki-laki">Laki-laki</option>
-                                <option value="perempuan">Perempuan</option>
-                            </select>
-                        </div>
-
-                        <div class="ttl-pasien">
-                            <input type="date" name="ttlPasien">
-                            <label for="ttlPasien">Masukkan Tanggal Lahir Anda.</label>
-                        </div>
-
-                        <div class="tanggalBuatJanji">
-                            <input type="datetime-local" id="appointmentDateTime" name="appointmentDateTime">
-                            <label for="tanggalBuatJanji">Pilih Rencana Tanggal dan Waktu Buat janji.</label>
-                        </div>
-
-                        <div class="alamat-pasien">
-                            <input type="text" name="alamatPasien" id="alamatPasien" placeholder="Masukkan Alamat Saat Ini">
-                            <label for="alamatPasien">Masukkan Alamat Lengkap</label>
-                        </div>
-                        
-                        <div class="kondisiPasien">
-                            <input type="text" name="keteranganPasien" id="kondisiPasien" placeholder="Contoh: Mengalami nyeri gusi">
-                            <label for="keteranganPasien">Kondisi Gigi Anda Saat Ini</label>
-                        </div>
-                        
-                        <button type="submit">Buat Janji Temu</button>
-                    </form>
+                    <form class="appointment-pasien" method="POST" action="{{ route('pasienBuatAntrian') }}">
+                      @csrf
+                      <div class="nama-field">
+                          <input type="text" name="nama" placeholder="Nama Lengkap">
+                      </div>
+                  
+                      <div class="nohp-field">
+                          <input type="text" name="no_telepon" placeholder="Nomor Telepon">
+                      </div>
+                  
+                      <div class="alamat-field">
+                          <input type="text" name="alamat" placeholder="Alamat">
+                      </div>
+                  
+                      <div class="usia-field">
+                          <input type="text" name="usia" placeholder="Usia">
+                      </div>
+                  
+                      <div class="jk-field">
+                          <select name="jenis_kelamin">
+                              <option value="">Pilih Jenis Kelamin</option>
+                              <option value="laki-laki">Laki-laki</option>
+                              <option value="perempuan">Perempuan</option>
+                          </select>
+                      </div>
+                  
+                      <div class="tanggal-periksa-field">
+                          <input type="date" name="tanggal_periksa">
+                      </div>
+                  
+                      <div class="kondisiGigi-field">
+                          <select name="gigi_sakit">
+                              <option value="">Apakah Gigi Anda Sakit?</option>
+                              <option value="ya">Ya</option>
+                              <option value="tidak">Tidak</option>
+                          </select>
+                      </div>
+                  
+                      <div class="kondisiGigi-field">
+                          <select name="gigi_berdarah">
+                              <option value="">Apakah Gusi Anda Berdarah?</option>
+                              <option value="ya">Ya</option>
+                              <option value="tidak">Tidak</option>
+                          </select>
+                      </div>
+                  
+                      <div class="kategori-layanan-field">
+                        <select class="form-control" id="kategori_layanan" name="kategori_layanan">
+                          <option value="">Pilih Layanan</option>
+                          <option value="Pemeriksaan Gigi dan Mulut">Pemeriksaan Gigi dan Mulut</option>
+                          <option value="Scaling Gigi">Scaling Gigi</option>
+                          <option value="Penambalan Gigi">Penambalan Gigi</option>
+                          <option value="Pencabutan Gigi">Pencabutan Gigi</option>
+                          <option value="Pemutihan Gigi">Pemutihan Gigi</option>
+                          <option value="Pemasangan Behel">Pemasangan Behel</option>
+                          <option value="Pemasangan Crown Gigi">Pemasangan Crown Gigi</option>
+                          <option value="Konsultasi Ortodonti">Konsultasi Ortodonti</option>
+                          <option value="Konsultasi Implan Gigi">Konsultasi Implan Gigi</option>
+                          <option value="Operasi Gigi Bungsu">Operasi Gigi Bungsu</option>
+                          <option value="Fluoridasi">Fluoridasi</option>
+                        </select>
+                      </div>
+                  
+                      {{-- <div class="durasi-layanan-field">
+                          <input type="text" name="durasi_layanan" placeholder="Durasi Layanan">
+                      </div> --}}
+                  
+                      {{-- <div class="waktu-field">
+                          <input type="time" name="waktu">
+                      </div>
+                  
+                      <div class="nomor-field">
+                          <input type="text" name="nomor" placeholder="Nomor">
+                      </div> --}}
+                  
+                      <div class="tombol-appointment">
+                          <button type="submit">Kirim</button>
+                      </div>
+                  </form>
                 </div>
 
                 <div class="content" id="akunPasien">
@@ -130,13 +173,51 @@
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </div>
                     </div>
-                    
+                </div>
+
+                <div class="content" id="antrianPasien">
+                    <h1>Antrian</h1>
+                    <p>Lihat Detail Buat Janji Anda </p>
+                    <table class="appointment-results">
+                          <tr>
+                              <th>Nama Lengkap</th>
+                              <td>{{ $user->fullname }}</td>
+                          </tr>
+                          <tr>
+                              <th>Nomor Telepon</th>
+                              <td>{{ $user->no_telepon }}</td>
+                          </tr>
+                          <tr>
+                              <th>Alamat</th>
+                              <td>{{ $user->alamat }}</td>
+                          </tr>
+                          <tr>
+                              <th>Usia</th>
+                              <td>{{ $user->usia }}</td>
+                          </tr>
+                          <tr>
+                              <th>Jenis Kelamin</th>
+                              <td>{{ $user->jenis_kelamin }}</td>
+                          </tr>
+                          <tr>
+                              <th>Tanggal Periksa</th>
+                              <td>{{ $user->tanggal_periksa }}</td>
+                          </tr>
+                          <tr>
+                              <th>Jam</th>
+                              <td>{{ $user->tanggal_periksa }}</td>
+                          </tr>
+                          <tr>
+                              <th>Layanan</th>
+                              <td>{{ $user->kategori_layanan }}</td>
+                          </tr>
+                    </table>
                 </div>
             </div>
         </div>
     </section>
 
-<script src="/js/dashboardPasien.js"></script>
-    
+<script src="{{ asset ('/js/dashboardPasien.js')}}"></script>
+
 </body>
 </html>

@@ -90,4 +90,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(JadwalDokter::class);
     }
+
+    public function antrian()
+    {
+        return $this->hasOne(Antrian::class);
+    }
 }
