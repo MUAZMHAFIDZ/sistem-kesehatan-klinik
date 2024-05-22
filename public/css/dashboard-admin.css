@@ -1,8 +1,8 @@
 :root {
-    --warna-utama: #6666ff;
+    --warna-utama: #005fff;
 }
 body {
-    background-color: #eee;
+    background-color: #d4d4dd;
 }
 .navmutlak {
     margin: 0;
@@ -19,6 +19,7 @@ body {
     margin: 0;
     justify-content: space-around;
     background-color: white;
+    border-bottom: 1px solid var(--warna-utama);
 }
 .logoz .img {
     width: 60%;
@@ -65,7 +66,7 @@ nav .navbarz {
     display: flex;
     height: 100vh;
     width: 45px;
-    background-color: var(--warna-utama);
+    background-color: white;
     flex-direction: column;
     margin: 0;
     overflow: hidden;
@@ -73,28 +74,29 @@ nav .navbarz {
 }
 .navbarz ul:hover {
     width: 180px;
+    border-right: 1px solid #dedede;
 }
 .navbarz li {
     list-style-type: none;
     height: 50px;
     width: 100%;
-    margin: 1px 0 0 0;
+    margin: 1px 0 2px 0;
     overflow: hidden;
 }
 .navbarz a:hover {
-    background-color: white;
-    color: black;
+    background-color: var(--warna-utama);
+    color: white;
 }
 .navbarz li a.active {
-    background-color: white;
-    color: black;
+    background-color: var(--warna-utama);
+    color: white;
 }
 .navbarz li a {
     height: 100%;
     width: 100%;
     display: block;
     text-decoration: none;
-    color: white;
+    color: var(--warna-utama);
     padding-top: 15px;
     padding-left: 10px;
     white-space: nowrap;
@@ -102,20 +104,26 @@ nav .navbarz {
     text-overflow: ellipsis;
 }
 .navbarz li i {
-    color: black;
+    color: var(--warna-utama);
     width: 40px;
+}
+.navbarz li a.active i {
+    color: white;
+}
+.navbarz li:hover i {
+    color: white;
 }
 
 /* perbaikan posisi content */
 .content {
-    width: 96dvw;
+    width: 96%;
     margin-top: 41px;
     margin-left: 47px;
     /* width: 96% !important; */
 }
 @media (max-width: 1300px) {
-    .content { width: 89dvw; }
+    .content { width: 89%; }
 }
 @media (max-width: 420px) {
-    .content { width: 85dvw; }
+    .content { width: 85%; }
 }

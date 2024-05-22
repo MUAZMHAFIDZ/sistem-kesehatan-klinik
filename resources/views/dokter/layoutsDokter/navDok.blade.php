@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title></title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0
+    ,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/dokter/navDokter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 </head>
@@ -13,31 +16,27 @@
     <nav>
      <div class="logo">
         <div class="img">
-        <img src="{{ asset('dentalcare.png') }}" alt="">
+       
     </div>
     <div class="profil">
-        <span>{{ $user->username }}</span>
-        <img src="profildokter3.jpg" alt="Foto_profil"> 
+        <span>dr. {{ $user->username }}</span>
+        <a href="{{ route('dokter.profilDokter') }}"><img src="{{$user->image}}"></a>
      </div>
-
-  
-        
-
+     
 </div>
-<div class="navbarDokter">
+<div class="navbarDokter bg-primary">
 <ul>
-    <li style=""><a id="menu1" href="{{ route('dokter.homeDokter') }}"><i class="fa-solid fa-house"></i><span>Beranda</span></a></li>
-    <li style=""><a id="menu2" href="{{ route('dokter.profilDokter') }}"><i class="fa-solid fa-user"></i><span>My Profile</span></a></li>
-    <li style=""><a id="menu3" href="{{ route('dokter.antrianPasienDok') }}"><i class="fa-solid fa-id-card"></i><span>Antrian Pasien</span></a></li>
-    <li style="" ><a id="menu4" href="{{ route('dokter.riwayatPasienDok')}}"><i class="fa-solid fa-book-medical"></i><span>Riwayat Pasien</span></li>
-               
-    <li class="out"><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i class="fa-solid fa-arrow-right-from-bracket"></i> <span>Logout</span></a></li>
+    <li class=" mb-2"><a><span><img class="logodental" src="dentalcare.png"></span></a></li>
+    <li><a href="{{ route('dokter.homeDokter') }}"><i class="bi bi-house-door"></i><span>Beranda</span></a></li>
+    <li><a href="{{ route('dokter.profilDokter') }}"><i class="bi bi-person"></i><span>My Profile</span></a></li>
+    
+    <li><a href="{{ route('dokter.antrianPasienDok') }}"><i class="bi bi-clipboard"></i><span>Antrian Pasien</span></a></li>
+    <li><a href="{{ route('dokter.riwayatPasienDok')}}"><i class="bi bi-clipboard-check"></i><span>Riwayat Pasien</span></li>
+    <li><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i class="bi bi-box-arrow-left"></i> <span>Logout</span></a></li>
     <form action="{{ route('logout') }}" method="POST" id="logout-form" style="display: none;">@csrf</form>
 </ul>
 
 </div>
-    </nav>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
 </body>
 </html>

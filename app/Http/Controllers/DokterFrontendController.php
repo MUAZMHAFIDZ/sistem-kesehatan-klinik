@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Antrian;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,13 +19,15 @@ class DokterFrontendController extends Controller
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
-        return view('dokter.profilDokter', compact('user'));
+        $dokters = User::where('Authorize', 'Dokter')->get();
+        return view('dokter.profilDokter', compact('user','dokters'));
     }
     public function funAntrianPasienDokter() {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
-        return view('dokter.antrianPasienDok', compact('user'));
+        $data = Antrian::orderBy('tanggal_periksa')->get();
+        return view('dokter.antrianPasienDok', compact('user','data'));
     }
     public function funRiwayatPasienDokter() {
         $user = Auth::user();
@@ -31,5 +35,6 @@ class DokterFrontendController extends Controller
         $user->save();
         return view('dokter.riwayatPasienDok', compact('user'));
     }
+
 
 }

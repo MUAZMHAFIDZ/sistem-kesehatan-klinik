@@ -11,59 +11,40 @@
   <body class="bg-light">
     @include('dokter/layoutsDokter/navDok')
     <br>
-    <main class="container">
-     
+    <main class="tabelriwayatdok">
+
+
         <!-- START DATA -->
-        <div class="tabelRiwayat my-4 p-2 bg-body rounded shadow-sm">
+        <div class="tabelRiwayat  p-3 bg-body rounded shadow-sm">
+
                 <!-- FORM PENCARIAN -->
-                <div class="h3 mb-3">RIWAYAT PASIEN</div>
+                <div class="h4 mb-3">RIWAYAT PASIEN</div>
                  <div class="search pb-3">
                   <form class="d-flex" action="" method="get">
-                      <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan nama pasien" aria-label="Search">
-                      <button class="btn btn-primary" type="submit">Cari</button>
+                      <input class="panjangsearchriwayat form-control " type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan nama pasien" aria-label="Search">
                   </form>
                 </div>
-                
-                
+
+
                 <table class="table  table-striped" >
                     <thead>
                         <tr>
-                            <th class="col-md-1">No</th>
                             <th class="col-md-2">Nama</th>
+                            <th class="col-md-3">Layanan</th>
+                            <th class="col-md-2">No Antrian</th>
                             <th class="col-md-2">Tanggal Periksa</th>
                             <th class="col-md-1">Waktu</th>
-                            <th class="col-md-2">Layanan</th>
-                            <th class="col-md-2">Aksi</th>
+
+
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Bagus Prasetyo</td>
-                            <td>9/10/2024</td>
-                            <td>14.00</td>
-                            <td>Cabut gigi</td>
-                            <td>
-                                <a href='' class="btn btn-danger btn-sm">Delete</a>
-                                
-                            </td>
-                        </tr>
+
+
                     </tbody>
-                    <tbody>
-                        <tr>
-                            <td>2</td>
-                            <td>Muhammad Ikhsan</td>
-                            <td>11/9/2024</td>
-                            <td>20.00</td>
-                            <td>Periksa gigi</td>
-                            <td>
-                                <a href='' class="btn btn-danger btn-sm">Delete</a>
-                               
-                            </td>
-                        </tr>
-                    </tbody>
+
                 </table>
-        </div>   
+        </div>
           <!-- AKHIR DATA -->
     </main>
 
