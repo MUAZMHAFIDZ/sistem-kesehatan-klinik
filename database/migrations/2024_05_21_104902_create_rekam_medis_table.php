@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_antrian');
             $table->string('diagnosa');
+            $table->date('dibuat');
             $table->timestamps();
 
             $table->foreign('id_antrian')->references('id')->on('antrian')->onDelete('cascade');

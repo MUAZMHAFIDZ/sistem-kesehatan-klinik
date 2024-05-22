@@ -13,7 +13,7 @@
     @include('admin.component.navbar');
     <div id="content" class="content contentzz">
         <div class="itemcontent">
-            <button class="blue" style="padding: 10px; margin-top: 20px; cursor: pointer;"><a style="color: white;" href="{{ route('admin.rekammedis.pdf') }}">Download Rekam Medis PDF</a></button>
+            <button class="blue" style="padding: 10px; margin-top: 20px; cursor: pointer;"><a style="color: white;" href="{{ route('rekammedis.pdf') }}">Download Rekam Medis PDF</a></button>
             <input class="caridokterzz" type="text" id="cariDokter" placeholder="Cari berdasarkan Nama Dokter atau Pasien" onkeyup="cariData()">
             <div class="datadokter">
                 <table id="tablesss">
