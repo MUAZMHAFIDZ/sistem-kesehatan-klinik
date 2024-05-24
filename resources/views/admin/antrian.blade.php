@@ -67,25 +67,19 @@
                     <button class="btn btn-danger btn-sm" onclick="hapusById({{ $antrian->id }}, '{{ $antrian->user_id && $antrian->user->Authorize !== "Admin" ? $antrian->user->fullname : $antrian->nama }}', '{{ $antrian->kategori_layanan }}', event)">Hapus</button>
                 </div>
             </td>
-        </tr>
-        @endforeach --}}
-
-        @foreach($data as $antrian)
-        <tr>
-            <td class="kolom-nama">{{ $antrian->user_id && $antrian->user->Authorize !== "Admin" ? $antrian->user->fullname : $antrian->nama }}</td>
-            <td class="kolom-layanan">{{ $antrian->kategori_layanan }}</td>
-            <td>{{ $antrian->nomor }}</td>
-            <td>{{ $antrian->tanggal_periksa }}</td>
-            <td>{{ $antrian->waktu instanceof \Carbon\Carbon ? $antrian->waktu->format('H:i') : $antrian->waktu }}</td>
-            <td class="text-center">
-                <div class="btn-group">
-                    <a href="{{ route('antrian.edit', $antrian->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm" onclick="hapusById({{ $antrian->id }}, '{{ $antrian->user_id &&  $antrian->user->Authorize !== "Admin" ? $antrian->user->fullname : $antrian->nama }}', '{{ $antrian->kategori_layanan }}', event)">Hapus</button>
-                </div>
-            </td>
+          <td class="kolom-nama">{{ $antrian->nama }}</td>
+          <td class="kolom-layanan">{{ $antrian->kategori_layanan }}</td>
+          <td>{{ $antrian->nomor }}</td>
+          <td>{{ $antrian->tanggal_periksa }}</td>
+          <td>{{ $antrian->waktu instanceof \Carbon\Carbon ? $antrian->waktu->format('H:i') : $antrian->waktu }}</td>
+          <td class="text-center">
+            <div class="btn-group">
+                <a href="{{ route('antrian.edit', $antrian->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                <button class="btn btn-danger btn-sm" onclick="hapusById({{ $antrian->id }}, '{{$antrian->nama}}', '{{$antrian->kategori_layanan}}', event)">Hapus</button>
+            </div>
+          </td>
         </tr>
         @endforeach
-
     </tbody>
   </table>
 </div>
