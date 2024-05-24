@@ -44,7 +44,7 @@
     <div class="table-responsive isi-table">
   <table id="antrianTable" class="table table-striped table-bordered table-hover">
     <thead>
-      <tr style="background-color: #4682B4; color: white;">
+      <tr class="biru-tema teks-putih">
         <th scope="col" class="tl">Nama</th>
         <th scope="col">Layanan</th>
         <th scope="col">No Antrian</th>
@@ -54,7 +54,7 @@
       </tr>
     </thead>
     <tbody>
-        @foreach($data as $antrian)
+        {{-- @foreach($data as $antrian)
         <tr>
             <td class="kolom-nama">{{ $antrian->user_id && $antrian->user->Authorize !== "Admin" ? $antrian->user->fullname : $antrian->nama }}</td>
             <td class="kolom-layanan">{{ $antrian->kategori_layanan }}</td>
@@ -68,7 +68,24 @@
                 </div>
             </td>
         </tr>
+        @endforeach --}}
+
+        @foreach($data as $antrian)
+        <tr>
+            <td class="kolom-nama">{{ $antrian->user_id && $antrian->user->Authorize !== "Admin" ? $antrian->user->fullname : $antrian->nama }}</td>
+            <td class="kolom-layanan">{{ $antrian->kategori_layanan }}</td>
+            <td>{{ $antrian->nomor }}</td>
+            <td>{{ $antrian->tanggal_periksa }}</td>
+            <td>{{ $antrian->waktu instanceof \Carbon\Carbon ? $antrian->waktu->format('H:i') : $antrian->waktu }}</td>
+            <td class="text-center">
+                <div class="btn-group">
+                    <a href="{{ route('antrian.edit', $antrian->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                    <button class="btn btn-danger btn-sm" onclick="hapusById({{ $antrian->id }}, '{{ $antrian->user_id &&  $antrian->user->Authorize !== "Admin" ? $antrian->user->fullname : $antrian->nama }}', '{{ $antrian->kategori_layanan }}', event)">Hapus</button>
+                </div>
+            </td>
+        </tr>
         @endforeach
+
     </tbody>
   </table>
 </div>

@@ -68,9 +68,9 @@ padding: 7px;
 
   .container-form {
     display: grid;
-    background: linear-gradient(to top, #cccccc, #f0f0f0);
-    grid-template-columns: repeat(2, 1fr); /* Membagi container menjadi dua kolom dengan lebar yang sama */
-    gap: 20px; /* Jarak antara dua div */
+    background: linear-gradient(to top, #cccccc, #cccccc);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
     border-radius: 8px;
   }
   .container-form .sub-container {

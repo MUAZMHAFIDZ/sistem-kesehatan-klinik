@@ -79,8 +79,13 @@ class AdminFrontendController extends Controller
     }
     public function dashboardprofil()
     {
-        $user = Auth::user()->load('profil');
+        $user = Auth::user();
         $user->last_activity = now();
+        $pendidikan = $user->riwayat_pendidikan;
+        if (!$pendidikan) {
+            $pendidikan = json_encode(['Tidak ada']);
+            $user->riwayat_pendidikan = $pendidikan;
+        }
         $user->save();
         $onlineUser = User::where('last_activity', '>=', Carbon::now()->subMinutes(2))->get();
 
@@ -95,23 +100,8 @@ class AdminFrontendController extends Controller
         });
         $admin = User::where('Authorize', 'Admin')->get();
 
-        // Ambil profil admin
-        $profil = $user->profil;
 
-        // Periksa apakah profil admin tidak null
-        if (!$profil) {
-            // Atur $profil ke nilai default atau kosong jika tidak ada profil
-            $profil = (object) [
-                'user_id' => Auth::id(),
-                'deskripsi' => 'Tidak ada',
-                'email' => 'Tidak ada',
-                'pengalaman' => json_encode(['Tidak ada']),
-                'pendidikan' => json_encode(['Tidak ada']),
-                'alamat' => 'Tidak ada',
-            ];
-        }
-
-        return view('admin.profil', compact('user', 'activeAdmin', 'admin', 'profil'));
+        return view('admin.profil', compact('user', 'activeAdmin', 'admin'));
     }
     public function dashboardstokobat()
     {
