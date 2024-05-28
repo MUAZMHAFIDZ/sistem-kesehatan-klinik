@@ -57,6 +57,7 @@ class AdminPasienController extends Controller
             'kategori_layanan' => $request->input("kategori_layanan"),
             'durasi_layanan' => $durasi_layanan,
             'waktu' => $waktu_mulai,
+            'id_dokter' => 2,
             'nomor' => $antrian_terakhir ? $antrian_terakhir->nomor + 1 : 1,
         ];
 
