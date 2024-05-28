@@ -136,11 +136,16 @@ class AdminFrontendController extends Controller
     }
     public function dashboardformpasien()
     {
+    if (Auth::check()) {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
-        return view('admin.formpasien', compact('user'));
+    } else {
+        $user = null;
     }
+    return view('admin.formpasien', compact('user'));
+    }
+
     public function rekammedis() {
         $user = Auth::user();
         $user->last_activity = now();
