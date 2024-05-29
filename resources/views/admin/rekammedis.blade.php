@@ -25,7 +25,7 @@
                             <th>Tanggal Kunjungan</th>
                             <th>Layanan</th>
                             <th>Diagnosa</th>
-                            <th>Jumlah Kunjungan</th>
+                            <th>Jumlah Kunjungan Dalam Seminggu</th>
                             <th style="border-top-right-radius: 20px;">Aksi</th>
                         </tr>
                     </thead>

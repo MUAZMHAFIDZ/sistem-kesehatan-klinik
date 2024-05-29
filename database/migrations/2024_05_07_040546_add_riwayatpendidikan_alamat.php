@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->string('riwayat_pendidikan')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('jenis_kelamin')->nullable();
-            $table->date('tanggal_lahir')->nullable();
         });
     }
 
@@ -27,8 +25,6 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('riwayat_pendidikan');
             $table->dropColumn('alamat');
-            $table->dropColumn('jenis_kelamin');
-            $table->dropColumn('tanggal_lahir');
         });
     }
 };

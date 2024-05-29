@@ -62,6 +62,7 @@ class AdminPasienController extends Controller
             'jenis_kelamin' => $request->input('jenis_kelamin'),
             'gigi_sakit' => $request->input('gigi_sakit'),
             'gigi_berdarah' => $request->input('gigi_berdarah'),
+            'id_dokter' => 2,
             'nomor' => $antrian_terakhir ? $antrian_terakhir->nomor + 1 : 1,
         ];
 

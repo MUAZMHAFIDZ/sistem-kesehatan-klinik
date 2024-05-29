@@ -54,7 +54,7 @@
       </tr>
     </thead>
     <tbody>
-        {{-- @foreach($data as $antrian)
+        @foreach($data as $antrian)
         <tr>
             <td class="kolom-nama">{{ $antrian->user_id && $antrian->user->Authorize !== "Admin" ? $antrian->user->fullname : $antrian->nama }}</td>
             <td class="kolom-layanan">{{ $antrian->kategori_layanan }}</td>
