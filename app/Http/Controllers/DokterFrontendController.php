@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Antrian;
 use App\Models\User;
+use App\Models\JadwalDokter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,6 +13,7 @@ class DokterFrontendController extends Controller
     public function dashboard() {
         $user = Auth::user();
         $user->last_activity = now();
+        JadwalDokter::where('id_dokter', $user->id)->update([ 'terakhir_hadir' => date('Y-m-d') ]);
         $user->save();
         return view('dokter.homeDokter', compact('user'));
     }

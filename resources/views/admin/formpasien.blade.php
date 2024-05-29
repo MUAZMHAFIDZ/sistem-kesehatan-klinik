@@ -21,87 +21,92 @@
     </div>
 
 <div class="container mt-5">
-  <form action="{{route('admin.formpasien.submit')}}" id="registrationForm" method="POST" onsubmit="return validateForm()" class="container-form registration-form">
+
+  <form action="{{ route('admin.formpasien.submit') }}" id="registrationForm" method="POST" onsubmit="return validateForm()" class="container-form registration-form">
     @csrf
     <div class="sub-container">
-    <div class="form-group">
-      <label for="nama">Nama</label>
-      <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama">
-      <span class="error-message" id="nama-error"></span>
-    </div>
-    <div class="form-group">
-      <label for="noTelepon">No Telepon</label>
-      <input type="tel" class="form-control" id="no_telepon" name="no_telepon" placeholder="Masukkan no telepon">
-      <span class="error-message" id="no-telepon-error"></span>
-    </div>
-    <div class="form-group">
-      <label for="alamat">Alamat</label>
-      <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat">
-      <span class="error-message" id="alamat-error"></span>
-    </div>
-    <div class="form-group">
-      <label for="usia">Usia</label>
-      <input type="text" class="form-control" id="usia" name="usia" placeholder="Masukkan usia">
-      <span class="error-message" id="usia-error"></span>
-    </div>
-    <div class="form-group">
-      <label for="jenis_kelamin">Jenis Kelamin</label>
-      <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-        <option value="">Pilih Jenis Kelamin</option>
-        <option value="laki-laki">Laki-laki</option>
-        <option value="perempuan">Perempuan</option>
-      </select>
-      <span class="error-message" id="jenis-kelamin-error"></span>
-    </div>
+        @if (!Auth::check() || (Auth::check() && Auth::user()->Authorize === "Admin"))
+        <div class="form-group">
+            <label for="nama">Nama</label>
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama" value="{{ old('nama') }}">
+            <span class="error-message" id="nama-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="noTelepon">No Telepon</label>
+            <input type="tel" class="form-control" id="no_telepon" name="no_telepon" placeholder="Masukkan no telepon" value="{{ old('no_telepon') }}">
+            <span class="error-message" id="no-telepon-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan alamat" value="{{ old('alamat') }}">
+            <span class="error-message" id="alamat-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="usia">Usia</label>
+            <input type="text" class="form-control" id="usia" name="usia" placeholder="Masukkan usia" value="{{ old('usia') }}">
+            <span class="error-message" id="usia-error"></span>
+        </div>
+        @endif
+        <div class="form-group">
+            <label for="jenis_kelamin">Jenis Kelamin</label>
+            <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+                <option value="">Pilih Jenis Kelamin</option>
+                <option value="laki-laki" {{ old('jenis_kelamin') == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                <option value="perempuan" {{ old('jenis_kelamin') == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
+            </select>
+            <span class="error-message" id="jenis-kelamin-error"></span>
+        </div>
     </div>
     <div class="sub-container">
-    <div class="form-group">
-      <label for="tanggal_periksa">Tanggal Periksa</label>
-      <input type="date" class="form-control" id="tanggal_periksa" name="tanggal_periksa">
-      <span class="error-message" id="tanggal-periksa-error"></span>
+        <div class="form-group">
+            <label for="tanggal_periksa">Tanggal Periksa</label>
+            <input type="date" class="form-control" id="tanggal_periksa" name="tanggal_periksa" value="{{ old('tanggal_periksa') }}">
+            <span class="error-message" id="tanggal-periksa-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="gigi_sakit">Apakah gigi anda sakit?</label>
+            <select class="form-control" id="gigi_sakit" name="gigi_sakit">
+                <option value="">Pilih</option>
+                <option value="ya" {{ old('gigi_sakit') == 'ya' ? 'selected' : '' }}>Ya</option>
+                <option value="tidak" {{ old('gigi_sakit') == 'tidak' ? 'selected' : '' }}>Tidak</option>
+            </select>
+            <span class="error-message" id="gigi-sakit-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="gigi_berdarah">Apakah gigi anda berdarah?</label>
+            <select class="form-control" id="gigi_berdarah" name="gigi_berdarah">
+                <option value="">Pilih</option>
+                <option value="ya" {{ old('gigi_berdarah') == 'ya' ? 'selected' : '' }}>Ya</option>
+                <option value="tidak" {{ old('gigi_berdarah') == 'tidak' ? 'selected' : '' }}>Tidak</option>
+            </select>
+            <span class="error-message" id="gigi-berdarah-error"></span>
+        </div>
+        <div class="form-group">
+            <label for="kategori_layanan">Layanan yang diajukan</label>
+            <select class="form-control" id="kategori_layanan" name="kategori_layanan">
+                <option value="">Pilih Layanan</option>
+                <option value="Pemeriksaan Gigi dan Mulut" {{ old('kategori_layanan') == 'Pemeriksaan Gigi dan Mulut' ? 'selected' : '' }}>Pemeriksaan Gigi dan Mulut</option>
+                <option value="Scaling Gigi" {{ old('kategori_layanan') == 'Scaling Gigi' ? 'selected' : '' }}>Scaling Gigi</option>
+                <option value="Penambalan Gigi" {{ old('kategori_layanan') == 'Penambalan Gigi' ? 'selected' : '' }}>Penambalan Gigi</option>
+                <option value="Pencabutan Gigi" {{ old('kategori_layanan') == 'Pencabutan Gigi' ? 'selected' : '' }}>Pencabutan Gigi</option>
+                <option value="Pemutihan Gigi" {{ old('kategori_layanan') == 'Pemutihan Gigi' ? 'selected' : '' }}>Pemutihan Gigi</option>
+                <option value="Pemasangan Behel" {{ old('kategori_layanan') == 'Pemasangan Behel' ? 'selected' : '' }}>Pemasangan Behel</option>
+                <option value="Pemasangan Crown Gigi" {{ old('kategori_layanan') == 'Pemasangan Crown Gigi' ? 'selected' : '' }}>Pemasangan Crown Gigi</option>
+                <option value="Konsultasi Ortodonti" {{ old('kategori_layanan') == 'Konsultasi Ortodonti' ? 'selected' : '' }}>Konsultasi Ortodonti</option>
+                <option value="Konsultasi Implan Gigi" {{ old('kategori_layanan') == 'Konsultasi Implan Gigi' ? 'selected' : '' }}>Konsultasi Implan Gigi</option>
+                <option value="Operasi Gigi Bungsu" {{ old('kategori_layanan') == 'Operasi Gigi Bungsu' ? 'selected' : '' }}>Operasi Gigi Bungsu</option>
+                <option value="Fluoridasi" {{ old('kategori_layanan') == 'Fluoridasi' ? 'selected' : '' }}>Fluoridasi</option>
+            </select>
+            <span class="error-message" id="kategori-layanan-error"></span>
+        </div>
+        <div class="buttons">
+            <a href="{{ route('admin.antrian') }}" class="cancel-button">Batal</a>
+            <button type="submit" class="register-button">Daftar</button>
+        </div>
     </div>
-    <div class="form-group">
-      <label for="gigi_sakit">Apakah gigi anda sakit?</label>
-      <select class="form-control" id="gigi_sakit" name="gigi_sakit">
-        <option value="">Pilih</option>
-        <option value="ya">Ya</option>
-        <option value="tidak">Tidak</option>
-      </select>
-      <span class="error-message" id="gigi-sakit-error"></span>
-    </div>
-    <div class="form-group">
-      <label for="gigi_berdarah">Apakah gigi anda berdarah?</label>
-      <select class="form-control" id="gigi_berdarah" name="gigi_berdarah">
-        <option value="">Pilih</option>
-        <option value="ya">Ya</option>
-        <option value="tidak">Tidak</option>
-      </select>
-      <span class="error-message" id="gigi-berdarah-error"></span>
-    </div>
-    <div class="form-group">
-      <label for="kategori_layanan">Layanan yang diajukan</label>
-      <select class="form-control" id="kategori_layanan" name="kategori_layanan">
-        <option value="">Pilih Layanan</option>
-        <option value="Pemeriksaan Gigi dan Mulut">Pemeriksaan Gigi dan Mulut</option>
-        <option value="Scaling Gigi">Scaling Gigi</option>
-        <option value="Penambalan Gigi">Penambalan Gigi</option>
-        <option value="Pencabutan Gigi">Pencabutan Gigi</option>
-        <option value="Pemutihan Gigi">Pemutihan Gigi</option>
-        <option value="Pemasangan Behel">Pemasangan Behel</option>
-        <option value="Pemasangan Crown Gigi">Pemasangan Crown Gigi</option>
-        <option value="Konsultasi Ortodonti">Konsultasi Ortodonti</option>
-        <option value="Konsultasi Implan Gigi">Konsultasi Implan Gigi</option>
-        <option value="Operasi Gigi Bungsu">Operasi Gigi Bungsu</option>
-        <option value="Fluoridasi">Fluoridasi</option>
-      </select>
-      <span class="error-message" id="kategori-layanan-error"></span>
-    </div>
-    <div class="buttons">
-      <a href="{{ route('admin.antrian') }}" class="cancel-button">Batal</a>
-      <button type="submit" class="register-button">Daftar</button>
-  </div>
-    </div>
-  </form>
+</form>
+
+
 </div>
 
     <script>

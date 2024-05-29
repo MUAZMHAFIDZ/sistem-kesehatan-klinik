@@ -92,9 +92,14 @@
                 <p>Absensi Dokter</p>
             </div>
             <div class="card">
+                @php
+                    $today = date('Y-m-d');
+                @endphp
+                @foreach($dokterBertugas as $hadirDT)
                 <div class="data">
-                    <p>dr. xxx <span>( Hadir )</span></p>
+                    <p>dr. {{ $hadirDT->users->fullname }}<span>{{ $hadirDT->terakhir_hadir == $today ? '( Hadir )' : '( Tidak Hadir)' }}</span></p>
                 </div>
+                @endforeach
             </div>
         </div>
         <!-- ========================== pasien dalam antrian ========================== -->
