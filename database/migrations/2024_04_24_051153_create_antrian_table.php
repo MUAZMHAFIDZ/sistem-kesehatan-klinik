@@ -5,6 +5,39 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
+// {
+//     /**
+//      * Run the migrations.
+//      */
+//     public function up(): void
+//     {
+//         Schema::create('antrian', function (Blueprint $table) {
+//             $table->id();
+//             $table->string('nama', 30)->notNull();
+//             $table->bigInteger('no_telepon')->nullable();
+//             $table->string('alamat', 255)->notNull();
+//             $table->integer('usia')->notNull();
+//             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->notNull();
+//             $table->date('tanggal_periksa')->notNull();
+//             $table->enum('gigi_sakit', ['ya', 'tidak'])->notNull();
+//             $table->enum('gigi_berdarah', ['ya', 'tidak'])->notNull();
+//             $table->string('kategori_layanan', 40)->notNull();
+//             $table->integer('durasi_layanan')->nullable();
+//             $table->time('waktu')->nullable();
+//             $table->integer('nomor')->nullable();
+//             $table->timestamps();
+//         });
+//     }
+
+//     /**
+//      * Reverse the migrations.
+//      */
+//     public function down(): void
+//     {
+//         Schema::dropIfExists('antrian');
+//     }
+// };
+
 {
     /**
      * Run the migrations.
@@ -13,14 +46,16 @@ return new class extends Migration
     {
         Schema::create('antrian', function (Blueprint $table) {
             $table->id();
-            $table->string('nama', 30)->notNull();
-            $table->bigInteger('no_telepon')->nullable();
-            $table->string('alamat', 255)->notNull();
-            $table->integer('usia')->notNull();
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->notNull();
-            $table->date('tanggal_periksa')->notNull();
-            $table->enum('gigi_sakit', ['ya', 'tidak'])->notNull();
-            $table->enum('gigi_berdarah', ['ya', 'tidak'])->notNull();
+            $table->unsignedBigInteger('user_id')->nullable(); // Menambahkan kolom user_id sebagai kunci asing
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); // Menambahkan constraint foreign key
+            $table->string('nama', 50)->nullable(); // Menambahkan kolom nama
+            $table->bigInteger('no_telepon')->nullable(); // Menambahkan kolom no_telepon
+            $table->string('alamat', 255)->nullable(); // Menambahkan kolom alamat
+            $table->integer('usia')->nullable(); // Menambahkan kolom usia
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->nullable(); // Menambahkan kolom jenis_kelamin
+            $table->date('tanggal_periksa')->nullable(); // Menambahkan kolom tanggal_periksa
+            $table->enum('gigi_sakit', ['ya', 'tidak'])->nullable(); // Menambahkan kolom gigi_sakit
+            $table->enum('gigi_berdarah', ['ya', 'tidak'])->nullable(); // Menambahkan kolom gigi_berdarah
             $table->string('kategori_layanan', 40)->notNull();
             $table->integer('durasi_layanan')->nullable();
             $table->time('waktu')->nullable();

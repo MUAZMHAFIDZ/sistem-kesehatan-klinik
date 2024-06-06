@@ -230,7 +230,8 @@ class KelolaRumahSakitController extends Controller
         // $options->set('isRemoteEnabled', true);
         $pdf->setOptions($options);
 
-        $pdf->loadHtml(view('admin.rekammedis.pdf'));
+        $users = Auth::user();
+        $pdf->loadHtml(view('admin.rekammedis.pdf', compact('users')));
         $pdf->setPaper('A4');
         $pdf->render();
         //dd(view('admin.rekammedis.pdf')->render());

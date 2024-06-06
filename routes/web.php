@@ -42,6 +42,11 @@ Route::get('/register', [
     PasienFrontendController::class, 'registerPasien'
 ])->middleware('guest')->name('/register');
 
+Route::put('/dashboardpasien/{id}', [PasienFrontendController::class, 'updateAkunPasien'])->name('updateAkunPasien.update');
+
+// Route::get('/dashboardpasien/{id}', [PasienFrontendController::class,
+// 'showAntrian'])->name('showAntrianPasien');
+
 /* 
 --------------------------
 ^ route pages pasien end
@@ -128,7 +133,9 @@ Route::get('/antrian/{id}/edit', [AdminPasienController::class, 'edit'])->name('
 Route::put('/antrian/{id}', [AdminPasienController::class, 'update'])->name('antrian.update');
 Route::delete('/antrian/{id}', [AdminPasienController::class, 'destroy'])->name('antrian.destroy');
 
-Route::get('/dashboardpasien/{id}', [PasienFrontendController::class, 'showAntrian'])->name('showAntrianPasien');
+Route::get('/dashboardpasien/{id}', [
+    PasienFrontendController::class, 'showAntrian'
+])->name('showAntrianPasien');
 
 Route::post('/appointmentPasien', [
     AdminPasienController::class, 'buatAntrian'
