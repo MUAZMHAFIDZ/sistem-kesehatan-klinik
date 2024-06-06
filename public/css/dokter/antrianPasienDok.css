@@ -12,3 +12,41 @@
  .panjangsearchantrian {
     margin-right: 550px;
  }
+
+.popup{
+    top: 0;
+    left: -150%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgba(1 , 1 , 1 , 0.3);
+}
+.popup.geserkan
+.popup form{
+    height: 400px;
+    width: 400px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.popup .row2{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+}
+.popup .row2 textarea{
+    height: 300px;
+    resize: none;
+}
+.popup .row1{
+    text-align: end;
+    margin-right: 15px;
+}
+.popup button{
+    width: 100px;
+}

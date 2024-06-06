@@ -12,7 +12,7 @@
 <body>
     @include('admin.component.navbar');
     <div id="content" class="content contentsz">
-        
+
     <!-- ========================== pasien hari ini ========================== -->
     <div class="home">
         <div class="item">
@@ -109,7 +109,7 @@
             </div>
         </div>
     </div>
-    
+
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {

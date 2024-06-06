@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard Dokter | Antrian Pasien</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/dokter/antrianPasienDok.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -42,6 +41,7 @@
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach ($data as $antrian)
                         <tr>
                             <td class="kolom-nama">{{ $antrian->nama }}</td>
@@ -50,12 +50,30 @@
                             <td>{{ $antrian->tanggal_periksa }}</td>
                             <td>{{ $antrian->waktu instanceof \Carbon\Carbon ? $antrian->waktu->format('H:i') : $antrian->waktu }}
                             </td>
-                            <td><a href='' class="btn btn-warning btn-sm">Accept</a></td>
-                            <td><a href='' class="btn btn-warning btn-sm">Decline</a></td>
+                            <td><a onclick="acceptPasien(event)"
+                                    class="btn btn-warning btn-sm">Accept</a></td>
+                            <td><a
+                                    class="btn btn-warning btn-sm">Decline</a></td>
                     @endforeach
                 </tbody>
+
+
             </table>
 
+        </div>
+        <div class="popup" id="popUpDiagnosa">
+            <form method="POST" action="{{ route('registerdokter.submit') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="row2">
+                    <label for="diagnosa">Diagnosa</label>
+                    <textarea name="diagnosa" id="diagnosa" placeholder="Diagnosa"></textarea>
+                </div>
+                <div class="row1">
+                    <button type="submit" class="btn btn-primary">Terima</button>
+                    <button type="button" onclick="batalPasien(event)" id="batal"
+                        class="btn btn-danger">Batal</button>
+                </div>
+            </form>
         </div>
 
         <!-- AKHIR DATA -->
@@ -83,6 +101,21 @@
                         row.style.display = '';
                     }
                 });
+            }
+
+
+            function batalPasien(event) {
+                event.preventDefault()
+
+                const klikAdmin = document.getElementById('popUpDiagnosa')
+                klikAdmin.classList.remove('geserkan')
+            }
+
+            function acceptPasien(event) {
+                event.preventDefault()
+
+                const klikAdmin = document.getElementById('popUpDiagnosa')
+                klikAdmin.classList.add('geserkan')
             }
         </script>
 </body>

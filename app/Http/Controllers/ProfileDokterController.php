@@ -15,6 +15,7 @@ class ProfileDokterController extends Controller
         $user = User::find(Auth::user()->id);
 
         if ($user) {
+
             $user->username = $request->input('username');
             $user->fullname = $request->input('fullname');
             $user->email = $request->input('email');
@@ -31,7 +32,7 @@ class ProfileDokterController extends Controller
         {
             $id = Auth::user()->id;
             kehadiranDokter::where('id', $id)->update([ 'terakhir_hadir' => date('Y-m-d') ]);
-                
+
             return Redirect()->back();
         }
     }

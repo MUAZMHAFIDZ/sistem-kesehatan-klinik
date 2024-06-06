@@ -12,7 +12,7 @@
   @include('pasien.layout.navbarPasien')
   <form method="POST" action="{{ route('login.submit') }}">
           @csrf
-          
+
     <div class="container d-flex justify-content-center align-items-center ">
 
 
@@ -35,7 +35,7 @@
             </div>
             <h1 class="DentalCareLogin h4 mb-5 d-flex justify-content-center text-opacity-75">Login to DentalCare</h1>
             <div class="position-relative">
-              
+
                 <input type="text" class="form-control small-placeholder @error('username') is-invalid @enderror" required value="{{ old('username') }}"  name="username" placeholder="Username " >
 
                 @error('username')
@@ -43,12 +43,12 @@
                     {{ $message }}
                 </div>
                 @enderror
-              
-            </div>   
+
+            </div>
             <div class="position-relative mt-2 py-4 input-wrapper">
-            
+
               <input type="password" class="form-control small-placeholder @error('password') is-invalid @enderror" required value="{{ old('password') }}" name="password" id="password" placeholder="Password">
-            
+
               @error('password')
               <div class="invalid-feedback password-error">
                   {{ $message }}
@@ -56,20 +56,20 @@
               @enderror
 
 
-              <a class="label-link position-absolute forgotPassword" id="forgot-password" href="{{ route('recoveryPassword') }}">Forgot passsword?</a> 
+              <a class="label-link position-absolute forgotPassword" id="forgot-password" href="{{ route('recoveryPassword') }}">Forgot passsword?</a>
 
 
             </div>
-            
+
             <button class="mt-4 w-100 btn btn-block btn-primary" type="submit" method="POST">Login</button>
             <div class="question">
               <small class="question">Belum memiliki akun? <a href="/register">Daftar disini</a></small>
 
           </div>
             <p class="mt-4  text-center text-muted">Version 1.0</p>
-           
+
           </form>
         </main>
-   
+
 </body>
 </html>

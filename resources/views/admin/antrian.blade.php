@@ -22,7 +22,7 @@
         <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
         <input type="text" id="searchInput" class="form-control" placeholder="Cari nama atau layanan...">
         </div> --}}
-        
+
         <div id="notificationArea" class="pt-3 sukses">
         <!-- Notifikasi sukses akan ditambahkan di sini menggunakan JavaScript -->
         </div>
@@ -54,7 +54,7 @@
       </tr>
     </thead>
     <tbody>
-        {{-- @foreach($data as $antrian)
+         @foreach($data as $antrian)
         <tr>
             <td class="kolom-nama">{{ $antrian->user_id && $antrian->user->Authorize !== "Admin" ? $antrian->user->fullname : $antrian->nama }}</td>
             <td class="kolom-layanan">{{ $antrian->kategori_layanan }}</td>
@@ -158,7 +158,7 @@
             const klikAdmin = document.getElementById('hapusantrian')
             klikAdmin.classList.remove('geserkan')
 
-            // Reset variabel penghapusanAntrian/            
+            // Reset variabel penghapusanAntrian/
             penghapusanAntrian = '';
 
             var actionHapus = '{{ route("antrian.destroy", ":id") }}';
@@ -174,7 +174,7 @@
             notificationArea.classList.add('show');
         }, 100);
 
-        
+
     </script>
 </body>
 </html>
