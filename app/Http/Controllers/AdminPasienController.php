@@ -62,7 +62,9 @@ class AdminPasienController extends Controller
             'jenis_kelamin' => $request->input('jenis_kelamin'),
             'gigi_sakit' => $request->input('gigi_sakit'),
             'gigi_berdarah' => $request->input('gigi_berdarah'),
+            'id_dokter' => 2,
             'nomor' => $antrian_terakhir ? $antrian_terakhir->nomor + 1 : 1,
+            'pilih_dokter' => $request->input('pilih_dokter'),
         ];
 
         // Tentukan user_id dan nama berdasarkan kondisi pengguna terautentikasi
@@ -115,8 +117,8 @@ class AdminPasienController extends Controller
     {
         // Cari antrian berdasarkan id atau gagal jika tidak ditemukan
         $antrian = Antrian::findOrFail($id);
-        // Tampilkan view dengan data antrian yang ditemukan
-        return view('admin.crudantrian.editantrian', compact('antrian'));
+        $dokters = User::where('Authorize', 'Dokter')->get();
+        return view('admin.crudantrian.editantrian', compact('antrian','dokters'));
     }
 
     // Fungsi untuk memperbarui antrian
@@ -148,8 +150,7 @@ class AdminPasienController extends Controller
         $antrian->gigi_sakit = $request->gigi_sakit;
         $antrian->gigi_berdarah = $request->gigi_berdarah;
         $antrian->kategori_layanan = $request->kategori_layanan;
-        
-        // Simpan perubahan
+        $antrian->pilih_dokter = $request->pilih_dokter;
         $antrian->save();
 
         // Redirect ke halaman antrian dengan pesan sukses

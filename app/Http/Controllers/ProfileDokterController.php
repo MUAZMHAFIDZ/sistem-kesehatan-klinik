@@ -28,6 +28,7 @@ class ProfileDokterController extends Controller
             return Redirect()->back()->with('success');
         }
         }
+
         public function kehadiranDokter(Request $request)
         {
             $id = Auth::user()->id;
@@ -35,5 +36,6 @@ class ProfileDokterController extends Controller
 
             return Redirect()->back();
         }
+
     }
 

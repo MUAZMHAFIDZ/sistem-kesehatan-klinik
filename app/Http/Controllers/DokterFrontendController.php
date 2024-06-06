@@ -6,6 +6,7 @@ use App\Models\Antrian;
 use App\Models\JadwalDokter;
 use App\Models\User;
 use Carbon\Carbon;
+use App\Models\JadwalDokter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,6 +15,7 @@ class DokterFrontendController extends Controller
     public function dashboard() {
         $user = Auth::user();
         $user->last_activity = now();
+        JadwalDokter::where('id_dokter', $user->id)->update([ 'terakhir_hadir' => date('Y-m-d') ]);
         $user->save();
 
         $pasienPerHari = Antrian::where('tanggal_periksa', now()->toDateString())->count();

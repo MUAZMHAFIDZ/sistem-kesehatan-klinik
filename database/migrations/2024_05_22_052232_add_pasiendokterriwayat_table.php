@@ -12,8 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('antrian', function (Blueprint $table) {
-            $table->bigInteger('pilih_dokter')->nullable();
-            $table->string('status')->nullable();
+            $table->unsignedBigInteger('id_dokter');
+            $table->unsignedBigInteger('id_pasien')->nullable();
+            $table->boolean('riwayat');
+
+
+
+            $table->foreign('id_dokter')->references('id')->on('users');
+            $table->foreign('id_pasien')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -23,7 +29,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('antrian', function (Blueprint $table) {
-            //
+            Schema::dropIfExists('riwayat');
         });
     }
 };
