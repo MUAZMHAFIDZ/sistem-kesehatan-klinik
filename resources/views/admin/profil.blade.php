@@ -6,6 +6,7 @@
     <title>Dashboard-Admin | Profil</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.2/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/dashboard-admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/admin/profile.css') }}">
     <style>
@@ -29,6 +30,7 @@
         <div class="profile-card text-center p-5 first">
           <img src="{{ $user->image }}" alt="Profile Picture" class="profile-picture mb-3">
           <h2 class="mb-3">{{ $user->fullname }}</h2>
+          <p><i class="bi bi-envelope-fill"  style="color : #0069be"></i> {{ $user->email }}</p>
           <p class="lead"><p>{{ $user->tanggal_lahir }}</p></p>
           <ul class="list-inline">
             <a href="#"><li class="fab fa-facebook"></li></a>
@@ -49,8 +51,8 @@
           @else
               <p>Tidak ada pengalaman yang tersedia.</p>
           @endif
-          <h6>Email</h6>
-          <p>{{ $user->email }}</p>
+          {{-- <h6>Email</h6>
+          <p>{{ $user->email }}</p> --}}
           <h6>No Telepon</h6>
           <p>+62 {{ $user->nohp }}</p>
           <h6>Alamat</h6>
@@ -76,7 +78,7 @@
             <input type="file" class="form-control-file" id="gambar" name="image">
           </div>
           <div class="form-group">
-            <label for="nama">Nama</label>
+            <label for="nama">Nama Lengkap</label>
             <input type="text" class="form-control" id="nama" placeholder="Nama" name="nama" value="{{ $user->fullname }}">
           </div>
           <div class="form-group">
@@ -97,18 +99,7 @@
       <div class="col col-md-7">
         <div class="profile-card text-start p-5 second">
           <div class="row">
-          <div class="col-md-6">
-          <div class="form-group">
-            <label for="jenis_kelamin">Jenis Kelamin</label>
-            <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-              <option value="">Pilih Jenis Kelamin</option>
-              <option value="Laki-laki" {{ $user->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-              <option value="Perempuan" {{ $user->jenis_kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
-            </select>
-            {{-- <input type="text" class="form-control mb-2" name="jenis_kelamin" value="{{ $user->jenis_kelamin }}" placeholder="Jenis Kelamin"> --}}
-          </div>
-          </div>
-          <div class="col-md-6">
+                    <div class="col-md-6">
           <div class="form-group">
     <label for="pendidikan">Riwayat Pendidikan</label>
     <div id="pendidikanContainer">
@@ -135,6 +126,18 @@
     <button type="button" id="tambahPendidikan" class="btn btn-secondary mt-3">+ Pendidikan</button>
           </div>
           </div>
+          <div class="col-md-6">
+          <div class="form-group">
+            <label for="jenis_kelamin">Jenis Kelamin</label>
+            <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+              <option value="">Pilih Jenis Kelamin</option>
+              <option value="Laki-laki" {{ $user->jenis_kelamin == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+              <option value="Perempuan" {{ $user->jenis_kelamin == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
+            </select>
+            {{-- <input type="text" class="form-control mb-2" name="jenis_kelamin" value="{{ $user->jenis_kelamin }}" placeholder="Jenis Kelamin"> --}}
+          </div>
+          </div>
+
           </div>
           <div class="form-group">
             <label for="alamat">Alamat</label>

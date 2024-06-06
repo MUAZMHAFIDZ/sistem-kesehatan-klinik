@@ -21,9 +21,10 @@
     </div>
 
 <div class="container mt-5">
-  <form action="{{route('admin.formpasien.submit')}}" id="registrationForm" method="POST" onsubmit="return validateForm()" class="container-form registration-form">
+  <form action="{{route('admin.formpasien.submit')}}" id="registrationForm" method="POST" onsubmit="return validateForm()" class="">
     @csrf
-    <div class="sub-container">
+    <div class="row justify-content-center no-gutters">
+    <div class="col col-md-6">
     <div class="form-group">
       <label for="nama">Nama</label>
       <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan nama">
@@ -54,7 +55,7 @@
       <span class="error-message" id="jenis-kelamin-error"></span>
     </div>
     </div>
-    <div class="sub-container">
+    <div class="col col-md-6">
     <div class="form-group">
       <label for="tanggal_periksa">Tanggal Periksa</label>
       <input type="date" class="form-control" id="tanggal_periksa" name="tanggal_periksa">
@@ -96,10 +97,20 @@
       </select>
       <span class="error-message" id="kategori-layanan-error"></span>
     </div>
+    <div class="form-group">
+      <label for="pilih_dokter">Pilih Dokter</label>
+      <select class="form-control" id="pilih_dokter" name="pilih_dokter">
+        @foreach($dokters as $pilih_dokter)
+        <option value="{{ $pilih_dokter->id }}">dr. {{ $pilih_dokter->fullname }}</option>
+        @endforeach
+      </select>
+    </div>
+
+    </div>
+    </div>
     <div class="buttons">
       <a href="{{ route('admin.antrian') }}" class="cancel-button">Batal</a>
       <button type="submit" class="register-button">Daftar</button>
-  </div>
     </div>
   </form>
 </div>

@@ -122,10 +122,11 @@ class AdminFrontendController extends Controller
     public function dashboardantrian()
     {
         $user = Auth::user();
+        $dokters = User::where('Authorize', 'Dokter')->get();
         $user->last_activity = now();
         $user->save();
         $data = Antrian::orderBy('tanggal_periksa')->get();
-        return view('admin.antrian', compact('user', 'data'));
+        return view('admin.antrian', compact('user', 'data', 'dokters'));
     }
     public function dashboarddatapasien()
     {
@@ -137,9 +138,10 @@ class AdminFrontendController extends Controller
     public function dashboardformpasien()
     {
         $user = Auth::user();
+        $dokters = User::where('Authorize', 'Dokter')->get();
         $user->last_activity = now();
         $user->save();
-        return view('admin.formpasien', compact('user'));
+        return view('admin.formpasien', compact('user','dokters'));
     }
     public function rekammedis() {
         $user = Auth::user();

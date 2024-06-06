@@ -107,12 +107,12 @@ ul, li {
     object-fit: cover;
   }
   .col-md-5 .first {
-    /* background: linear-gradient(to bottom, #6399c5, #b8dfff, #fafdff, #ffffff); */
-    background: linear-gradient(to top, #005bea, #6da8d7);
+    /* background: linear-gradient(to top, #005bea, #6da8d7); */
+    background-color: #cfcfcf;
     height: 85vh;
     border-radius: 10px 0 0 10px;
     border: 1px solid #ccc;
-    border-top: none;
+    /* border-top: none; */
   }
   .col-md-7 .second {
     height: 85vh;
@@ -125,14 +125,14 @@ ul, li {
       border: 1px solid #ccc;
       border-left: none;
       border-right: none;
-      border-top: none;
+      /* border-top: none; */
     }
   .col-md-2 .third {
       height: 85vh;
       border-radius: 0 10px 10px 0;
       border: 1px solid #ccc;
       border-left: none ;
-      border-top: none;
+      /* border-top: none; */
   }
   .row.no-gutters {
     padding: 0;
@@ -151,26 +151,29 @@ ul, li {
       height: 89vh;
   }
   .col-md-5 .form-group label {
-      color: #fff;
+      color: black;
   }
   #profil .col-md-5 {
-      color: #fff;
+    color: #0069be;
+  }
+  #profil .col-md-5 p{
+    color: black;
   }
   form .col-md-7 {
       color: black;
   }
   form .col-md-5 {
-      color: #fff;
+    color: black;
   }
   .list-inline a {
-      color: #fff;
+    color: black;
       margin: 5px;
   }
   #profil .col-md-5 .second {
       color: #000;
   }
   #profil .col-md-5 .second h6 {
-    color: #0072cf;
+    color: #0069be;
   }
   .form-group .btn {
     background-color: #fff;

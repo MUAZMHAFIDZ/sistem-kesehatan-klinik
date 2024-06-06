@@ -58,6 +58,7 @@ class AdminPasienController extends Controller
             'durasi_layanan' => $durasi_layanan,
             'waktu' => $waktu_mulai,
             'nomor' => $antrian_terakhir ? $antrian_terakhir->nomor + 1 : 1,
+            'pilih_dokter' => $request->input('pilih_dokter'),
         ];
 
         // Antrian::create($data);
@@ -101,7 +102,8 @@ class AdminPasienController extends Controller
     public function edit($id)
     {
         $antrian = Antrian::findOrFail($id);
-        return view('admin.crudantrian.editantrian', compact('antrian'));
+        $dokters = User::where('Authorize', 'Dokter')->get();
+        return view('admin.crudantrian.editantrian', compact('antrian','dokters'));
     }
 
     public function update(Request $request, $id)
@@ -129,6 +131,7 @@ class AdminPasienController extends Controller
         $antrian->gigi_sakit = $request->gigi_sakit;
         $antrian->gigi_berdarah = $request->gigi_berdarah;
         $antrian->kategori_layanan = $request->kategori_layanan;
+        $antrian->pilih_dokter = $request->pilih_dokter;
         $antrian->save();
 
         return redirect()->route('admin.antrian')->with('success', 'Data berhasil diperbarui!');
