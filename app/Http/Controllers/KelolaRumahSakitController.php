@@ -212,6 +212,7 @@ class KelolaRumahSakitController extends Controller
             'fullname' => $request->input('nama'),
             'email' => $request->input('email'),
             'alamat' => $request->input('alamat'),
+            'nohp' => $request->input('telepon'),
             'jenis_kelamin' => $request->input('jenis_kelamin'),
             'tanggal_lahir' => $request->input('tanggal_lahir'),
             'riwayat_pendidikan' => json_encode($pendidikan),
