@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dashboard Dokter | Antrian Pasien</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/dokter/antrianPasienDok.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,9 +21,8 @@
             <!-- FORM PENCARIAN -->
             <div class="search pb-3">
                 <form class="d-flex" action="" method="get">
-                   <!-- Bagian HTML -->
-<input class="panjangsearchantrian form-control" type="search" name="katakunci" id="searchInput"
-placeholder="Masukkan nama pasien" aria-label="Search" oninput="searchData()">
+                    <input class="panjangsearchantrian form-control" type="search" name="katakunci" id="searchInput"
+                        placeholder="Masukkan nama pasien" aria-label="Search" oninput="searchData()">
 
 
                 </form>
@@ -39,10 +37,11 @@ placeholder="Masukkan nama pasien" aria-label="Search" oninput="searchData()">
                         <th class="col-md-2">No Antrian</th>
                         <th class="col-md-2">Tanggal Periksa</th>
                         <th class="col-md-1">Waktu</th>
-                        <th >Aksi</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     @foreach ($data as $antrian)
                         <tr>
                             <td class="kolom-nama">{{ $antrian->nama }}</td>
@@ -51,41 +50,73 @@ placeholder="Masukkan nama pasien" aria-label="Search" oninput="searchData()">
                             <td>{{ $antrian->tanggal_periksa }}</td>
                             <td>{{ $antrian->waktu instanceof \Carbon\Carbon ? $antrian->waktu->format('H:i') : $antrian->waktu }}
                             </td>
-                            <td><a href='' class="btn btn-warning btn-sm">Accept</a></td>
-                            <td><a href='' class="btn btn-warning btn-sm">Decline</a></td>
-                            @endforeach
+                            <td><a onclick="acceptPasien(event)"
+                                    class="btn btn-warning btn-sm">Accept</a></td>
+                            <td><a
+                                    class="btn btn-warning btn-sm">Decline</a></td>
+                    @endforeach
                 </tbody>
+
+
             </table>
 
+        </div>
+        <div class="popup" id="popUpDiagnosa">
+            <form method="POST" action="{{ route('registerdokter.submit') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="row2">
+                    <label for="diagnosa">Diagnosa</label>
+                    <textarea name="diagnosa" id="diagnosa" placeholder="Diagnosa"></textarea>
+                </div>
+                <div class="row1">
+                    <button type="submit" class="btn btn-primary">Terima</button>
+                    <button type="button" onclick="batalPasien(event)" id="batal"
+                        class="btn btn-danger">Batal</button>
+                </div>
+            </form>
         </div>
 
         <!-- AKHIR DATA -->
 
         <script>
-// Bagian JavaScript
-function searchData() {
-    // Ambil nilai dari input pencarian
-    var katakunci = document.getElementById('searchInput').value.toLowerCase();
+            // Bagian JavaScript
+            function searchData() {
+                // Ambil nilai dari input pencarian
+                var katakunci = document.getElementById('searchInput').value.toLowerCase();
 
-    // Ambil semua baris data
-    var rows = document.querySelectorAll('.table tbody tr');
+                // Ambil semua baris data
+                var rows = document.querySelectorAll('.table tbody tr');
 
-    // Loop melalui setiap baris data
-    rows.forEach(function(row) {
-        // Ambil teks dari kolom nama pada baris saat ini
-        var nama = row.querySelector('.kolom-nama').textContent.toLowerCase();
+                // Loop melalui setiap baris data
+                rows.forEach(function(row) {
+                    // Ambil teks dari kolom nama pada baris saat ini
+                    var nama = row.querySelector('.kolom-nama').textContent.toLowerCase();
 
-        // Periksa apakah teks nama mengandung kata kunci pencarian
-        if (nama.indexOf(katakunci) === -1) {
-            // Jika tidak cocok, sembunyikan baris
-            row.style.display = 'none';
-        } else {
-            // Jika cocok, tampilkan baris
-            row.style.display = '';
-        }
-    });
-}
+                    // Periksa apakah teks nama mengandung kata kunci pencarian
+                    if (nama.indexOf(katakunci) === -1) {
+                        // Jika tidak cocok, sembunyikan baris
+                        row.style.display = 'none';
+                    } else {
+                        // Jika cocok, tampilkan baris
+                        row.style.display = '';
+                    }
+                });
+            }
 
+
+            function batalPasien(event) {
+                event.preventDefault()
+
+                const klikAdmin = document.getElementById('popUpDiagnosa')
+                klikAdmin.classList.remove('geserkan')
+            }
+
+            function acceptPasien(event) {
+                event.preventDefault()
+
+                const klikAdmin = document.getElementById('popUpDiagnosa')
+                klikAdmin.classList.add('geserkan')
+            }
         </script>
 </body>
 

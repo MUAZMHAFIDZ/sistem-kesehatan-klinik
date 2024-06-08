@@ -65,8 +65,8 @@ padding: 7px;
   color: red;
   font-size: 0.8em;
 }
-
-  .container-form {
+/* =====BACKUP====== */
+  /* .container-form {
     display: grid;
     background: linear-gradient(to top, #cccccc, #cccccc);
     grid-template-columns: repeat(2, 1fr);
@@ -74,10 +74,10 @@ padding: 7px;
     border-radius: 8px;
   }
   .container-form .sub-container {
-     /* Warna latar belakang untuk div dalam */
-    border-radius: 10px; /* Border radius */
+    border-radius: 10px;
     padding: 20px;
-  }
+  } */
+
   .bungkus {
     background: linear-gradient(to top, #92ceff, #ffffff);
   }

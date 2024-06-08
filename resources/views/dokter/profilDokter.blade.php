@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard-dokter | Profil</title>
+    <title>Dashboard Dokter | Profil</title>
 
     <link rel="stylesheet" href="css/dokter/profilDokter.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0
@@ -33,11 +33,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
-
 
         <div class="editProfilDokter rounded shadow-sm mt-2 ">
             <div class="card-body ms-5 mb-3">

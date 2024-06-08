@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('antrian', function (Blueprint $table) {
-            $table->bigInteger('pilih_dokter')->nullable();
+            $table->bigInteger('pilih_dokter')->notnull();
             $table->string('status')->nullable();
         });
     }
