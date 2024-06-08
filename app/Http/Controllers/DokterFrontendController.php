@@ -6,7 +6,6 @@ use App\Models\Antrian;
 use App\Models\JadwalDokter;
 use App\Models\User;
 use Carbon\Carbon;
-use App\Models\JadwalDokter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,14 +42,15 @@ class DokterFrontendController extends Controller
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
-        $data = Antrian::orderBy('tanggal_periksa')->get();
+        $data = Antrian::orderBy('tanggal_periksa')->where('status', false)->get();
         return view('dokter.antrianPasienDok', compact('user','data'));
     }
     public function funRiwayatPasienDokter() {
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
-        return view('dokter.riwayatPasienDok', compact('user'));
+        $data = Antrian::orderBy('tanggal_periksa')->where('status', true)->get();
+        return view('dokter.riwayatPasienDok', compact('user', 'data'));
     }
 
 

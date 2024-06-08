@@ -29,13 +29,5 @@ class ProfileDokterController extends Controller
         }
         }
 
-        public function kehadiranDokter(Request $request)
-        {
-            $id = Auth::user()->id;
-            kehadiranDokter::where('id', $id)->update([ 'terakhir_hadir' => date('Y-m-d') ]);
-
-            return Redirect()->back();
-        }
-
     }
 

@@ -97,20 +97,9 @@
                 @endphp
                 @foreach($dokterBertugas as $hadirDT)
                 <div class="data">
-                    <p>dr. {{ $hadirDT->users->fullname }}<span>{{ $hadirDT->terakhir_hadir == $today ? '( Hadir )' : '( Tidak Hadir)' }}</span></p>
+                    <p>dr. {{ $hadirDT->users->fullname }}<span>{{ $hadirDT->terakhir_hadir == $today ? '( Hadir )' : '( Belum Hadir)' }}</span></p>
                 </div>
                 @endforeach
-            </div>
-        </div>
-        <!-- ========================== pasien dalam antrian ========================== -->
-        <div class="item">
-            <div class="headcard">
-                <p>Pasien dalam Antrian</p>
-            </div>
-            <div class="card">
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
             </div>
         </div>
     </div>

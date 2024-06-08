@@ -50,7 +50,7 @@
                             <td>{{ $antrian->tanggal_periksa }}</td>
                             <td>{{ $antrian->waktu instanceof \Carbon\Carbon ? $antrian->waktu->format('H:i') : $antrian->waktu }}
                             </td>
-                            <td><a onclick="acceptPasien(event)"
+                            <td><a onclick="acceptPasien('{{ $antrian->id }}', event)"
                                     class="btn btn-warning btn-sm">Accept</a></td>
                             <td><a
                                     class="btn btn-warning btn-sm">Decline</a></td>
@@ -62,8 +62,9 @@
 
         </div>
         <div class="popup" id="popUpDiagnosa">
-            <form method="POST" action="{{ route('registerdokter.submit') }}" enctype="multipart/form-data">
+            <form id="kirimId" method="POST" action="{{ route('acceptpasien.submit', ':id') }}" enctype="multipart/form-data">
                 @csrf
+                @method('PUT')
                 <div class="row2">
                     <label for="diagnosa">Diagnosa</label>
                     <textarea name="diagnosa" id="diagnosa" placeholder="Diagnosa"></textarea>
@@ -103,19 +104,27 @@
                 });
             }
 
-
+            var pengeditanAntrian = ':id'
             function batalPasien(event) {
                 event.preventDefault()
 
                 const klikAdmin = document.getElementById('popUpDiagnosa')
                 klikAdmin.classList.remove('geserkan')
+
+                var aksiEdit = document.getElementById('kirimId').getAttribute('action').replace(pengeditanAntrian, ':id')
+                pengeditanAntrian = ':id'
+                document.getElementById('kirimId').setAttribute('action', aksiEdit)
             }
 
-            function acceptPasien(event) {
+            function acceptPasien(id, event) {
                 event.preventDefault()
 
                 const klikAdmin = document.getElementById('popUpDiagnosa')
                 klikAdmin.classList.add('geserkan')
+                
+                var aksiEdit = document.getElementById('kirimId').getAttribute('action').replace(pengeditanAntrian, id)
+                pengeditanAntrian = id
+                document.getElementById('kirimId').setAttribute('action', aksiEdit)
             }
         </script>
 </body>

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('antrian', function (Blueprint $table) {
-            $table->bigInteger('pilih_dokter')->nullable();
-            $table->string('status')->nullable();
+        Schema::table('users', function (Blueprint $table) {
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->notNull();
+            $table->date('tanggal_lahir')->nullable();
         });
     }
 

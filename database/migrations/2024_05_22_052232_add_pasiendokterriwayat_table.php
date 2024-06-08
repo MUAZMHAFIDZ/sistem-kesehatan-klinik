@@ -12,14 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('antrian', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_dokter');
-            $table->unsignedBigInteger('id_pasien')->nullable();
-            $table->boolean('riwayat');
-
-
-
-            $table->foreign('id_dokter')->references('id')->on('users');
-            $table->foreign('id_pasien')->references('id')->on('users')->onDelete('cascade');
+            $table->string('nama_dokter', 50);
+            $table->boolean('status');
         });
     }
 
