@@ -97,7 +97,7 @@
                 @endphp
                 @foreach($dokterBertugas as $hadirDT)
                 <div class="data">
-                    <p>dr. {{ $hadirDT->users->fullname }}<span>{{ $hadirDT->terakhir_hadir == $today ? '( Hadir )' : '( Tidak Hadir)' }}</span></p>
+                    <p>dr. {{ $hadirDT->users->fullname }}<span>{{ $hadirDT->terakhir_hadir == $today ? '( Hadir )' : '( Belum Hadir)' }}</span></p>
                 </div>
                 @endforeach
             </div>
