@@ -23,12 +23,17 @@ class Antrian extends Model
     'durasi_layanan',
     'waktu',
     'nomor',
-    'pilih_dokter',
+    'nama_dokter',
     'status'];
 
     // Definisikan relasi dengan model User
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function rekammedis()
+    {
+        return $this->hasOne(Antrian::class, 'id_antrian');
     }
 }

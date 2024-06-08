@@ -102,17 +102,6 @@
                 @endforeach
             </div>
         </div>
-        <!-- ========================== pasien dalam antrian ========================== -->
-        <div class="item">
-            <div class="headcard">
-                <p>Pasien dalam Antrian</p>
-            </div>
-            <div class="card">
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
-            </div>
-        </div>
     </div>
 
     </div>

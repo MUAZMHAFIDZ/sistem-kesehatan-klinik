@@ -35,7 +35,8 @@
     font-size: 17px;
 }
 .contentsz .home .item .card .data {
-    border-bottom: 1px solid white;
+    border-top: 1px solid var(--warna-utama);
+    border-bottom: 1px solid var(--warna-utama);
 }
 .contentsz .home .itemlong {
     height: 260px;

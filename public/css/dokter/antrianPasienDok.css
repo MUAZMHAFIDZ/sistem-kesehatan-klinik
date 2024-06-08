@@ -24,7 +24,9 @@
     position: fixed;
     background-color: rgba(1 , 1 , 1 , 0.3);
 }
-.popup.geserkan
+.popup.geserkan {
+    left: 0;
+}
 .popup form{
     height: 400px;
     width: 400px;
