@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->notNull();
-            $table->date('tanggal_lahir')->nullable();
+        Schema::table('jadwal_dokter', function (Blueprint $table) {
+            //
+            $table->date('terakhir_hadir')->nullable();
         });
     }
 
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('antrian', function (Blueprint $table) {
+        Schema::table('jadwal_dokter', function (Blueprint $table) {
             //
         });
     }

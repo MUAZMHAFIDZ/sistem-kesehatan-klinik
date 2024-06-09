@@ -72,11 +72,8 @@ class User extends Authenticatable
                 $jadwal->sabtu = '00:00-00:00';
                 $jadwal->minggu = '00:00-00:00';
                 $jadwal->status = 'Cuti / Libur';
+                $jadwal->terakhir_hadir = date('Y-m-d');
                 $jadwal->save();
-                $kehadiran = new KehadiranDokter();
-                $kehadiran->id_dokter = $user->id;
-                $kehadiran->terakhir_hadir = date('Y-m-d');
-                $kehadiran->save();
             }
         });
     }

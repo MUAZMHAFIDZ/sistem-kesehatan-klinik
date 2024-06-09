@@ -65,7 +65,7 @@
                         <th>Tanggal Kunjungan</th>
                         <th>Layanan</th>
                         <th>Diagnosa</th>
-                        <th>Jumlah Kunjungan</th>
+                        <th>Jumlah Kunjungan Dalam Seminggu</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,7 +87,7 @@
         </table>
         <div class="hormat">
             <p class="homat">Hormat Saya</p>
-            <p>Admin Klinik DentalCare</p>
+            <p>Admin {{ $users->fullname }}</p>
             <br>
             <p>.............................</p>
         </div>

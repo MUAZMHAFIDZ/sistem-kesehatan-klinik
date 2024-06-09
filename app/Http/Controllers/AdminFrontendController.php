@@ -59,14 +59,12 @@ class AdminFrontendController extends Controller
             return $user->Authorize === "Admin";
         });
 
-        $absensiDokter = KehadiranDokter::where('terakhir_hadir', now()->toDateString())->get();
-
         $pasienHariIni = Antrian::where('tanggal_periksa', now()->toDateString())->get();
         $pasienPerHari = Antrian::where('tanggal_periksa', now()->toDateString())->count();
         $pasienPerBulan = Antrian::whereMonth('tanggal_periksa', date('m'))->count();
         $pasienPerMinggu = Antrian::whereBetween('tanggal_periksa', [now()->startOfWeek()->toDateString(), now()->endOfWeek()->toDateString()])->count();
 
-        return view('admin.home', compact('user', 'activeAdmin', 'activeUser', 'activeDokter', 'dokterBertugas', 'hariIni', 'pasienHariIni', 'pasienPerHari', 'pasienPerMinggu', 'pasienPerBulan', 'absensiDokter', ));
+        return view('admin.home', compact('user', 'activeAdmin', 'activeUser', 'activeDokter', 'dokterBertugas', 'hariIni', 'pasienHariIni', 'pasienPerHari', 'pasienPerMinggu', 'pasienPerBulan', ));
     }
     public function dashboardjadwaldokter()
     {
@@ -122,10 +120,11 @@ class AdminFrontendController extends Controller
     public function dashboardantrian()
     {
         $user = Auth::user();
+        $dokters = User::where('Authorize', 'Dokter')->get();
         $user->last_activity = now();
         $user->save();
         $data = Antrian::orderBy('tanggal_periksa')->get();
-        return view('admin.antrian', compact('user', 'data'));
+        return view('admin.antrian', compact('user', 'data', 'dokters'));
     }
     public function dashboarddatapasien()
     {
@@ -136,14 +135,11 @@ class AdminFrontendController extends Controller
     }
     public function dashboardformpasien()
     {
-    if (Auth::check()) {
         $user = Auth::user();
+        $dokters = User::where('Authorize', 'Dokter')->get();
         $user->last_activity = now();
         $user->save();
-    } else {
-        $user = null;
-    }
-    return view('admin.formpasien', compact('user'));
+        return view('admin.formpasien', compact('user','dokters'));
     }
 
     public function rekammedis() {

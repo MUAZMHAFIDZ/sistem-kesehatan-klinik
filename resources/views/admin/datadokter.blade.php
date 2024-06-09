@@ -38,11 +38,11 @@
                                 <td>{{ $dokter->username }}</td>
                                 <td>dr. {{ $dokter->fullname }}</td>
                                 <td>
-                                    <button class="btnjaditext" onclick="tampilkanDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', '{{$dokter->riwayat_pendidikan }}', '{{$dokter->alamat }}', '{{$dokter->email }}', '{{$dokter->jenis_kelamin }}', '{{$dokter->tanggal_lahir }}', '{{$dokter->image }}', event)">Lihat Detail Data</button>
+                                    <button class="btnjaditext" onclick="tampilkanDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', '{{$dokter->riwayat_pendidikan }}', '{{$dokter->alamat }}', '{{$dokter->email }}', '{{$dokter->jenis_kelamin }}', '{{$dokter->tanggal_lahir }}', '{{$dokter->image }}', event)"><i class="fas fa-info-circle"></i> detail</button>
                                 </td>
                                 <td class="aksi">
-                                    <button onclick="editDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', '{{$dokter->riwayat_pendidikan }}', '{{$dokter->alamat }}', '{{$dokter->email }}', '{{$dokter->jenis_kelamin }}', '{{$dokter->tanggal_lahir }}', event)" class="green">Edit</button>
-                                    <button class="red" onclick="terimaHapusId({{ $dokter->id }}, event)">Hapus</button>
+                                    <button onclick="editDataDokter('{{ $dokter->id  }}', '{{$dokter->username}}', '{{$dokter->fullname}}', '{{$dokter->nohp }}', '{{$dokter->riwayat_pendidikan }}', '{{$dokter->alamat }}', '{{$dokter->email }}', '{{$dokter->jenis_kelamin }}', '{{$dokter->tanggal_lahir }}', event)" class="green"><i class="fas fa-edit"></i></button>
+                                    <button class="red" onclick="terimaHapusId({{ $dokter->id }}, event)"><i class="fas fa-trash"></i></button>
                                 </td>
                             </tr>
                         @endforeach

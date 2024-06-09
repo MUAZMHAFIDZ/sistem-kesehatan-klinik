@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Antrian;
 use App\Models\JadwalDokter;
-use App\Models\Obat;
+use App\Models\RekamMedis;
 use App\Models\Profil;
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -212,6 +213,7 @@ class KelolaRumahSakitController extends Controller
             'fullname' => $request->input('nama'),
             'email' => $request->input('email'),
             'alamat' => $request->input('alamat'),
+            'nohp' => $request->input('telepon'),
             'jenis_kelamin' => $request->input('jenis_kelamin'),
             'tanggal_lahir' => $request->input('tanggal_lahir'),
             'riwayat_pendidikan' => json_encode($pendidikan),
@@ -229,7 +231,8 @@ class KelolaRumahSakitController extends Controller
         // $options->set('isRemoteEnabled', true);
         $pdf->setOptions($options);
 
-        $pdf->loadHtml(view('admin.rekammedis.pdf'));
+        $users = Auth::user();
+        $pdf->loadHtml(view('admin.rekammedis.pdf', compact('users')));
         $pdf->setPaper('A4');
         $pdf->render();
         //dd(view('admin.rekammedis.pdf')->render());
@@ -240,5 +243,19 @@ class KelolaRumahSakitController extends Controller
 
         $file_url = 'storage/pdf/' . $nama_file;
         return response()->download($file_url)->deleteFileAfterSend();
+    }
+
+    // =============================================
+    //                  ACCEPT ANTRIAN
+    // =============================================
+    public function acceptPasien(Request $request, $id) {
+        $antrian = Antrian::findOrFail($id);
+        $antrian->status = true;
+        $antrian->save();
+        $rekammedis = new RekamMedis();
+        $rekammedis->id_antrian = $id;
+        $rekammedis->diagnosa = $request->input('diagnosa');
+        $rekammedis->save();
+        return redirect()->back();
     }
 }

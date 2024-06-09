@@ -22,7 +22,7 @@
         <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
         <input type="text" id="searchInput" class="form-control" placeholder="Cari nama atau layanan...">
         </div> --}}
-        
+
         <div id="notificationArea" class="pt-3 sukses">
         <!-- Notifikasi sukses akan ditambahkan di sini menggunakan JavaScript -->
         </div>
@@ -50,23 +50,13 @@
         <th scope="col">No Antrian</th>
         <th scope="col">Tanggal Periksa</th>
         <th scope="col">Waktu</th>
-        <th scope="col" class="col-md-1 tr">Aksi</th>
+        <th scope="col" class="">Aksi</th>
       </tr>
     </thead>
     <tbody>
-        {{-- @foreach($data as $antrian)
+    
+         @foreach($data as $antrian)
         <tr>
-            <td class="kolom-nama">{{ $antrian->user_id && $antrian->user->Authorize !== "Admin" ? $antrian->user->fullname : $antrian->nama }}</td>
-            <td class="kolom-layanan">{{ $antrian->kategori_layanan }}</td>
-            <td>{{ $antrian->nomor }}</td>
-            <td>{{ $antrian->tanggal_periksa }}</td>
-            <td>{{ $antrian->waktu instanceof \Carbon\Carbon ? $antrian->waktu->format('H:i') : $antrian->waktu }}</td>
-            <td class="text-center">
-                <div class="btn-group">
-                    <a href="{{ route('antrian.edit', $antrian->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                    <button class="btn btn-danger btn-sm" onclick="hapusById({{ $antrian->id }}, '{{ $antrian->user_id && $antrian->user->Authorize !== "Admin" ? $antrian->user->fullname : $antrian->nama }}', '{{ $antrian->kategori_layanan }}', event)">Hapus</button>
-                </div>
-            </td>
           <td class="kolom-nama">{{ $antrian->nama }}</td>
           <td class="kolom-layanan">{{ $antrian->kategori_layanan }}</td>
           <td>{{ $antrian->nomor }}</td>
@@ -74,8 +64,9 @@
           <td>{{ $antrian->waktu instanceof \Carbon\Carbon ? $antrian->waktu->format('H:i') : $antrian->waktu }}</td>
           <td class="text-center">
             <div class="btn-group">
-                <a href="{{ route('antrian.edit', $antrian->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                <button class="btn btn-danger btn-sm" onclick="hapusById({{ $antrian->id }}, '{{$antrian->nama}}', '{{$antrian->kategori_layanan}}', event)">Hapus</button>
+                <button class="btn btn-sm btn-main nb" style="font-size: large; font-family: 'Arial', sans-serif;" onclick="goRincian({{ $antrian->id }}, '{{ $antrian->nama }}', '{{ $antrian->no_telepon }}', '{{ $antrian->alamat }}', '{{ $antrian->usia }}', '{{ $antrian->jenis_kelamin }}', '{{ $antrian->tanggal_periksa }}', '{{ $antrian->gigi_sakit }}', '{{ $antrian->gigi_berdarah }}', '{{ $antrian->kategori_layanan }}', '{{ $antrian->waktu }}', '{{ $antrian->nomor }}', '{{ $antrian->pilih_dokter }}', '{{ $antrian->status }}')"><i class="fas fa-info-circle"></i></button>
+                <a href="{{ route('antrian.edit', $antrian->id) }}" style="font-size: large; font-family: 'Arial', sans-serif;" class="btn btn-sm btn-main nb"><i class="fas fa-edit"></i></a>
+                <button class="btn btn-sm btn-main" style="font-size: large; font-family: 'Arial', sans-serif; color: red !important;" onclick="hapusById({{ $antrian->id }}, '{{$antrian->nama}}', '{{$antrian->kategori_layanan}}', '{{ $antrian->jenis_kelamin }}', event)"><i class="fas fa-trash"></i></button>
             </div>
           </td>
         </tr>
@@ -86,6 +77,7 @@
 
     </div>
 @include('admin.crudantrian.hapusantrian')
+@include('admin.crudantrian.rinciantrian')
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -134,7 +126,7 @@
 
 //-- Fungsi Popup Hapus --
         var penghapusanAntrian = ''
-        function hapusById (hapusId, nama, layanan, event) {
+        function hapusById (hapusId, nama, layanan, jenis_kelamin, event) {
             //INI BISAAA!!!!
 //           event.preventDefault()
 
@@ -146,6 +138,13 @@
 
             document.getElementById('namaAntrian').innerText = nama;
             document.getElementById('layananAntrian').innerText = layanan;
+            // Update profile picture berdasar gender
+            const profilePicture = document.getElementById('profile-picture-del');
+            if (jenis_kelamin.toLowerCase() === 'perempuan') {
+                profilePicture.src = "{{ asset('patient-p.png') }}";
+            } else {
+                profilePicture.src = "{{ asset('patient-l.png') }}";
+            }
 
             var actionHapus = '{{ route("antrian.destroy", ":id") }}';
             actionHapus = actionHapus.replace(':id', hapusId);
@@ -158,12 +157,52 @@
             const klikAdmin = document.getElementById('hapusantrian')
             klikAdmin.classList.remove('geserkan')
 
-            // Reset variabel penghapusanAntrian/            
+            // Reset variabel penghapusanAntrian/
             penghapusanAntrian = '';
 
             var actionHapus = '{{ route("antrian.destroy", ":id") }}';
             actionHapus = actionHapus.replace(':id', ':id');
             document.getElementById('hapusantrianform').setAttribute('action', actionHapus);
+        }
+
+//========FUNGSI POPUP RINCIAN==========
+        const dokters = @json($dokters);
+        function goRincian(id, nama, no_telepon, alamat, usia, jenis_kelamin, tanggal_periksa, gigi_sakit, gigi_berdarah, kategori_layanan, waktu, nomor, pilih_dokter, status) {
+            const muncul = document.getElementById('popup-rincian')
+            muncul.classList.add('geserkan')
+
+            document.getElementById('r-nama').innerText = nama;
+            document.getElementById('r-no_telepon').innerText = "+62 "+no_telepon;
+            document.getElementById('r-alamat').innerText = alamat;
+            document.getElementById('r-usia').innerText = usia;
+            document.getElementById('r-jenis_kelamin').innerText = jenis_kelamin;
+            document.getElementById('r-tanggal_periksa').innerText = tanggal_periksa;
+            document.getElementById('r-gigi_sakit').innerText = gigi_sakit;
+            document.getElementById('r-gigi_berdarah').innerText = gigi_berdarah;
+            document.getElementById('r-kategori_layanan').innerText = kategori_layanan;
+            document.getElementById('r-waktu').innerText = waktu;
+            document.getElementById('r-nomor').innerText = nomor;
+
+            // Update profile picture berdasar gender
+            const profilePicture = document.getElementById('profile-picture');
+            if (jenis_kelamin.toLowerCase() === 'perempuan') {
+                profilePicture.src = "{{ asset('patient-p.png') }}";
+            } else {
+                profilePicture.src = "{{ asset('patient-l.png') }}";
+            }
+
+            // Cari nama dokter berdasarkan ID
+            const dokter = dokters.find(d => d.id == pilih_dokter);
+            if (dokter) {
+                document.getElementById('r-dokter').innerText = "dr. "+dokter.fullname;
+            } else {
+                document.getElementById('r-dokter').innerText = 'Dokter tidak ditemukan';
+            }
+        }
+        function btnClose(event) {
+            event.preventDefault()
+            const muncul = document.getElementById('popup-rincian')
+            muncul.classList.remove('geserkan')
         }
 
         // Ambil elemen notifikasi
@@ -174,7 +213,7 @@
             notificationArea.classList.add('show');
         }, 100);
 
-        
+
     </script>
 </body>
 </html>

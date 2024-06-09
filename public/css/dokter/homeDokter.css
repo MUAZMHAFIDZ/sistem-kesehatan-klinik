@@ -1,29 +1,19 @@
-.absen {
-    background-color: white;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    margin-left: 230px; /* Decreased left margin */
-    margin-right: 730px; /* Increased right margin */
+
+.dashboard-text{
+    color: white;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: relative;
+    left: 220px;
+    top: 40px;
+    font-size: 30px;
+    background-color: #5f6cfa;
+    border-radius: 5px;
+    margin-right: 230px;
+
+}
+.txt{
+    position: relative;
+    top: 8px;
 }
 
-.absen i{
-    font-size: 40px;
-    margin-right: 20px;
-}
 
-.antriseluruh{
-    background-color: white;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 300px;
-    margin-left: 550px; /* Decreased left margin */
-    margin-right: 400px; /* Increased right margin */
-}
-
-.antriseluruh i{
-    font-size: 40px;
-    margin-right: 20px;
-}

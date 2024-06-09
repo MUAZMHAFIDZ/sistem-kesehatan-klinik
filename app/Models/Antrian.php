@@ -10,26 +10,30 @@ class Antrian extends Model
     use HasFactory;
 
     protected $table = 'antrian';
-
     protected $fillable = [
-        'kategori_layanan',
-        'durasi_layanan',
-        'waktu',
-        'tanggal_periksa',
-        'jenis_kelamin',
-        'gigi_sakit',
-        'gigi_berdarah',
-        'nomor',
-        'user_id',
-        'nama',
-        'no_telepon',
-        'alamat',
-        'usia',
-    ];
+    'nama',
+    'tanggal_periksa',
+    'kategori_layanan',
+    'no_telepon',
+    'alamat',
+    'usia',
+    'jenis_kelamin',
+    'gigi_sakit',
+    'gigi_berdarah',
+    'durasi_layanan',
+    'waktu',
+    'nomor',
+    'nama_dokter',
+    'status'];
 
     // Definisikan relasi dengan model User
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function rekammedis()
+    {
+        return $this->hasOne(Antrian::class, 'id_antrian');
     }
 }

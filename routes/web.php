@@ -78,14 +78,6 @@ Route::put('/dashboard-admin/datadokter/{id}', [KelolaRumahSakitController::clas
 // admin jadwal dokter
 Route::put('/dashboard-admin/jadwaldokter/{id}', [KelolaRumahSakitController::class, 'editJadwalDokter'])->name('editjadwaldokter.jadwal');
 
-//admin kelola obat
-// admin dashboard post
-Route::post('/dashboard-admin/stokobat', [KelolaRumahSakitController::class, 'tambahObat'])->name('tambahobat.submit');
-// admin delete
-Route::delete('/dashboard-admin/stokobat/{id}', [KelolaRumahSakitController::class, 'deleteObat'])->name('deleteobat.submit');
-// // admin put
-Route::put('/dashboard-admin/stokobat/{id}', [KelolaRumahSakitController::class, 'editObat'])->name('editobat.submit');
-
 
 // login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.submit');
@@ -132,6 +124,8 @@ Route::post('/dashboard-admin/formantrian', [AdminPasienController::class, 'buat
 Route::get('/antrian/{id}/edit', [AdminPasienController::class, 'edit'])->name('antrian.edit');
 Route::put('/antrian/{id}', [AdminPasienController::class, 'update'])->name('antrian.update');
 Route::delete('/antrian/{id}', [AdminPasienController::class, 'destroy'])->name('antrian.destroy');
+Route::put('/dashboard-admin/datadokter/{id}', [KelolaRumahSakitController::class, 'editDokter'])->name('editdokter.submit');
+
 
 Route::get('/dashboardpasien/{id}', [
     PasienFrontendController::class, 'showAntrian'
@@ -143,3 +137,5 @@ Route::post('/appointmentPasien', [
 
 //profil
 Route::put('/dashboard-admin/profil/update/{id}', [KelolaRumahSakitController::class, 'updateProfilnya'])->name('admin.profil.update');
+
+Route::put('/antrianPasienDok/{id}', [KelolaRumahSakitController::class, 'acceptPasien'])->name('acceptpasien.submit');
