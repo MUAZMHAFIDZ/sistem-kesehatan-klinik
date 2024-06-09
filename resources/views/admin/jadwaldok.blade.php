@@ -48,7 +48,7 @@
                                 <td>{{ $dokter->minggu === '00:00-00:00' ? '-' : $dokter->minggu }}</td>
                                 <td>{{ $dokter->status }}</td>
                                 <td class="aksi">
-                                    <button onclick="editJadwalDokter('{{ $dokter->id }}',  '{{ $dokter->senin }}',  '{{ $dokter->selasa }}',  '{{ $dokter->rabu }}',  '{{ $dokter->kamis }}',  '{{ $dokter->jumat }}',  '{{ $dokter->sabtu }}',  '{{ $dokter->minggu }}',  '{{ $dokter->status }}', event)" class="green">Edit</button>
+                                    <button onclick="editJadwalDokter('{{ $dokter->id }}',  '{{ $dokter->senin }}',  '{{ $dokter->selasa }}',  '{{ $dokter->rabu }}',  '{{ $dokter->kamis }}',  '{{ $dokter->jumat }}',  '{{ $dokter->sabtu }}',  '{{ $dokter->minggu }}',  '{{ $dokter->status }}', event)" class="green"><i class="fas fa-edit"></i></button>
                                 </td>
                             </tr>
                         @endforeach

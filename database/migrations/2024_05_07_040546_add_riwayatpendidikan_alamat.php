@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('alamat')->notNull();
             $table->string('jenis_kelamin')->nullable();
             $table->date('tanggal_lahir')->nullable();
+            $table->string('alamat')->nullable();
         });
     }
 
@@ -27,8 +28,6 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('riwayat_pendidikan');
             $table->dropColumn('alamat');
-            $table->dropColumn('jenis_kelamin');
-            $table->dropColumn('tanggal_lahir');
         });
     }
 };

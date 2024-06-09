@@ -12,7 +12,7 @@
 <body>
     @include('admin.component.navbar');
     <div id="content" class="content contentsz">
-        
+
     <!-- ========================== pasien hari ini ========================== -->
     <div class="home">
         <div class="item">
@@ -92,24 +92,18 @@
                 <p>Absensi Dokter</p>
             </div>
             <div class="card">
+                @php
+                    $today = date('Y-m-d');
+                @endphp
+                @foreach($dokterBertugas as $hadirDT)
                 <div class="data">
-                    <p>dr. xxx <span>( Hadir )</span></p>
+                    <p>dr. {{ $hadirDT->users->fullname }}<span>{{ $hadirDT->terakhir_hadir == $today ? '( Hadir )' : '( Belum Hadir)' }}</span></p>
                 </div>
-            </div>
-        </div>
-        <!-- ========================== pasien dalam antrian ========================== -->
-        <div class="item">
-            <div class="headcard">
-                <p>Pasien dalam Antrian</p>
-            </div>
-            <div class="card">
-                <div class="data">
-                    <p>xxxx</p>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
-    
+
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {

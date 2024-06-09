@@ -41,6 +41,7 @@
     <div class="modal-content"> <!-- Diganti dengan kelas Bootstrap modal-content -->
         <div class="modal-body"> <!-- Diganti dengan kelas Bootstrap modal-body -->
             <p>Apakah anda yakin ingin menghapus data antrian berikut?</p>
+            <img src="{{ asset('patient-l.png') }}" id="profile-picture-del" style="width: 100px; object-fit: cover; margin-bottom: 25px; margin-top: 20px;" alt="Profile Picture" class="rounded-circle">
             <div id="hapusdatanya">
             <p>Nama    : <span id="namaAntrian"></span></p>
             <p>Layanan : <span id="layananAntrian"></span></p>
