@@ -20,7 +20,7 @@
                 <span class="textpromo4">Book <br> appointment <br> now?<ion-icon name="receipt"></ion-icon></span>
             </div>
             <div class="cardbox2">
-                <a href="auth.register"><ion-icon name="send-sharp"></ion-icon>Lets Go</a>
+                <a href="{{ route('/register') }}"><ion-icon name="send-sharp"></ion-icon>Lets Go</a>
             </div>
         </div>
     </div>

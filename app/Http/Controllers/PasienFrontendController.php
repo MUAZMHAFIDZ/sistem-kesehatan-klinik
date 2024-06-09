@@ -31,23 +31,6 @@ class PasienFrontendController extends Controller
         return view('auth.recoveryPassword');
     }
 
-    // public function showAntrian($id) 
-    // {
-    //     $user = User::find($id);
-
-    //     $antrian = $Antrian->antrian;
-
-    //     $nama = $antrian->nama;
-    //     $noTelepon = $antrian->no_telepon;
-    //     $alamat = $antrian->alamat;
-    //     $usia = $antrian->usia;
-    //     $jenis_kelamin = $antrian->jenis_kelamin;
-    //     $tanggal_periksa = $antrian->tanggal_periksa;
-    //     $kategori_layanan = $antrian->kategori_layanan;
-
-    //     return view('/dashboardpasien', compact('nama', 'no_telepon', 'alamat', 'usia', 'jenis_kelamin', 'tanggal_periksa', 'kategori_layanan'));
-    // }
-
     public function showAntrian($id) 
     {
     // Cari pengguna berdasarkan ID
@@ -69,11 +52,11 @@ class PasienFrontendController extends Controller
 
             return view('dashboardpasien', compact('nama', 'noTelepon', 'alamat', 'usia', 'jenis_kelamin', 'tanggal_periksa', 'kategori_layanan'));
         } else {
-            // Antrian tidak ditemukan, tangani kasus ini sesuai kebutuhan (misalnya, tampilkan pesan kesalahan)
+            // Antrian tidak ditemukan
             return redirect()->back()->with('error', 'Antrian tidak ditemukan.');
         }
     } else {
-        // Pengguna tidak ditemukan, tangani kasus ini sesuai kebutuhan (misalnya, tampilkan pesan kesalahan)
+        // Pengguna tidak ditemukan
         return redirect()->back()->with('error', 'Pengguna tidak ditemukan.');
     }
     }

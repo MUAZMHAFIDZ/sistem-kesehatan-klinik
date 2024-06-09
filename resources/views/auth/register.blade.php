@@ -70,7 +70,7 @@
                 @enderror
             </div>
 
-            <div style="font-size: 13px; text-align: center;">
+            {{-- <div style="font-size: 13px; text-align: center; display: none">
                 <label for="jenis_kelamin">Jenis Kelamin</label>
                 <div style="display: flex; flex-direction: row;">
                     <label>
@@ -80,12 +80,7 @@
                         <input style="margin-left: 30px; width: 12px; height: 12px;" type="radio" name="jenis_kelamin" value="perempuan" required>Perempuan
                     </label>
                 </div>
-            </div>
-    
-            <!-- <div>
-                <label for="photo">Foto Profil</label>
-                <input type="file" name="photo">
-            </div> -->
+            </div> --}}
             
             <div class="tombol-register">
                 <button type="submit">Daftar</button>

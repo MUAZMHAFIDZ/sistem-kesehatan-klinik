@@ -5,7 +5,7 @@
     outline: none;
     border: none;
     text-decoration: none;
-    font-family: 'Poppins',Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
+    font-family: Poppins,Segoe UI, Verdana, sans-serif;
 }
 
 /* body {
@@ -672,7 +672,7 @@
 }
 
 .invalid-feedback {
-    color: #dc3545;
+    color: rgb(220, 56, 72);
     font-size: 10px;
 }
 
@@ -683,7 +683,7 @@
 }
 
 .register-form .register-pasien .tombol-register button {
-    width: 40%;
+    width: 100%;
     padding: 8px;
     color: rgb(255, 255, 255);
     background-color: rgb(24, 111, 255);
@@ -851,10 +851,8 @@
     color: rgb(24, 111, 255);
 }
 
-.content {
-    display: none;
-    padding: 12px 0;
-    width: 100%;
+.header-dashboard-pasien h1, p {
+    margin-left: 8px;
 }
 
 .card-dashboard {
@@ -863,7 +861,7 @@
     padding-top: 33px;
 }
 
-.card1, .card2, .card3, .card4 {
+.card-dashboard-pasien {
     position: relative;
     width: 290px;
     height: 80px;
@@ -874,54 +872,12 @@
     border-radius: 6px;
 }
 
-.card-dashboard .card1 p {
+.card-dashboard-pasien span {
     font-size: 14px;
     color: rgb(53, 53, 53);
 }
 
-.card-dashboard .card2 p {
-    font-size: 14px;
-    color: rgb(53, 53, 53);
-}
-
-.card-dashboard .card3 p {
-    font-size: 14px;
-    color: rgb(53, 53, 53);
-}
-
-.card-dashboard .card4 p {
-    font-size: 14px;
-    color: rgb(53, 53, 53);
-}
-
-.card-dashboard .card1 ion-icon {
-    position: absolute;
-    padding: 15px;
-    top: 0;
-    right: 0;
-    font-size: 25px;
-    color: rgb(24, 111, 255);
-}
-
-.card-dashboard .card2 ion-icon {
-    position: absolute;
-    padding: 15px;
-    top: 0;
-    right: 0;
-    font-size: 25px;
-    color: rgb(24, 111, 255);
-}
-
-.card-dashboard .card3 ion-icon {
-    position: absolute;
-    padding: 15px;
-    top: 0;
-    right: 0;
-    font-size: 25px;
-    color: rgb(24, 111, 255);
-}
-
-.card-dashboard .card4 ion-icon {
+.card-dashboard .card-dashboard-pasien ion-icon {
     position: absolute;
     padding: 15px;
     top: 0;
@@ -932,6 +888,7 @@
 
 /* style dashboard buat janji start*/
 
+
 /* style dashboard formulir pendaftaran pasien */
 .appointment-pasien {
     display: flex;
@@ -940,6 +897,7 @@
     flex-direction: column;
     width: 100%;
     margin-top: 20px; 
+    margin-left: 8px;
     border-radius: 10px;
 }
 
@@ -948,6 +906,7 @@
     font-size: 14px;
 }
 
+
 .appointment-pasien .nama-field,
 .appointment-pasien .nohp-field,
 .appointment-pasien .alamat-field,
@@ -955,8 +914,11 @@
 .appointment-pasien .jk-field,
 .appointment-pasien .jk-field,
 .appointment-pasien .tanggal-periksa-field,
-.appointment-pasien .kondisiGigi-field,
-.appointment-pasien .kategori-layanan-field,
+.appointment-pasien .kondisiGigi-field {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
 .appointment-pasien .kategori-layanan-field {
     width: 100%;
     margin-bottom: 16px;
@@ -970,13 +932,13 @@
 .appointment-pasien .jk-field input,
 .appointment-pasien .tanggal-periksa-field input,
 .appointment-pasien .kondisiGigi-field input,
-.appointment-pasien .kategori-layanan-field input,
 .appointment-pasien .kategori-layanan-field input {
     width: 100%;
     padding: 10px;
     border: 1px solid rgb(210, 210, 210);
     border-radius: 6px;
     resize: none;
+    /* background-color: rgb(242, 242, 245); */
 }
 
 .appointment-pasien .nama-field input:focus,
@@ -999,7 +961,8 @@
     width: 100%;
     padding: 10px;
     border: 1px solid rgb(210, 210, 210);
-    border-radius: 6px;
+    /* background-color: rgb(242, 242, 245); */
+    border-radius: 8px;
 }
 
 .appointment-pasien .jk-field select:focus, 
@@ -1007,6 +970,20 @@
 .appointment-pasien .kategori-layanan-field select:focus {
     border: 1px solid rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
+}
+
+.appointment-pasien .alamat-field a,
+.appointment-pasien .usia-field a,
+.appointment-pasien .jk-field a {
+    color: rgb(220, 56, 72);
+    font-size: 14px;
+}
+
+.appointment-pasien .alamat-field a:hover,
+.appointment-pasien .usia-field a:hover,
+.appointment-pasien .jk-field a:hover {
+    color: rgb(220, 56, 72);
+    text-decoration: underline;
 }
 
 .appointment-pasien button {
@@ -1034,44 +1011,31 @@
 }
 
 table {
-    border-spacing: 16px;
+    border-spacing: 8px;
+    margin-top: 30px;
 }
 
 .appointment-results th {
     color: rgba(0, 0, 0, 0.6);
     font-size: 14px;
-    font-weight: 550;
+    font-weight: 400;
     text-align: left;
-    width: 15%;
+    width: 11%;
 }
 
 .appointment-results td {
     width: 45%;
-    padding: 16px;
+    padding: 10px;
     font-size: 14px;
     border: 1px solid rgb(210, 210, 210);
+    background-color: rgb(242, 242, 245);
+    box-shadow: 0 0px 5px 0 rgba(0,0,0,0.2);
     border-radius: 8px;
-    
 }
 
 .appointment-results td:hover {
     box-shadow: 0 0 0 2px rgba(24, 111, 255, 0.4);
 }
-
-/* .appointment-results button {
-    width: 150px;
-    padding: 8px;
-    color: rgb(255, 255, 255);
-    background-color: rgb(24, 111, 255);
-    border-radius: 8px;
-    border: 1px solid rgb(0, 91, 238);
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.appointment-results button:hover {
-    background-color: rgb(0, 90, 234);
-} */
 
 /* style dashboard tampilkan janji end*/
 
@@ -1085,6 +1049,7 @@ table {
     flex-direction: column;
     width: 100%;
     margin-top: 20px;
+    margin-left: 8px;
     border-radius: 10px;
 }
 
@@ -1098,7 +1063,7 @@ table {
 .lengkapi-akun-pasien .jenis-kelamin-field,
 .lengkapi-akun-pasien .tanggal-lahir-field {
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
 }
 
 .lengkapi-akun-pasien .foto-profil-field input,
@@ -1152,7 +1117,10 @@ table {
 
 .content {
     display: none;
+    padding: 12px 0;
+    width: 100%;
 }
+
 #dashboardMenuPasien {
     display: block;
 }
