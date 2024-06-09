@@ -10,7 +10,7 @@ class JadwalDokter extends Model
 {
     use HasFactory;
     protected $table = 'jadwal_dokter';
-    protected $fillable = ['id_dokter', 'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu', 'status'];
+    protected $fillable = ['id_dokter', 'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu', 'status', 'terakhir_hadir'];
 
     public function users() {
         return $this->belongsTo(User::class, 'id_dokter');

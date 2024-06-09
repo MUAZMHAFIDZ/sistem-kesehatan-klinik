@@ -20,9 +20,7 @@
         <p>Tambahkan data pendaftaran pasien baru</p>
     </div>
 
-<div class="container mt-5">
-
-  <form action="{{ route('admin.formpasien.submit') }}" id="registrationForm" method="POST" onsubmit="return validateForm()" class="container-form registration-form">
+    <form enctype="multipart/form-data" action="{{ route('admin.formpasien.submit') }}" id="registrationForm" method="POST" onsubmit="return validateForm()" class="container-form registration-form">
     @csrf
     <div class="sub-container">
         @if (!Auth::check() || (Auth::check() && Auth::user()->Authorize === "Admin"))
@@ -99,13 +97,19 @@
             </select>
             <span class="error-message" id="kategori-layanan-error"></span>
         </div>
-        <div class="buttons">
-            <a href="{{ route('admin.antrian') }}" class="cancel-button">Batal</a>
-            <button type="submit" class="register-button">Daftar</button>
-        </div>
+    <div class="form-group">
+      <label for="pilih_dokter">Pilih Dokter</label>
+      <select class="form-control" type="hidden" id="pilih_dokter" name="pilih_dokter">
+        @foreach($dokters as $pilih_dokter)
+        <option value="{{ $pilih_dokter->fullname }}">dr. {{ $pilih_dokter->fullname }}</option>
+        @endforeach
+      </select>
     </div>
-</form>
-
+      <div class="buttons">
+      <a href="{{ route('admin.antrian') }}" class="cancel-button">Batal</a>
+      <button type="submit" class="register-button">Simpan</button>
+  </div>
+    </form>
 
 </div>
 

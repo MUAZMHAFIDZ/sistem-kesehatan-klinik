@@ -25,8 +25,8 @@
                             <th>Tanggal Kunjungan</th>
                             <th>Layanan</th>
                             <th>Diagnosa</th>
-                            <th>Jumlah Kunjungan</th>
-                            <th style="border-top-right-radius: 20px;">Aksi</th>
+                            <th>Jumlah Kunjungan Dalam Seminggu</th>
+                            <!-- <th style="border-top-right-radius: 20px;">Aksi</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -41,9 +41,9 @@
                                 <td>aaaa</td>
                                 <td>aaaa</td>
                                 <td>aaaa</td>
-                                <td class="aksi">
+                                <!-- <td class="aksi">
                                     <button class="red">Hapus</button>
-                                </td>
+                                </td> -->
                             </tr>
                     </tbody>
                 </table>
