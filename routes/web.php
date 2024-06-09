@@ -139,3 +139,5 @@ Route::post('/appointmentPasien', [
 Route::put('/dashboard-admin/profil/update/{id}', [KelolaRumahSakitController::class, 'updateProfilnya'])->name('admin.profil.update');
 
 Route::put('/antrianPasienDok/{id}', [KelolaRumahSakitController::class, 'acceptPasien'])->name('acceptpasien.submit');
+
+Route::get('/rekammedis/pdf2', [KelolaRumahSakitController::class, 'pdfDownloadLalu'])->name('rekammedislalu.pdf');

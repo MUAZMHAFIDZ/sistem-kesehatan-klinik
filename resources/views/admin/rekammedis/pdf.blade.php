@@ -14,7 +14,7 @@
     text-align: center;
     line-height: 5px;
     }
-    .header span {
+    .header .span {
         font-size: 25px;
         color: #005fff;
         margin: 30px 10px 0 10px;
@@ -29,6 +29,7 @@
     }
     table {
         border-collapse: collapse;
+        margin: auto;
     }
     table th, table td {
         border: 1px solid black;
@@ -45,16 +46,21 @@
 </head>
 <body>
     <div class="header">
-        <span>KlinikDentalCare</span>
+        <span class="span">KlinikDentalCare</span>
         <div class="klinikdentalcare">
             <p>Klinik DentalCare</p>
             <p>Jl. Spiderman, no 1</p>
-            <p>Rekam Medis Mingguan Klinik DentalCare</p>
+            <p>Rekam Medis Mingguan <span style="color: #005fff;">KlinikDentalCare</span></p>
         </div>
     </div>
     <div class="content">
         <div class="tanggal">
-            <p>19 mei xxxx</p>
+            @php
+                use Carbon\Carbon;
+                setlocale(LC_TIME, 'id_ID');
+                $now = Carbon::now();
+            @endphp
+            <p>{{ $now->translatedFormat('l, j F Y') }}</p>
         </div>
         <table>
             <thead>
@@ -65,24 +71,23 @@
                         <th>Tanggal Kunjungan</th>
                         <th>Layanan</th>
                         <th>Diagnosa</th>
-                        <th>Jumlah Kunjungan Dalam Seminggu</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @for ($i=0;$i<10;$i++)
+                    
                     @php
                         $count = 1;
                     @endphp
+                    @foreach($rekammedis as $rekammedis)
                         <tr>
                             <td>{{ $count++ }}</td>
-                            <td>aaaa</td>
-                            <td>aaaa</td>
-                            <td>aaaa</td>
-                            <td>aaaa</td>
-                            <td>aaaa</td>
-                            <td>aaaa</td>
+                            <td>{{ $rekammedis->antrian->nama }}</td>
+                            <td>{{ $rekammedis->antrian->nama_dokter }}</td>
+                            <td>{{ $rekammedis->antrian->tanggal_periksa }}</td>
+                            <td>{{ $rekammedis->antrian->kategori_layanan }}</td>
+                            <td>{{ $rekammedis->diagnosa }}</td>
                         </tr>
-                    @endfor
+                    @endforeach
                 </tbody>
         </table>
         <div class="hormat">
