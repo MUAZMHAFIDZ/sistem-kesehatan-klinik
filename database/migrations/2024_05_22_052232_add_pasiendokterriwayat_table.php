@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('nama_dokter', 50);
             $table->boolean('status');
 
-            $table->foreign('nama_dokter')->references('nama')->on('users');
+            $table->foreign('nama_dokter')->references('fullname')->on('users');
         });
     }
 

@@ -124,7 +124,7 @@ class AdminFrontendController extends Controller
         $dokters = User::where('Authorize', 'Dokter')->get();
         $user->last_activity = now();
         $user->save();
-        $data = Antrian::orderBy('tanggal_periksa')->get();
+        $data = Antrian::orderBy('tanggal_periksa')->where('status', false)->get();
         return view('admin.antrian', compact('user', 'data', 'dokters'));
     }
     public function dashboarddatapasien()
