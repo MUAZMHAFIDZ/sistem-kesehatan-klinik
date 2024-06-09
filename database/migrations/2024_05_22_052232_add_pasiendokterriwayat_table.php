@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::table('antrian', function (Blueprint $table) {
             $table->string('nama_dokter', 50);
             $table->boolean('status');
-
-            $table->foreign('nama_dokter')->references('fullname')->on('users');
         });
     }
 
