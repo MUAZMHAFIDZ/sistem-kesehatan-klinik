@@ -16,9 +16,9 @@
             <div class="container-pasien">
                 <div class="sidebar-pasien">
                     <div class="profile-picture">
-                        <img src="{{ asset('/image/defaultProfile.png') }}">
+                    {{-- <img src="{{ asset('/image/defaultProfile.png') }}">  --}}
 
-                        {{-- <img src="{{ $user->image }}" alt="Profile Picture"> --}}
+                        <img src="{{ $user->image }}" alt="Profile Picture">
                     </div>
                     <div class="nama-pasien">
                         <span>
@@ -299,7 +299,18 @@
                                 <option value="tidak" {{ old('gigi_berdarah') == 'tidak' ? 'selected' : '' }}>Tidak</option>
                             </select>
                         </div>
-                    
+
+
+                        <div class="kondisiGigi-field">
+                            <label for="pilih_dokter">Pilih Dokter</label>
+                            <select class="form-control" type="hidden" id="pilih_dokter" name="pilih_dokter">
+                                @foreach($dokters as $pilih_dokter)
+                                <option value="{{ $pilih_dokter->fullname }}">dr. {{ $pilih_dokter->fullname }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
                         <div class="kategori-layanan-field">
                             <select class="form-control" id="kategori_layanan" name="kategori_layanan" required>
                                 <option value="">Pilih Layanan</option>
@@ -316,7 +327,7 @@
                                 <option value="Fluoridasi" {{ old('kategori_layanan') == 'Fluoridasi' ? 'selected' : '' }}>Fluoridasi</option>
                             </select>
                         </div>
-                    
+
                         <div class="tombol-appointment">
                             <button type="submit">Kirim</button>
                         </div>
@@ -368,7 +379,8 @@
 
                 <div class="content" id="antrianPasien">
                     <h1>Antrian</h1>
-                    @if($user->antrian) <!-- Pengecekan apakah pengguna memiliki antrian -->
+                    @foreach($antrianku as $antrianku)
+                    @if($antrianku) <!-- Pengecekan apakah pengguna memiliki antrian -->
                         <table class="appointment-results">
                             <tr>
                                 <th>Nama Lengkap</th>
@@ -382,10 +394,10 @@
                                 <th>Alamat</th>
                                 <td>{{ $user->alamat }}</td>
                             </tr>
-                            {{-- <tr>
+                            <!-- {{-- <tr>
                                 <th>Usia</th>
                                 <td>{{ \Carbon\Carbon::parse($user->tanggal_lahir)->diffInYears(\Carbon\Carbon::now()) }} tahun</td>
-                            </tr> --}}
+                            </tr> --}} -->
                             <tr>
                                 <th>Usia</th>
                                 <td>{{ round(\Carbon\Carbon::parse($user->tanggal_lahir)->diffInMonths(\Carbon\Carbon::now()) / 12, 2) }} tahun</td>
@@ -397,20 +409,21 @@
                             </tr>
                             <tr>
                                 <th>Tanggal Periksa</th>
-                                <td>{{ $user->antrian->tanggal_periksa }}</td> <!-- Menampilkan tanggal periksa dari antrian -->
+                                <td>{{ $antrianku->tanggal_periksa }}</td> <!-- Menampilkan tanggal periksa dari antrian -->
                             </tr>
                             <tr>
                                 <th>Jam</th>
-                                <td>{{ $user->antrian->waktu }}</td> <!-- Menampilkan jam dari antrian -->
+                                <td>{{ $antrianku->waktu }}</td> <!-- Menampilkan jam dari antrian -->
                             </tr>
                             <tr>
                                 <th>Layanan</th>
-                                <td>{{ $user->antrian->kategori_layanan }}</td> <!-- Menampilkan kategori layanan dari antrian -->
+                                <td>{{ $antrianku->kategori_layanan }}</td> <!-- Menampilkan kategori layanan dari antrian -->
                             </tr>
                         </table>
                     @else
                         <p>Tidak ada antrian yang tersedia untuk pengguna ini.</p>
                     @endif
+                    @endforeach
                 </div>
                 
 
@@ -454,7 +467,7 @@
                         </div>
 
                         <div class="alamat-field">
-                            <input type="text" name="alamat" placeholder="Alamat" class="@error('alamat') is-invalid @enderror"  value="{{ old('alamat') }}" autocomplete="off">
+                            <input type="text" name="alamat" placeholder="Alamat" class="@error('alamat') is-invalid @enderror"  value="{{  $user->alamat ? $user->alamat : '' }}" autocomplete="off">
                             @error('alamat')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -465,8 +478,8 @@
                         <div class="jenis-kelamin-field">
                             <select name="jenis_kelamin" required>
                                 <option value="">Pilih Jenis Kelamin</option>
-                                <option value="laki-laki">Laki-laki</option>
-                                <option value="perempuan">Perempuan</option>
+                                <option value="laki-laki" {{ $user->jenis_kelamin == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                <option value="perempuan" {{ $user->jenis_kelamin == 'laki-laki' ? '' : 'selected' }}>Perempuan</option>
                             </select>
                             @error('jenis_kelamin')
                                 <div class="invalid-feedback">
@@ -477,7 +490,7 @@
 
                         <div class="tanggal-lahir-field">
                             <label for="tanggal_lahir">Tanggal Lahir</label>
-                            <input type="date" name="tanggal_lahir" class="@error('tanggal_lahir') is-invalid @enderror" " autocomplete="off">
+                            <input type="date" name="tanggal_lahir" value="{{ $user->tanggal_lahir ? $user->tanggal_lahir : '' }}" class="@error('tanggal_lahir') is-invalid @enderror" " autocomplete="off">
                             @error('tanggal_lahir')
                                 <div class="invalid-feedback">
                                     {{ $message }}

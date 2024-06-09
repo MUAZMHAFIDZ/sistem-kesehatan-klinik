@@ -68,7 +68,7 @@ class AdminPasienController extends Controller
         ];
 
         // Tentukan user_id dan nama berdasarkan kondisi pengguna terautentikasi
-        if (Auth::check() && Auth::user()->Authorize !== "Admin") {
+        if (Auth::user()->Authorize != "Admin") {
             // Jika pengguna terautentikasi bukan admin
             $data['user_id'] = Auth::user()->id;
             $data['nama'] = Auth::user()->fullname;

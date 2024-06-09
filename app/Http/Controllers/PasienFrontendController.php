@@ -13,7 +13,10 @@ class PasienFrontendController extends Controller
     public function dashboardPasien()
     {
         $user = Auth::user();
-        return view('pasien.dashboardpasien', compact('user'));
+        $dokters = User::where('Authorize', 'Dokter')->get();
+        $sekarang = date('Y-m-d');
+        $antrianku = Antrian::where('nama', $user->fullname)->where('tanggal_periksa', $sekarang)->where('status', false)->get();
+        return view('pasien.dashboardpasien', compact('user', 'dokters', 'antrianku'));
     }
     public function loginPasien()
     {

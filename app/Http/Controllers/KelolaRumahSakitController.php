@@ -140,7 +140,7 @@ class KelolaRumahSakitController extends Controller
             ]);
         }
 
-        if ($request->input('tanggal_lahir') != $userss->jenis_kelamin) {
+        if ($request->input('tanggal_lahir') != $userss->tanggal_lahir) {
             User::where('id', $id)->update([
                 'tanggal_lahir' => $request->input('tanggal_lahir'),
             ]);
