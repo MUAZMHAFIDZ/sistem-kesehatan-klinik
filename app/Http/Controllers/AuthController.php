@@ -129,7 +129,7 @@ class AuthController extends Controller
         $user->email = $validateData['email'];
         $user->Authorize = "User";
         $user->jenis_kelamin = $request->input('jenis_kelamin');
-        $user->alamat = "Alamat Belum Ditambahkan Perbarui Informasi Akun Terlebih Dahulu";
+        $user->alamat = $request->input('alamat');
         $user->save();
 
         if ($user) {

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('riwayat_pendidikan')->nullable();
+            $table->string('alamat')->notNull();
+            $table->string('jenis_kelamin')->nullable();
+            $table->date('tanggal_lahir')->nullable();
             $table->string('alamat')->nullable();
         });
     }
