@@ -231,8 +231,38 @@ class KelolaRumahSakitController extends Controller
         // $options->set('isRemoteEnabled', true);
         $pdf->setOptions($options);
 
+        $sekarang = Carbon::now();
+        $awalMinggu = $sekarang->startOfWeek()->format('Y-m-d');
+        $akhirMinggu = $sekarang->endOfWeek()->format('Y-m-d');
+        $rekammedis = RekamMedis::whereBetween('dibuat', [$awalMinggu, $akhirMinggu])->get();
         $users = Auth::user();
-        $pdf->loadHtml(view('admin.rekammedis.pdf', compact('users')));
+        
+        $pdf->loadHtml(view('admin.rekammedis.pdf', compact('users', 'rekammedis')));
+        $pdf->setPaper('A4');
+        $pdf->render();
+        //dd(view('admin.rekammedis.pdf')->render());
+
+        $nama_file = 'rekam_medis_' . Carbon::now()->format('dmy') . '.pdf';
+
+        Storage::put('pdf/' . $nama_file, $pdf->output());
+
+        $file_url = 'storage/pdf/' . $nama_file;
+        return response()->download($file_url)->deleteFileAfterSend();
+    }
+    public function pdfDownloadLalu() {
+        $pdf = new Dompdf();
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        // $options->set('isRemoteEnabled', true);
+        $pdf->setOptions($options);
+
+        $sekarang = Carbon::now();
+        $awalMinggu = $sekarang->startOfWeek()->subWeek()->toDateString();
+        $akhirMinggu = $sekarang->endOfWeek()->toDateString();
+        $rekammedis = RekamMedis::whereBetween('dibuat', [$awalMinggu, $akhirMinggu])->get();
+        $users = Auth::user();
+        
+        $pdf->loadHtml(view('admin.rekammedis.pdf', compact('users', 'rekammedis')));
         $pdf->setPaper('A4');
         $pdf->render();
         //dd(view('admin.rekammedis.pdf')->render());

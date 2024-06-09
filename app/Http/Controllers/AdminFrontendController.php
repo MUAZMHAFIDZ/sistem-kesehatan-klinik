@@ -10,6 +10,7 @@ use App\Models\JadwalDokter;
 use Carbon\Carbon;
 use App\Models\Antrian;
 use App\Models\Profil;
+use App\Models\RekamMedis;
 use App\Models\KehadiranDokter;
 
 class AdminFrontendController extends Controller
@@ -146,6 +147,11 @@ class AdminFrontendController extends Controller
         $user = Auth::user();
         $user->last_activity = now();
         $user->save();
-        return view('admin.rekammedis', compact('user'));
+        $sekarang = Carbon::now();
+        $awalMinggu = $sekarang->startOfWeek()->format('Y-m-d');
+        $akhirMinggu = $sekarang->endOfWeek()->format('Y-m-d');
+
+        $rekammedis = RekamMedis::whereBetween('dibuat', [$awalMinggu, $akhirMinggu])->get();
+        return view('admin.rekammedis', compact('user', 'rekammedis'));
     }
 }

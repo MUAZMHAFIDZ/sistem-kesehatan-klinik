@@ -13,7 +13,10 @@
     @include('admin.component.navbar');
     <div id="content" class="content contentzz">
         <div class="itemcontent">
-            <button class="blue" style="padding: 10px; margin-top: 20px; cursor: pointer;"><a style="color: white;" href="{{ route('rekammedis.pdf') }}">Download Rekam Medis PDF</a></button>
+            <div class="btndownload">
+                <button class="blue" style="padding: 10px; margin-top: 20px; cursor: pointer;"><a style="color: white; text-decoration: none;" href="{{ route('rekammedis.pdf') }}"><i class="fa-solid fa-download"></i> Minggu ini</a></button>
+                <button class="blue" style="padding: 10px; margin-top: 20px; cursor: pointer;"><a style="color: white; text-decoration: none;" href="{{ route('rekammedislalu.pdf') }}"><i class="fa-solid fa-download"></i> Minggu ini dan Minggu Sebelumnya</a></button>
+            </div>
             <input class="caridokterzz" type="text" id="cariDokter" placeholder="Cari berdasarkan Nama Dokter atau Pasien" onkeyup="cariData()">
             <div class="datadokter">
                 <table id="tablesss">
@@ -33,18 +36,20 @@
                         @php
                             $count = 1;
                         @endphp
+                        @foreach($rekammedis as $rekammedis)
                             <tr>
                                 <td>{{ $count++ }}</td>
-                                <td>aaaa</td>
-                                <td>aaaa</td>
-                                <td>aaaa</td>
-                                <td>aaaa</td>
-                                <td>aaaa</td>
-                                <td>aaaa</td>
+                                <td>{{ $count++ }}</td>
+                                <td>{{ $rekammedis->antrian->nama }}</td>
+                                <td>{{ $rekammedis->antrian->nama_dokter }}</td>
+                                <td>{{ $rekammedis->antrian->tanggal_periksa }}</td>
+                                <td>{{ $rekammedis->antrian->kategori_layanan }}</td>
+                                <td>{{ $rekammedis->diagnosa }}</td>
                                 <!-- <td class="aksi">
                                     <button class="red">Hapus</button>
                                 </td> -->
                             </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
