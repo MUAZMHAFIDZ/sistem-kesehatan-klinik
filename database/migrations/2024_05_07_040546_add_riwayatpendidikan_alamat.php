@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('alamat')->notNull();
             $table->string('jenis_kelamin')->nullable();
             $table->date('tanggal_lahir')->nullable();
-            $table->string('alamat')->nullable();
         });
     }
 
